@@ -41,7 +41,7 @@ namespace BoardGamesRentalApplication.Controllers
         {
             using (MySqlDbContext db = new MySqlDbContext())
             {
-                var user = db.Users.Where(u => u.Name == userEntity.Name).FirstOrDefault();
+                var user = db.Users.Where(u => u.Username == userEntity.Username).FirstOrDefault();
                 var pass = userEntity.Password;
                 using (var rng = RandomNumberGenerator.Create())
                 {
@@ -59,28 +59,6 @@ namespace BoardGamesRentalApplication.Controllers
                 }
             }
             return View();
-        }
-
-        public void CreateDb()
-        {
-            using (MySqlDbContext db = new MySqlDbContext())
-            {
-                using (SHA256 sha = SHA256.Create())
-                {
-                    using (var rng = RNGCryptoServiceProvider.Create())
-                    {
-                        byte[] salt = new byte[32];
-                        rng.GetBytes(salt);
-                        byte[] password = Encoding.UTF8.GetBytes("12345");
-                        byte[] saltedPassword = password.Concat(salt).ToArray();
-                        byte[] hashedPassword = sha.ComputeHash(saltedPassword);
-                        string hashToStore = Convert.ToBase64String(hashedPassword);
-                        User user = new User() { Name = "Grzegorz", Password = hashToStore, Salt = salt };
-                        db.Users.Add(user);
-                        db.SaveChanges();
-                    }
-                }
-            }
         }
     }
 }

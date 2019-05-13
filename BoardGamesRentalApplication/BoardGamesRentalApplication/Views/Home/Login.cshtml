@@ -8,7 +8,7 @@
 {
     @Html.AntiForgeryToken()
     <div>
-        @Html.TextBoxFor(m => m.Name, new { @placeholder = "Username" })
+        @Html.TextBoxFor(m => m.Username, new { @placeholder = "Username" })
         <br />
         @Html.Password("Password", "", new { @placeholder = "Password" })
         <br />

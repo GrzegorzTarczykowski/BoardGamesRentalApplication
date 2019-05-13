@@ -1,8 +1,4 @@
 # BoardGamesRentalApplication 
 Team project
-<<<<<<< master
-
-Let's work!
-=======
 Mateusz już na posterunku :)
->>>>>>> master
+Let's work!
