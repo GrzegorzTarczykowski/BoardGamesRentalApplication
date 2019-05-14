@@ -1,11 +1,12 @@
-﻿
+﻿@model BoardGamesRentalApplication.Models.RegisterUser
+
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/_LayoutPageLogin.cshtml";
 }
 <div class="links">
     <ul class="links-unordered-list">
-        <li class="active">
+        <li class="">
             <a href="/Home/Index" class="">Strona główna</a>
         </li>
         <li class="">
@@ -19,51 +20,49 @@
         </li>
     </ul>
 </div>
-<!-- title -->
-<h1>
-    Login
-</h1>
-<!-- //title -->
-<!-- content -->
-<div class="container">
-    <div id="clouds">
-        <div class="cloud x1"></div>
-        <!-- Time for multiple clouds to dance around -->
-        <div class="cloud x2"></div>
-        <div class="cloud x3"></div>
-        <div class="cloud x4"></div>
-        <div class="cloud x5"></div>
-    </div>
-    <!-- content form -->
-    <div class="sub-main-w3">
-        <form action="Login" method="post">
-            <div class="form-style-agile">
-                <label>
-                    <i class="fas fa-user"></i>
-                    Username
+    <!-- title -->
+    <h1>
+        Zaloguj się
+    </h1>
 
-                </label>
-                <input placeholder="Username" name="Username" type="text" required="">
-            </div>
-            <div class="form-style-agile">
-                <label>
-                    <i class="fas fa-unlock-alt"></i>
-                    Password
+    <!-- //title -->
+    <!-- content -->
+    <div class="container">
+        <div id="clouds">
+            <div class="cloud x1"></div>
+            <!-- Time for multiple clouds to dance around -->
+            <div class="cloud x2"></div>
+            <div class="cloud x3"></div>
+            <div class="cloud x4"></div>
+            <div class="cloud x5"></div>
+        </div>
+        <!-- content form -->
+        <div class="sub-main-w3">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <form action="Login" method="post">
+                    <div class="form-style-agile">
+                        <label>
+                            <i class="fas fa-user"></i>
+                            Nazwa użytkownika
 
-                </label>
-                <input placeholder="Password" name="Password" type="password" required="">
+                        </label>
+                        <input placeholder="Nazwa użytkownika" name="Username" type="text" required="">
+                    </div>
+                    <div class="form-style-agile">
+                        <label>
+                            <i class="fas fa-unlock-alt"></i>
+                            Hasło
+
+                        </label>
+                        <input placeholder="Hasło" name="Password" type="password" required="">
+                    </div>
+                    <input type="submit" value="Log In">
+                </form>
+            }
             </div>
-            <input type="submit" value="Log In">
-        </form>
+        <!-- //content form -->
     </div>
-    <!-- //content form -->
-</div>
+
 <!-- //content -->
-<!-- copyright -->
-<div class="footer">
-    <h2>
-        &copy; 2018 Cloud Login Form. All rights reserved | Design by
-        <a href="http://w3layouts.com">W3layouts</a>
-    </h2>
-</div>
-<!-- //copyright -->
