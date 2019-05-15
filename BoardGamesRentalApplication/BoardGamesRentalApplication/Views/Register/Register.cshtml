@@ -2,79 +2,99 @@
 
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/_LayoutPageLogin.cshtml";
 }
-
-<h2>Register</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>RegisterUser</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="links">
+    <ul class="links-unordered-list">
+        <li class="">
+            <a href="/Home/Index" class="">Strona główna</a>
+        </li>
+        <li class="">
+            <a href="/Home/About" class="">Informacje</a>
+        </li>
+        <li class="">
+            <a href="/Home/Contact" class="">Kontakt</a>
+        </li>
+        <li class="">
+            <a href="/Login/Login" class="">Logowanie</a>
+        </li>
+    </ul>
 </div>
+<!-- title -->
+    <h1>
+        Zarejestruj się
+    </h1>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <!-- //title -->
+    <!-- content -->
+    <div class="container">
+        <div id="clouds">
+            <div class="cloud x1"></div>
+            <!-- Time for multiple clouds to dance around -->
+            <div class="cloud x2"></div>
+            <div class="cloud x3"></div>
+            <div class="cloud x4"></div>
+            <div class="cloud x5"></div>
+        </div>
+        <!-- content form -->
+        <div class="sub-main-w3">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+            <form action="Login" method="post">
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fas fa-user"></i>
+                        Nazwa użytkownika
+
+                    </label>
+                    <input placeholder="Nazwa użytkownika" name="Username" type="text" required="">
+                </div>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fas fa-unlock-alt"></i>
+                        Imię
+
+                    </label>
+                    <input placeholder="Imię" name="FirstName" type="text" required="">
+                </div>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fas fa-unlock-alt"></i>
+                        Nazwisko
+
+                    </label>
+                    <input placeholder="Nazwisko" name="LastName" type="text" required="">
+                </div>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fas fa-unlock-alt"></i>
+                        Email
+
+                    </label>
+                    <input placeholder="Email" name="Email" type="text" required="">
+                </div>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fas fa-unlock-alt"></i>
+                        Hasło
+
+                    </label>
+                    <input placeholder="Hasło" name="Password" type="password" required="">
+                </div>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fas fa-unlock-alt"></i>
+                        Powtórz hasło
+
+                    </label>
+                    <input placeholder="Powtórz hasło" name="ConfirmPassword" type="password" required="">
+                </div>
+                <input type="submit" value="Log In">
+            </form>
+            }
+            </div>
+        <!-- //content form -->
+    </div>
+
+<!-- //content -->
