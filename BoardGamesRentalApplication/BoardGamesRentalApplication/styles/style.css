@@ -290,7 +290,13 @@ h1 span {
     margin-bottom: 1.5em;
     flex-basis: 100%;
     -webkit-flex-basis: 100%;
-    text-align: right;
+    text-align: center;
+}
+
+.form-style-red-large {
+    text-align: center;
+    font-size: 20px;
+    color:red;
 }
 
 .sub-main-w3 label {
