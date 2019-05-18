@@ -38,7 +38,7 @@ namespace BoardGamesRentalApplication.Models
         [Required]
         [DisplayName("Powtórz hasło")]
         [DataType(DataType.Password)]
-        [Compare(nameof(Password))]
+        [Compare(nameof(Password), ErrorMessage = "Hasła muszą być takie same.")]
         public string ConfirmPassword { get; set; }
     }
 }
