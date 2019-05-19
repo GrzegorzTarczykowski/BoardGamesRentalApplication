@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
+using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.Models;
 
 namespace BoardGamesRentalApplication.Controllers
@@ -20,9 +21,9 @@ namespace BoardGamesRentalApplication.Controllers
         [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult Login(User userEntity)
         {
-            using (MySqlDbContext db = new MySqlDbContext())
-            {
-                var user = db.Users.Where(u => u.Username == userEntity.Username).FirstOrDefault();
+            //using (MySqlDbContext db = new MySqlDbContext())
+            //{
+                User user = null;//db.Users.Where(u => u.Username == userEntity.Username).FirstOrDefault();
                 if (user == null)
                 {
                     ViewBag.Message = "Taki użytkownik nie istnieje.";
@@ -45,7 +46,7 @@ namespace BoardGamesRentalApplication.Controllers
                     Session["UserId"] = user.Id;
                     Session["Username"] = user.Username;
                 }
-            }
+            //}
             return RedirectToAction("Index", "Home");
         }
     }

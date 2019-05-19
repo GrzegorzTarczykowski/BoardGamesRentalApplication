@@ -150,10 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MySqlDbContext.cs" />
-    <Compile Include="Models\MySqlDbInitializer.cs" />
     <Compile Include="Models\RegisterUser.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,7 +193,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="styles\fontawesome-all.css" />
     <Content Include="styles\style.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -230,6 +229,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoardGamesRentalApplication.BIL\BoardGamesRentalApplication.BIL.csproj">
+      <Project>{167f7c15-4710-4e29-9b4b-bc62f95021fc}</Project>
+      <Name>BoardGamesRentalApplication.BIL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BoardGamesRentalApplication.DAL\BoardGamesRentalApplication.DAL.csproj">
+      <Project>{e82d0aa2-ed6e-4344-a07b-4d56ff864eeb}</Project>
+      <Name>BoardGamesRentalApplication.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

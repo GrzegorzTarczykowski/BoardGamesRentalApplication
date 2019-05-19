@@ -1,32 +1,23 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BoardGamesRentalApplication.Models
+namespace BoardGamesRentalApplication.DAL.Models
 {
-    
     public class User
     {
         public int Id { get; set; }
-
-        [Required]
-        [DisplayName("User name")]
         public string Username { get; set; }
-        
         public byte[] Salt { get; set; }
-
-        [DisplayName("First Name")]
         public string FirstName { get; set; }
-
-        [DisplayName("Last Name")]
         public string LastName { get; set; }
-
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
         public string Email { get; set; }
-        
-        [Required]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime LastLogin { get; set; }
     }
 }
