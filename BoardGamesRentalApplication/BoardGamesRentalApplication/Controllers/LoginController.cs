@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using BoardGamesRentalApplication.BIL.Service;
 using BoardGamesRentalApplication.DAL.Models;
+using BoardGamesRentalApplication.BIL.Enums;
 
 namespace BoardGamesRentalApplication.Controllers
 {
@@ -21,14 +22,14 @@ namespace BoardGamesRentalApplication.Controllers
             var loginService = new LoginService();
             switch (loginService.Login(userEntity))
             {
-                case BIL.Enums.LoginServiceResponse.LoginSuccessful:
+                case LoginServiceResponse.LoginSuccessful:
                     Session["Username"] = userEntity.Username;
                     ViewBag.LoginSuccessfulMessage = $"Zalogowano jako {userEntity.Username}.";
                     return RedirectToAction("Index", "Home");
-                case BIL.Enums.LoginServiceResponse.UserDoesntExist:
+                case LoginServiceResponse.UserDoesntExist:
                     ViewBag.UserDoesntExistMessage = $"Użytkownik {userEntity.Username} nie istnieje.";
                     return View();
-                case BIL.Enums.LoginServiceResponse.IncorrectPassword:
+                case LoginServiceResponse.IncorrectPassword:
                     ViewBag.IncorrectPasswordMessage = "Hasło jest niepoprawne.";
                     return View();
             }
