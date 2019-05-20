@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web.Mvc;
+using BoardGamesRentalApplication.BIL.Service;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.Models;
+using BoardGamesRentalApplication.BIL.Enums;
 
 namespace BoardGamesRentalApplication.Controllers
 {
@@ -21,33 +19,21 @@ namespace BoardGamesRentalApplication.Controllers
         [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult Login(User userEntity)
         {
-            //using (MySqlDbContext db = new MySqlDbContext())
-            //{
-                User user = null;//db.Users.Where(u => u.Username == userEntity.Username).FirstOrDefault();
-                if (user == null)
-                {
-                    ViewBag.Message = "Taki użytkownik nie istnieje.";
+            var loginService = new LoginService();
+            switch (loginService.Login(userEntity))
+            {
+                case LoginServiceResponse.LoginSuccessful:
+                    Session["Username"] = userEntity.Username;
+                    ViewBag.LoginSuccessfulMessage = $"Zalogowano jako {userEntity.Username}.";
+                    return RedirectToAction("Index", "Home");
+                case LoginServiceResponse.UserDoesntExist:
+                    ViewBag.UserDoesntExistMessage = $"Użytkownik {userEntity.Username} nie istnieje.";
                     return View();
-                }
-
-                var pass = userEntity.Password;
-                byte[] saltedPassword = Encoding.UTF8.GetBytes(pass).Concat(user.Salt).ToArray();
-                using (var sha = SHA256.Create())
-                {
-                    byte[] hash = sha.ComputeHash(saltedPassword);
-                    byte[] hashForComparison = Convert.FromBase64String(user.Password);
-                    for (int i = 0; i < hashForComparison.Length; i++)
-                        if (hash[i] != hashForComparison[i])
-                        {
-                            ViewBag.Message = "Niepoprawne hasło.";
-                            return View();
-                        }
-                    //access granted
-                    Session["UserId"] = user.Id;
-                    Session["Username"] = user.Username;
-                }
-            //}
-            return RedirectToAction("Index", "Home");
+                case LoginServiceResponse.IncorrectPassword:
+                    ViewBag.IncorrectPasswordMessage = "Hasło jest niepoprawne.";
+                    return View();
+            }
+            return View(userEntity);
         }
     }
 }
