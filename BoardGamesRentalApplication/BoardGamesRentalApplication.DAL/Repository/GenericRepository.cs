@@ -11,28 +11,30 @@ namespace BoardGamesRentalApplication.DAL.Repository
 {
     class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private MySqlDbContext mySqlDbContext;
+        private readonly MySqlDbContext mySqlDbContext;
+        private readonly DbSet<T> set;
 
         public GenericRepository(MySqlDbContext mySqlDbContext)
         {
             this.mySqlDbContext = mySqlDbContext;
+            set = mySqlDbContext.Set<T>();
         }
 
         public bool Add(T entity)
         {
-            mySqlDbContext.Set<T>().Add(entity);
+            set.Add(entity);
             return true;
         }
 
         public bool AddRange(IEnumerable<T> entities)
         {
-            mySqlDbContext.Set<T>().AddRange(entities);
+            set.AddRange(entities);
             return true;
         }
 
         public bool Any(Expression<Func<T, bool>> predicate)
         {
-            return mySqlDbContext.Set<T>().Any(predicate);
+            return set.Any(predicate);
         }
 
         public bool Edit(T entity)
@@ -43,31 +45,28 @@ namespace BoardGamesRentalApplication.DAL.Repository
 
         public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            IQueryable<T> query = mySqlDbContext.Set<T>().Where(predicate);
-            return query.AsEnumerable();
+            return set.Where(predicate);
         }
 
         public T FindById(int id)
         {
-            return mySqlDbContext.Set<T>().Find(id);
+            return set.Find(id);
         }
 
         public IEnumerable<T> GetAll()
         {
-            IQueryable<T> query = mySqlDbContext.Set<T>();
-            return query.AsEnumerable();
+            return set;
         }
 
         public bool Remove(T entity)
         {
-            T entityToDelete = mySqlDbContext.Set<T>().Find(entity);
+            T entityToDelete = set.Find(entity);
             if (mySqlDbContext.Entry(entityToDelete).State == EntityState.Detached)
             {
-                mySqlDbContext.Set<T>().Attach(entityToDelete);
+                set.Attach(entityToDelete);
             }
-            mySqlDbContext.Set<T>().Remove(entityToDelete);
+            set.Remove(entityToDelete);
             return true;
-
         }
 
         public bool Save()
@@ -80,7 +79,7 @@ namespace BoardGamesRentalApplication.DAL.Repository
         {
             if (mySqlDbContext.Entry(entity).State == EntityState.Detached)
             {
-                mySqlDbContext.Set<T>().Attach(entity);
+                set.Attach(entity);
             }
             mySqlDbContext.Entry(entity).State = EntityState.Modified;
             mySqlDbContext.SaveChanges();

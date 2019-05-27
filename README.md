@@ -1,4 +1,2 @@
 # BoardGamesRentalApplication 
-Team project
-Mateusz już na posterunku :)
-Let's work!
+Application ASP.NET MVC using the Entity Framework Code First, MySql database and Unit of Work Pattern
