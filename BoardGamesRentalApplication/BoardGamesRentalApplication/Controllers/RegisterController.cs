@@ -1,7 +1,6 @@
-﻿using BoardGamesRentalApplication.BIL.Enums;
-using BoardGamesRentalApplication.BIL.Service;
+﻿using BoardGamesRentalApplication.BLL.Enums;
+using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitWork;
 using BoardGamesRentalApplication.Models;
 using System;
 using System.Web.Mvc;
