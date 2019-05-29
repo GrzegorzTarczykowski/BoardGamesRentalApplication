@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using BoardGamesRentalApplication.BLL.Enums;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitWork;
+using BoardGamesRentalApplication.DAL.UnitOfWork;
 
 namespace BoardGamesRentalApplication.BLL.Service
 {

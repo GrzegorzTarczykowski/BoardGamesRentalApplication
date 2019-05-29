@@ -2,7 +2,7 @@
 using BoardGamesRentalApplication.DAL.Repository;
 using System;
 
-namespace BoardGamesRentalApplication.DAL.UnitWork
+namespace BoardGamesRentalApplication.DAL.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
