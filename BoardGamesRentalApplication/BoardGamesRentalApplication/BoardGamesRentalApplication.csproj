@@ -231,9 +231,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BoardGamesRentalApplication.BIL\BoardGamesRentalApplication.BIL.csproj">
-      <Project>{167f7c15-4710-4e29-9b4b-bc62f95021fc}</Project>
-      <Name>BoardGamesRentalApplication.BIL</Name>
+    <ProjectReference Include="..\BoardGamesRentalApplication.BLL\BoardGamesRentalApplication.BLL.csproj">
+      <Project>{f060a8e4-06d8-4ce4-9f77-fc3e268bca2f}</Project>
+      <Name>BoardGamesRentalApplication.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\BoardGamesRentalApplication.DAL\BoardGamesRentalApplication.DAL.csproj">
       <Project>{e82d0aa2-ed6e-4344-a07b-4d56ff864eeb}</Project>

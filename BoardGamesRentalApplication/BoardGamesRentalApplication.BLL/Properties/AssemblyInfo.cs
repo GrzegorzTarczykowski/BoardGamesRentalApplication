@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Ogólne informacje o zestawie są kontrolowane poprzez następujący 
 // zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // powiązane z zestawem.
-[assembly: AssemblyTitle("BoardGamesRentalApplication.BIL")]
+[assembly: AssemblyTitle("BoardGamesRentalApplication.BLL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BoardGamesRentalApplication.BIL")]
+[assembly: AssemblyProduct("BoardGamesRentalApplication.BLL")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Następujący identyfikator GUID jest identyfikatorem biblioteki typów w przypadku udostępnienia tego projektu w modelu COM
-[assembly: Guid("167f7c15-4710-4e29-9b4b-bc62f95021fc")]
+[assembly: Guid("f060a8e4-06d8-4ce4-9f77-fc3e268bca2f")]
 
 // Informacje o wersji zestawu zawierają następujące cztery wartości:
 //

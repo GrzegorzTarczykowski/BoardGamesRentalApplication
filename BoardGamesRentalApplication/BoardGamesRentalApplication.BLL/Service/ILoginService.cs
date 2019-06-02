@@ -1,7 +1,7 @@
-﻿using BoardGamesRentalApplication.BIL.Enums;
+﻿using BoardGamesRentalApplication.BLL.Enums;
 using BoardGamesRentalApplication.DAL.Models;
 
-namespace BoardGamesRentalApplication.BIL.Service
+namespace BoardGamesRentalApplication.BLL.Service
 {
     public interface ILoginService
     {

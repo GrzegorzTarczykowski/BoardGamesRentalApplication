@@ -43,7 +43,7 @@ namespace BoardGamesRentalApplication.DAL.Repository
             return true;
         }
 
-        public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             return set.Where(predicate);
         }
@@ -53,7 +53,7 @@ namespace BoardGamesRentalApplication.DAL.Repository
             return set.Find(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             return set;
         }
