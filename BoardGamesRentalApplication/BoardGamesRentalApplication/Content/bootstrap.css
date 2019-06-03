@@ -1365,11 +1365,13 @@ a.text-warning:focus {
   color: #66512c;
 }
 .text-danger {
-  color: #a94442;
+    color: #ff471a;
+    font-weight: 600;
+    font-style:italic;
 }
 a.text-danger:hover,
 a.text-danger:focus {
-  color: #843534;
+    color:darkred;
 }
 .bg-primary {
   color: #fff;
@@ -1402,6 +1404,8 @@ a.bg-warning:focus {
 }
 .bg-danger {
   background-color: #f2dede;
+  color:black;
+  font-weight: 700;
 }
 a.bg-danger:hover,
 a.bg-danger:focus {
@@ -1943,7 +1947,7 @@ pre code {
     width: 91.66666667%;
   }
   .col-md-10 {
-    width: 83.33333333%;
+    width: 73.33333333%;
   }
   .col-md-9 {
     width: 75%;
@@ -2081,7 +2085,7 @@ pre code {
     margin-left: 25%;
   }
   .col-md-offset-2 {
-    margin-left: 16.66666667%;
+    margin-left: 36.66666667%;
   }
   .col-md-offset-1 {
     margin-left: 8.33333333%;

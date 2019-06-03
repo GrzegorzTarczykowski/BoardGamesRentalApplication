@@ -37,7 +37,7 @@ namespace BoardGamesRentalApplication.Controllers
                     {
                         case RegisterServiceResponse.SuccessRegister:
                             ModelState.Clear();
-                            ViewBag.SuccessRegisterNewUserMessage = $"Zapisano z powodzeniem użytkownika: {registerUser.Username}.";
+                            TempData["SuccessRegisterNewUserMessage"] = $"Zapisano z powodzeniem użytkownika: {registerUser.Username}.";
                             return RedirectToAction("Login", "Login");
                         case RegisterServiceResponse.DuplicateUsername:
                             ViewBag.DuplicateUsernameMessage = "Nazwa użytkownika jest używana.";
