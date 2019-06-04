@@ -7,7 +7,7 @@ using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.DAL.MySqlDb;
 using BoardGamesRentalApplication.DAL.Repository;
 
-namespace BoardGamesRentalApplication.DAL.UnitWork
+namespace BoardGamesRentalApplication.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -21,7 +21,8 @@ namespace BoardGamesRentalApplication.DAL.UnitWork
 
         public IGenericRepository<User> UserRepository
         {
-            get { return this.userRepository ?? (this.userRepository = new GenericRepository<User>(mySqlDbContext)); }
+            get { return this.userRepository 
+                    ?? (this.userRepository = new GenericRepository<User>(mySqlDbContext)); }
         }
 
         public void Save()

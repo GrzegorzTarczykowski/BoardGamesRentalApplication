@@ -1,7 +1,7 @@
-﻿using BoardGamesRentalApplication.BIL.Enums;
-using BoardGamesRentalApplication.BIL.Service;
+﻿using BoardGamesRentalApplication.BLL.Enums;
+using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitWork;
+using BoardGamesRentalApplication.DAL.UnitOfWork;
 using BoardGamesRentalApplication.Models;
 using System;
 using System.Web.Mvc;
@@ -22,30 +22,33 @@ namespace BoardGamesRentalApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                RegisterService registerService = new RegisterService();
-                User user = new User()
+                using (UnitOfWork unitOfWork = new UnitOfWork())
                 {
-                    Username = registerUser.Username,
-                    FirstName = registerUser.FirstName,
-                    LastName = registerUser.LastName,
-                    Email = registerUser.Email,
-                    Password = registerUser.Password
-                };
-                switch (registerService.Register(user))
-                {
-                    case RegisterServiceResponse.SuccessRegister:
-                        ModelState.Clear();
-                        ViewBag.SuccessRegisterNewUserMessage = $"Zapisano z powodzeniem użytkownika: {registerUser.Username}.";
-                        return RedirectToAction("Login", "Login");
-                    case RegisterServiceResponse.DuplicateUsername:
-                        ViewBag.DuplicateUsernameMessage = "Nazwa użytkownika jest używana.";
-                        return View();
-                    case RegisterServiceResponse.DuplicateEmail:
-                        ViewBag.DuplicateEmailMessage = "Email jest używany.";
-                        return View();
-                    default:
-                        break;
-                }
+                    RegisterService registerService = new RegisterService(unitOfWork);
+                    User user = new User()
+                    {
+                        Username = registerUser.Username,
+                        FirstName = registerUser.FirstName,
+                        LastName = registerUser.LastName,
+                        Email = registerUser.Email,
+                        Password = registerUser.Password
+                    };
+                    switch (registerService.Register(user))
+                    {
+                        case RegisterServiceResponse.SuccessRegister:
+                            ModelState.Clear();
+                            TempData["SuccessRegisterNewUserMessage"] = $"Zapisano z powodzeniem użytkownika: {registerUser.Username}.";
+                            return RedirectToAction("Login", "Login");
+                        case RegisterServiceResponse.DuplicateUsername:
+                            ViewBag.DuplicateUsernameMessage = "Nazwa użytkownika jest używana.";
+                            return View();
+                        case RegisterServiceResponse.DuplicateEmail:
+                            ViewBag.DuplicateEmailMessage = "Email jest używany.";
+                            return View();
+                        default:
+                            break;
+                    }
+                }  
             }
             return View(registerUser);
         }

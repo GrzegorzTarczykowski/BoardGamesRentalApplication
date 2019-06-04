@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using BoardGamesRentalApplication.BIL.Enums;
+using BoardGamesRentalApplication.BLL.Enums;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitWork;
+using BoardGamesRentalApplication.DAL.UnitOfWork;
 
-namespace BoardGamesRentalApplication.BIL.Service
+namespace BoardGamesRentalApplication.BLL.Service
 {
     public class LoginService : ILoginService
     {

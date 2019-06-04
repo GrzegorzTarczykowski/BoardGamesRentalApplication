@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
-using BoardGamesRentalApplication.BIL.Service;
+using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.BIL.Enums;
+using BoardGamesRentalApplication.BLL.Enums;
 
 namespace BoardGamesRentalApplication.Controllers
 {
