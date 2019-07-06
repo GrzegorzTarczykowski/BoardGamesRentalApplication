@@ -11,10 +11,12 @@ namespace BoardGamesRentalApplication.BLL.Service
     public class RegisterService : IRegisterService
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly ICryptographyService cryptographyService;
 
-        public RegisterService(IUnitOfWork unitOfWork)
+        public RegisterService(IUnitOfWork unitOfWork, ICryptographyService cryptographyService)
         {
             this.unitOfWork = unitOfWork;
+            this.cryptographyService = cryptographyService;
         }
 
         public RegisterServiceResponse Register(User user)
@@ -31,23 +33,14 @@ namespace BoardGamesRentalApplication.BLL.Service
                 }
                 else
                 {
-                    using (SHA256 sha = SHA256.Create())
-                    {
-                        using (var rng = RandomNumberGenerator.Create())
-                        {
-                            byte[] salt = new byte[32];
-                            rng.GetBytes(salt);
-                            byte[] password = Encoding.UTF8.GetBytes(user.Password);
-                            byte[] saltedPassword = password.Concat(salt).ToArray();
-                            byte[] hashedPassword = sha.ComputeHash(saltedPassword);
-                            user.Salt = salt;
-                            user.Password = Convert.ToBase64String(hashedPassword);
-                            user.CreateDate = DateTime.Now;
-                            unitOfWork.UserRepository.Add(user);
-                            unitOfWork.UserRepository.Save();
-                            return RegisterServiceResponse.SuccessRegister;
-                        }
-                    }
+                    byte[] salt = cryptographyService.GenerateRandomSalt();
+                    byte[] hashedPassword = cryptographyService.GenerateSHA512(user.Password, salt);
+                    user.Salt = salt;
+                    user.Password = Convert.ToBase64String(hashedPassword);
+                    user.CreateDate = DateTime.Now;
+                    unitOfWork.UserRepository.Add(user);
+                    unitOfWork.UserRepository.Save();
+                    return RegisterServiceResponse.SuccessRegister;
                 }
             }
             catch (Exception)

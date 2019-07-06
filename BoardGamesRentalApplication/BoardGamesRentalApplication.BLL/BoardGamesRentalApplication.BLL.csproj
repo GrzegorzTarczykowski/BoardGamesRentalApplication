@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CryptographyService.cs" />
+    <Compile Include="Service\ICryptographyService.cs" />
     <Compile Include="Service\ILoginService.cs" />
     <Compile Include="Service\IRegisterService.cs" />
     <Compile Include="Service\LoginService.cs" />

@@ -22,6 +22,7 @@ namespace BoardGamesRentalApplication.BLL.Test
         {
             IGenericRepository<User> repository = new MockGenericRepository<User>();
             Mock<IUnitOfWork> unit = new Mock<IUnitOfWork>();
+            Mock<ICryptographyService> cryptographyServiceMock = new Mock<ICryptographyService>();
 
             byte[] salt = new byte[32];
             for (byte i = 0; i < 32; i++)
@@ -37,7 +38,7 @@ namespace BoardGamesRentalApplication.BLL.Test
             }
 
             unit.SetupGet(u => u.UserRepository).Returns(repository);
-            loginService = new LoginService(unit.Object);
+            loginService = new LoginService(unit.Object, cryptographyServiceMock.Object);
         }
 
         [Test]

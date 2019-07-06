@@ -19,7 +19,8 @@ namespace BoardGamesRentalApplication.BLL.Test
         public void Setup()
         {
             Mock<IUnitOfWork> mock = new Mock<IUnitOfWork>();
-            registerService = new RegisterService(mock.Object);
+            Mock<ICryptographyService> cryptographyServiceMock = new Mock<ICryptographyService>();
+            registerService = new RegisterService(mock.Object, cryptographyServiceMock.Object);
         }
 
         [Test]
