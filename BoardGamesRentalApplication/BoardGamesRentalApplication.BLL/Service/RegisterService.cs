@@ -39,7 +39,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     user.Password = Convert.ToBase64String(hashedPassword);
                     user.CreateDate = DateTime.Now;
                     unitOfWork.UserRepository.Add(user);
-                    unitOfWork.UserRepository.Save();
+                    unitOfWork.UserRepository.SaveChanges();
                     return RegisterServiceResponse.SuccessRegister;
                 }
             }

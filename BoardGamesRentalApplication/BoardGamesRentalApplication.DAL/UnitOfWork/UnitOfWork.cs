@@ -12,17 +12,17 @@ namespace BoardGamesRentalApplication.DAL.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private readonly MySqlDbContext mySqlDbContext;
-        private IGenericRepository<User> userRepository;
+        private IRepository<User> userRepository;
 
         public UnitOfWork()
         {
             this.mySqlDbContext = new MySqlDbContext();
         }
 
-        public IGenericRepository<User> UserRepository
+        public IRepository<User> UserRepository
         {
             get { return this.userRepository 
-                    ?? (this.userRepository = new GenericRepository<User>(mySqlDbContext)); }
+                    ?? (this.userRepository = new Repository<User>(mySqlDbContext)); }
         }
 
         public void Save()

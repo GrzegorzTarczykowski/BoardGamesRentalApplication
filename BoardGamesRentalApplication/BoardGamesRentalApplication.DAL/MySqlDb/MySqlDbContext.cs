@@ -20,18 +20,16 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Entity<BoardGame>()
-            //    .HasMany<BoardGameEvaluation>(bg => bg.BoardGameEvaluations)
-            //    .WithMany(bge => bge.BoardGames)
-            //    .Map(bgbge =>
-            //    {
-            //        bgbge.MapLeftKey("BoardGameId");
-            //        bgbge.MapRightKey("BoardGameEvaluationId");
-            //        bgbge.ToTable("BoardGameBoardGameEvaluation");
-            //    });
+            modelBuilder.Entity<BoardGame>()
+                .HasMany<BoardGameEvaluation>(bg => bg.BoardGameEvaluations)
+                .WithMany(bge => bge.BoardGames)
+                .Map(bgbge =>
+                {
+                    bgbge.MapLeftKey("BoardGameId");
+                    bgbge.MapRightKey("BoardGameEvaluationId");
+                    bgbge.ToTable("BoardGameBoardGameEvaluation");
+                });
         }
     }
 }

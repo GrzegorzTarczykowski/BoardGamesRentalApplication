@@ -20,7 +20,7 @@ namespace BoardGamesRentalApplication.BLL.Test
         [SetUp]
         public void Setup()
         {
-            IGenericRepository<User> repository = new MockGenericRepository<User>();
+            IRepository<User> repository = new MockGenericRepository<User>();
             Mock<IUnitOfWork> unit = new Mock<IUnitOfWork>();
             Mock<ICryptographyService> cryptographyServiceMock = new Mock<ICryptographyService>();
 

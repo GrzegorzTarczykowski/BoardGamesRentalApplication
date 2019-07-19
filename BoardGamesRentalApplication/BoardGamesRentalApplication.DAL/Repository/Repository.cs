@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace BoardGamesRentalApplication.DAL.Repository
 {
-    class GenericRepository<T> : IGenericRepository<T> where T : class
+    class Repository<T> : IRepository<T> where T : class
     {
         private readonly MySqlDbContext mySqlDbContext;
         private readonly DbSet<T> set;
 
-        public GenericRepository(MySqlDbContext mySqlDbContext)
+        public Repository(MySqlDbContext mySqlDbContext)
         {
             this.mySqlDbContext = mySqlDbContext;
             set = mySqlDbContext.Set<T>();
@@ -69,7 +69,7 @@ namespace BoardGamesRentalApplication.DAL.Repository
             return true;
         }
 
-        public bool Save()
+        public bool SaveChanges()
         {
             mySqlDbContext.SaveChanges();
             return true;

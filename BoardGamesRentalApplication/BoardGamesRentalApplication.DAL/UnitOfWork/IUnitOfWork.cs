@@ -6,7 +6,7 @@ namespace BoardGamesRentalApplication.DAL.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<User> UserRepository { get; }
+        IRepository<User> UserRepository { get; }
         void Save();
     }
 }
