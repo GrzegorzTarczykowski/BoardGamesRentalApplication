@@ -1,4 +1,5 @@
 ﻿using BoardGamesRentalApplication.BLL.Enums;
+using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.BLL.Test.Mocks;
 using BoardGamesRentalApplication.DAL.Models;

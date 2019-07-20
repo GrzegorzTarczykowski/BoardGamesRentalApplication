@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using BoardGamesRentalApplication.BLL.Enums;
+using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.DAL.UnitOfWork;
 
@@ -44,7 +45,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     return LoginServiceResponse.LoginSuccessful;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
