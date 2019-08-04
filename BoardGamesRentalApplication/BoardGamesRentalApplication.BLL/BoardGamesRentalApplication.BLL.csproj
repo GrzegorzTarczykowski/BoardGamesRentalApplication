@@ -45,6 +45,7 @@
     <Compile Include="IService\ICryptographyService.cs" />
     <Compile Include="IService\ILoginService.cs" />
     <Compile Include="IService\IRegisterService.cs" />
+    <Compile Include="IService\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CryptographyService.cs" />
     <Compile Include="Service\LoginService.cs" />

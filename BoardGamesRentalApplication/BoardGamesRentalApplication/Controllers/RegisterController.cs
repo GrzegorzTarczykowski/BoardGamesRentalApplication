@@ -13,9 +13,9 @@ namespace BoardGamesRentalApplication.Controllers
     {
         private readonly IRegisterService registerService;
 
-        public RegisterController(/*IRegisterService registerService*/) //TODO Implement Container
+        public RegisterController(IRegisterService registerService)
         {
-            this.registerService = new RegisterService(new UnitOfWork(), new CryptographyService());
+            this.registerService = registerService;
         }
 
         public ActionResult Register()

@@ -12,9 +12,9 @@ namespace BoardGamesRentalApplication.Controllers
     {
         private readonly ILoginService loginService;
 
-        public LoginController(/*ILoginService loginService*/) //TODO Implement Container
+        public LoginController(ILoginService loginService)
         {
-            this.loginService = new LoginService(new UnitOfWork(), new CryptographyService());
+            this.loginService = loginService;
         }
         
         public ActionResult Login()
