@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using BoardGamesRentalApplication.BLL.Enums;
 using BoardGamesRentalApplication.BLL.IService;
+using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitOfWork;
 
 namespace BoardGamesRentalApplication.BLL.Service
 {
     public class RegisterService : IRegisterService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IRepository<User> userRepository;
         private readonly ICryptographyService cryptographyService;
 
-        public RegisterService(IUnitOfWork unitOfWork, ICryptographyService cryptographyService)
+        public RegisterService(IRepository<User> userRepository, ICryptographyService cryptographyService)
         {
-            this.unitOfWork = unitOfWork;
+            this.userRepository = userRepository;
             this.cryptographyService = cryptographyService;
         }
 
@@ -24,11 +21,11 @@ namespace BoardGamesRentalApplication.BLL.Service
         {
             try
             {
-                if (unitOfWork.UserRepository.Any(u => u.Username == user.Username))
+                if (userRepository.Any(u => u.Username == user.Username))
                 {
                     return RegisterServiceResponse.DuplicateUsername;
                 }
-                else if (unitOfWork.UserRepository.Any(u => u.Email == user.Email))
+                else if (userRepository.Any(u => u.Email == user.Email))
                 {
                     return RegisterServiceResponse.DuplicateEmail;
                 }
@@ -39,8 +36,8 @@ namespace BoardGamesRentalApplication.BLL.Service
                     user.Salt = salt;
                     user.Password = Convert.ToBase64String(hashedPassword);
                     user.CreateDate = DateTime.Now;
-                    unitOfWork.UserRepository.Add(user);
-                    unitOfWork.UserRepository.SaveChanges();
+                    userRepository.Add(user);
+                    userRepository.SaveChanges();
                     return RegisterServiceResponse.SuccessRegister;
                 }
             }

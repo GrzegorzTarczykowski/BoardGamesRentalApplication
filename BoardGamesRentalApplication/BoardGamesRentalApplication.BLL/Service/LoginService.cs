@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using BoardGamesRentalApplication.BLL.Enums;
 using BoardGamesRentalApplication.BLL.IService;
+using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitOfWork;
 
 namespace BoardGamesRentalApplication.BLL.Service
 {
     public class LoginService : ILoginService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IRepository<User> userRepository;
         private readonly ICryptographyService cryptographyService;
 
-        public LoginService(IUnitOfWork unitOfWork, ICryptographyService cryptographyService)
+        public LoginService(IRepository<User> userRepository, ICryptographyService cryptographyService)
         {
-            this.unitOfWork = unitOfWork;
+            this.userRepository = userRepository;
             this.cryptographyService = cryptographyService;
         }
 
@@ -24,7 +22,7 @@ namespace BoardGamesRentalApplication.BLL.Service
         {
             try
             {
-                User matchingUser = unitOfWork.UserRepository.FindBy(u => u.Username == user.Username).FirstOrDefault();
+                User matchingUser = userRepository.FindBy(u => u.Username == user.Username).FirstOrDefault();
                 if (matchingUser == null)
                 {
                     return LoginServiceResponse.UserDoesntExist;
@@ -41,11 +39,11 @@ namespace BoardGamesRentalApplication.BLL.Service
                         }
                     }
                     matchingUser.LastLogin = DateTime.Now;
-                    unitOfWork.Save();
+                    userRepository.SaveChanges();
                     return LoginServiceResponse.LoginSuccessful;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

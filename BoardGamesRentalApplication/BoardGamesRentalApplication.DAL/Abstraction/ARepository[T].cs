@@ -1,23 +1,23 @@
-﻿using BoardGamesRentalApplication.DAL.MySqlDb;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using BoardGamesRentalApplication.DAL.MySqlDb;
+using BoardGamesRentalApplication.DAL.UnitOfWork;
 
-namespace BoardGamesRentalApplication.DAL.Repository
+namespace BoardGamesRentalApplication.DAL.Abstraction
 {
-    class Repository<T> : IRepository<T> where T : class
+    public abstract class ARepository<T> : IRepository<T> where T : class
     {
         private readonly MySqlDbContext mySqlDbContext;
         private readonly DbSet<T> set;
 
-        public Repository(MySqlDbContext mySqlDbContext)
+        public ARepository(MySqlDbContext mySqlDbContext, IUnitOfWork unitOfWork)
         {
             this.mySqlDbContext = mySqlDbContext;
             set = mySqlDbContext.Set<T>();
+            unitOfWork.Register(this);
         }
 
         public bool Add(T entity)
@@ -84,6 +84,11 @@ namespace BoardGamesRentalApplication.DAL.Repository
             mySqlDbContext.Entry(entity).State = EntityState.Modified;
             mySqlDbContext.SaveChanges();
             return true;
+        }
+
+        public void Dispose()
+        {
+            mySqlDbContext.Dispose();
         }
     }
 }

@@ -12,8 +12,7 @@ namespace BoardGamesRentalApplication.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterType<MySqlDbContext>().AsSelf()
-                .InstancePerRequest();
+            builder.RegisterType<MySqlDbContext>().AsSelf().InstancePerRequest();
         }
     }
 }

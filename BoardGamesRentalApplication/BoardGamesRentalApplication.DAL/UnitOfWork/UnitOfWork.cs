@@ -3,31 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.MySqlDb;
-using BoardGamesRentalApplication.DAL.Repository;
 
 namespace BoardGamesRentalApplication.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly MySqlDbContext mySqlDbContext;
-        private IRepository<User> userRepository;
+        private readonly Dictionary<string, IRepository> repositories;
 
         public UnitOfWork()
         {
-            this.mySqlDbContext = new MySqlDbContext();
+            repositories = new Dictionary<string, IRepository>();
         }
 
-        public IRepository<User> UserRepository
+        public void Register(IRepository repository)
         {
-            get { return this.userRepository 
-                    ?? (this.userRepository = new Repository<User>(mySqlDbContext)); }
+            repositories.Add(repository.GetType().Name, repository);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
-            mySqlDbContext.SaveChanges();
+            repositories.ToList().ForEach(x => x.Value.SaveChanges());
         }
 
         private bool disposed = false;
@@ -38,7 +35,7 @@ namespace BoardGamesRentalApplication.DAL.UnitOfWork
             {
                 if (disposing)
                 {
-                    mySqlDbContext.Dispose();
+                    repositories.ToList().ForEach(x => x.Value.Dispose());
                 }
             }
             this.disposed = true;
