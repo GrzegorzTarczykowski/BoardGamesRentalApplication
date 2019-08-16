@@ -43,7 +43,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     return LoginServiceResponse.LoginSuccessful;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

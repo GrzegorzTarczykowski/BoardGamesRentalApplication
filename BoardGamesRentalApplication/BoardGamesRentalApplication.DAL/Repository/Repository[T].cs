@@ -1,19 +1,22 @@
-﻿using System;
+﻿using BoardGamesRentalApplication.DAL.Abstraction;
+using BoardGamesRentalApplication.DAL.MySqlDb;
+using BoardGamesRentalApplication.DAL.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using BoardGamesRentalApplication.DAL.MySqlDb;
-using BoardGamesRentalApplication.DAL.UnitOfWork;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BoardGamesRentalApplication.DAL.Abstraction
+namespace BoardGamesRentalApplication.DAL.Repository
 {
-    public abstract class ARepository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly MySqlDbContext mySqlDbContext;
         private readonly DbSet<T> set;
 
-        public ARepository(MySqlDbContext mySqlDbContext, IUnitOfWork unitOfWork)
+        public Repository(MySqlDbContext mySqlDbContext, IUnitOfWork unitOfWork)
         {
             this.mySqlDbContext = mySqlDbContext;
             set = mySqlDbContext.Set<T>();

@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\ARepository[T].cs" />
     <Compile Include="Abstraction\IRepository.cs" />
     <Compile Include="Abstraction\IRepository[T].cs" />
     <Compile Include="Models\BoardGame.cs" />
@@ -75,7 +74,7 @@
     <Compile Include="MySqlDb\MySqlDbContext.cs" />
     <Compile Include="MySqlDb\MySqlDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\Repository[T].cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>

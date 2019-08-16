@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using BoardGamesRentalApplication.DAL.Abstraction;
+using BoardGamesRentalApplication.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BoardGamesRentalApplication.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly).AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
         }
     }
 }
