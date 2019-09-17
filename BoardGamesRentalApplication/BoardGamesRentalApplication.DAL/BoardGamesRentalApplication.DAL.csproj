@@ -62,13 +62,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\IRepository.cs" />
+    <Compile Include="Abstraction\IRepository[T].cs" />
+    <Compile Include="Models\BoardGame.cs" />
+    <Compile Include="Models\BoardGameEvaluation.cs" />
+    <Compile Include="Models\BoardGameState.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="MySqlDb\Configuration.cs" />
     <Compile Include="MySqlDb\EFCommandInterceptor.cs" />
+    <Compile Include="MySqlDb\MyMigrationSQLGenerator.cs" />
     <Compile Include="MySqlDb\MySqlDbContext.cs" />
     <Compile Include="MySqlDb\MySqlDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\GenericRepository.cs" />
-    <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="Repository\Repository[T].cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
@@ -76,8 +82,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Mapping\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

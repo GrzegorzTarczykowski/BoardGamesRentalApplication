@@ -4,7 +4,7 @@ namespace BoardGamesRentalApplication.DAL.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Username { get; set; }
         public byte[] Salt { get; set; }
         public string FirstName { get; set; }

@@ -1,4 +1,6 @@
-﻿using BoardGamesRentalApplication.DAL.MySqlDb;
+﻿using BoardGamesRentalApplication.DAL.Abstraction;
+using BoardGamesRentalApplication.DAL.MySqlDb;
+using BoardGamesRentalApplication.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,15 +11,16 @@ using System.Threading.Tasks;
 
 namespace BoardGamesRentalApplication.DAL.Repository
 {
-    class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly MySqlDbContext mySqlDbContext;
         private readonly DbSet<T> set;
 
-        public GenericRepository(MySqlDbContext mySqlDbContext)
+        public Repository(MySqlDbContext mySqlDbContext, IUnitOfWork unitOfWork)
         {
             this.mySqlDbContext = mySqlDbContext;
             set = mySqlDbContext.Set<T>();
+            unitOfWork.Register(this);
         }
 
         public bool Add(T entity)
@@ -69,7 +72,7 @@ namespace BoardGamesRentalApplication.DAL.Repository
             return true;
         }
 
-        public bool Save()
+        public bool SaveChanges()
         {
             mySqlDbContext.SaveChanges();
             return true;
@@ -84,6 +87,11 @@ namespace BoardGamesRentalApplication.DAL.Repository
             mySqlDbContext.Entry(entity).State = EntityState.Modified;
             mySqlDbContext.SaveChanges();
             return true;
+        }
+
+        public void Dispose()
+        {
+            mySqlDbContext.Dispose();
         }
     }
 }
