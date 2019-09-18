@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardGamesRentalApplication
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardGamesRentalApplication.BLL.Test", "BoardGamesRentalApplication.BLL.Test\BoardGamesRentalApplication.BLL.Test.csproj", "{F9FB7F20-385E-48D6-B5DB-40E34B747D75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{2276A3F4-8A01-4E79-83F5-04C179AA3AD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F9FB7F20-385E-48D6-B5DB-40E34B747D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9FB7F20-385E-48D6-B5DB-40E34B747D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9FB7F20-385E-48D6-B5DB-40E34B747D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2276A3F4-8A01-4E79-83F5-04C179AA3AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2276A3F4-8A01-4E79-83F5-04C179AA3AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2276A3F4-8A01-4E79-83F5-04C179AA3AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2276A3F4-8A01-4E79-83F5-04C179AA3AD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

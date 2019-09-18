@@ -1,4 +1,5 @@
 ﻿using BoardGamesRentalApplication.BLL.Enums;
+using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.BLL.Test.Mocks;
 using BoardGamesRentalApplication.DAL.Models;
@@ -20,8 +21,9 @@ namespace BoardGamesRentalApplication.BLL.Test
         [SetUp]
         public void Setup()
         {
-            IGenericRepository<User> repository = new MockGenericRepository<User>();
+            IRepository<User> repository = new MockGenericRepository<User>();
             Mock<IUnitOfWork> unit = new Mock<IUnitOfWork>();
+            Mock<ICryptographyService> cryptographyServiceMock = new Mock<ICryptographyService>();
 
             byte[] salt = new byte[32];
             for (byte i = 0; i < 32; i++)
@@ -37,7 +39,7 @@ namespace BoardGamesRentalApplication.BLL.Test
             }
 
             unit.SetupGet(u => u.UserRepository).Returns(repository);
-            loginService = new LoginService(unit.Object);
+            loginService = new LoginService(unit.Object, cryptographyServiceMock.Object);
         }
 
         [Test]

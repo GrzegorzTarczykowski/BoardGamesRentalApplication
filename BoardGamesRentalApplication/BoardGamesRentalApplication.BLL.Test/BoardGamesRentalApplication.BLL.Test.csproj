@@ -83,6 +83,10 @@
       <Project>{e82d0aa2-ed6e-4344-a07b-4d56ff864eeb}</Project>
       <Name>BoardGamesRentalApplication.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{2276a3f4-8a01-4e79-83f5-04c179aa3ad8}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

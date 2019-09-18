@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BoardGamesRentalApplication.BLL.Test.Mocks
 {
-    class MockGenericRepository<T> : IGenericRepository<T> where T: class
+    class MockGenericRepository<T> : IRepository<T> where T: class
     {
         List<T> data;
         public MockGenericRepository()
@@ -58,7 +58,7 @@ namespace BoardGamesRentalApplication.BLL.Test.Mocks
             throw new NotImplementedException();
         }
 
-        public bool Save()
+        public bool SaveChanges()
         {
             throw new NotImplementedException();
         }
