@@ -65,7 +65,9 @@
     <Compile Include="Abstraction\IRepository.cs" />
     <Compile Include="Abstraction\IRepository[T].cs" />
     <Compile Include="Models\BoardGame.cs" />
+    <Compile Include="Models\BoardGameCategory.cs" />
     <Compile Include="Models\BoardGameEvaluation.cs" />
+    <Compile Include="Models\BoardGamePublisher.cs" />
     <Compile Include="Models\BoardGameState.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MySqlDb\Configuration.cs" />
