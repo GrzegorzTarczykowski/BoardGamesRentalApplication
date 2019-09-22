@@ -33,18 +33,10 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                 });
             modelBuilder.Entity<BoardGame>()
                 .HasMany<BoardGameCategory>(bg => bg.BoardGameCategories)
-                .WithOptional()
-                .Map(bgbgc =>
-                {
-                    bgbgc.MapKey("BoardGameCategoryId");
-                });
+                .WithOptional();
             modelBuilder.Entity<BoardGamePublisher>()
                 .HasMany<BoardGame>(bgp => bgp.BoardGames)
                 .WithRequired(bg => bg.Publisher)
-                .Map(bgbgp =>
-                {
-                    bgbgp.MapKey("BoardGamePublisherId");
-                })
                 .WillCascadeOnDelete(false);//TODO: Decide if should cascade delete or not
         }
     }

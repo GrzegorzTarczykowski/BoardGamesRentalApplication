@@ -40,6 +40,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     }
                     matchingUser.LastLogin = DateTime.Now;
                     userRepository.SaveChanges();
+                    user.UserType = user.Username == "ADMINISTRATOR" ? UserType.Administrator : UserType.Regular;
                     return LoginServiceResponse.LoginSuccessful;
                 }
             }
