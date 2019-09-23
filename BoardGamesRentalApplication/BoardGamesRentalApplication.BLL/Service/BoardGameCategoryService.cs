@@ -1,11 +1,7 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoardGamesRentalApplication.BLL.Service
 {
@@ -29,8 +25,12 @@ namespace BoardGamesRentalApplication.BLL.Service
 
         public void DeleteCategory(int id)
         {
-            repository.Remove(repository.FindById(id));
-            repository.SaveChanges();
+            BoardGameCategory entity = repository.FindById(id);
+            if (entity != null)
+            {
+                repository.Remove(entity);
+                repository.SaveChanges();
+            }
         }
 
         public BoardGameCategory FindById(int id)
@@ -46,9 +46,12 @@ namespace BoardGamesRentalApplication.BLL.Service
         public void UpdateCategory(int id, BoardGameCategory boardGameCategory)
         {
             var edited = repository.FindById(id);
-            edited.Name = boardGameCategory.Name;
-            repository.Edit(edited);
-            repository.SaveChanges();
+            if (edited != null)
+            {
+                edited.Name = boardGameCategory.Name;
+                repository.Edit(edited);
+                repository.SaveChanges();
+            }
         }
     }
 }

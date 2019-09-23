@@ -8,12 +8,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nową kategorię", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Category")
+            @Html.DisplayName("Kategorie gier planszowych")
         </th>
         <th></th>
     </tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameCategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.BoardGameCategoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameCategoryId })
+            @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameCategoryId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.BoardGameCategoryId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameCategoryId })
         </td>
     </tr>
     }

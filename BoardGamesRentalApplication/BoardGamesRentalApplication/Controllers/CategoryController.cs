@@ -10,30 +10,54 @@ using System.Web.Mvc;
 
 namespace BoardGamesRentalApplication.Controllers
 {
-    public class AdminController : Controller
+    public class CategoryController : Controller
     {
         private readonly IBoardGameCategoryService categoryService;
 
-        public AdminController(IBoardGameCategoryService service)
+        public CategoryController(IBoardGameCategoryService service)
         {
             this.categoryService = service;
         }
 
         public ActionResult Index()
         {
-            return View(categoryService.GetAll().AsEnumerable());
+            return HandleUserType(ListCategories);
+        }
+
+        private ActionResult HandleUserType(Func<ActionResult> actionToAuthorize)
+        {
+            try
+            {
+                if (Session["UserType"] is UserType && (UserType)Session["UserType"] == UserType.Administrator)
+                {
+                    return actionToAuthorize();
+                }
+                else
+                {
+                    throw new UnauthorizedAccessException();
+                }
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        private ActionResult ListCategories()
+        {
+            return View("Index", categoryService.GetAll().AsEnumerable());
         }
 
         // GET: Admin/Details/5
         public ActionResult Details(int id)
         {
-            return View(categoryService.FindById(id));
+            return HandleUserType(() => View(categoryService.FindById(id)));
         }
         
         // GET: Admin/Create
         public ActionResult Create()
         {
-            return View();
+            return HandleUserType(View);
         }
 
         // POST: Admin/Create
@@ -41,62 +65,46 @@ namespace BoardGamesRentalApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FormCollection collection)
         {
-            try
+            return HandleUserType(() =>
             {
-                categoryService.AddCategory(new BoardGameCategory
-                {
-                    Name = collection["Name"]
-                });
+                categoryService.AddCategory(new BoardGameCategory { Name = collection["Name"] });
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            });
         }
         
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return HandleUserType(View);
         }
         
         // POST: Admin/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            return HandleUserType(() =>
             {
-                // TODO: Add update logic here
                 categoryService.UpdateCategory(id, new BoardGameCategory { Name = collection["Name"] });
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            });
         }
         
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return HandleUserType(() => View(categoryService.FindById(id)));
         }
         
         // POST: Admin/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
+            return HandleUserType(() =>
             {
-                // TODO: Add delete logic here
                 categoryService.DeleteCategory(id);
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            });
         }
     }
 }
