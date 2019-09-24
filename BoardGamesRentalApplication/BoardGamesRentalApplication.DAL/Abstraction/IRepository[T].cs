@@ -14,6 +14,7 @@ namespace BoardGamesRentalApplication.DAL.Abstraction
         bool Add(T entity);
         bool AddRange(IEnumerable<T> entities);
         bool Remove(T entity);
+        bool Remove(object[] keyValues);
         bool Edit(T entity);
         bool SaveChanges(T entity);
     }

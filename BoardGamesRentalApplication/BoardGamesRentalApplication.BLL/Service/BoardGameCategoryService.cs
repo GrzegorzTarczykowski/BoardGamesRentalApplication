@@ -28,7 +28,7 @@ namespace BoardGamesRentalApplication.BLL.Service
             BoardGameCategory entity = repository.FindById(id);
             if (entity != null)
             {
-                repository.Remove(entity);
+                repository.Remove(new object[] { id });
                 repository.SaveChanges();
             }
         }
