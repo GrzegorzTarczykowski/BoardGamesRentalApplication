@@ -26,7 +26,7 @@
                     }
                     else
                     {
-                        <div class="col-6 login">@Session["Username"]</div>
+                        <div class="col-6 login">@Session["Username"] (@Html.ActionLink("Wyloguj", "Logout",  "Login"))</div>
                     }
                 }
             </div>

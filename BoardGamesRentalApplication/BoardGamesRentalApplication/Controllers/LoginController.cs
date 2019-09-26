@@ -44,5 +44,12 @@ namespace BoardGamesRentalApplication.Controllers
             }
             return View(userEntity);
         }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
