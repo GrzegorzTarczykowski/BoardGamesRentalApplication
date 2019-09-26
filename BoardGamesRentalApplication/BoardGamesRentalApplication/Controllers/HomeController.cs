@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoardGamesRentalApplication.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -30,6 +31,11 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Admin()
         {
             return View();
         }

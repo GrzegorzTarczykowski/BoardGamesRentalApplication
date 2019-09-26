@@ -22,13 +22,13 @@ namespace BoardGamesRentalApplication.BLL.Service
         {
             try
             {
-                User matchingUser = userRepository.FindBy(u => u.Username == user.Username).FirstOrDefault();
-                if (matchingUser == null)
+                if (!userRepository.Any(u => u.Username == user.Username))
                 {
                     return LoginServiceResponse.UserDoesntExist;
                 }
                 else
                 {
+                    User matchingUser = userRepository.FindBy(u => u.Username == user.Username).FirstOrDefault();
                     byte[] hash = cryptographyService.GenerateSHA512(user.Password, matchingUser.Salt);
                     byte[] hashForComparison = Convert.FromBase64String(matchingUser.Password);
                     for (int i = 0; i < hashForComparison.Length; i++)
@@ -40,6 +40,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     }
                     matchingUser.LastLogin = DateTime.Now;
                     userRepository.SaveChanges();
+                    user.UserType = user.Username == "ADMINISTRATOR" ? UserType.Administrator : UserType.Regular;
                     return LoginServiceResponse.LoginSuccessful;
                 }
             }

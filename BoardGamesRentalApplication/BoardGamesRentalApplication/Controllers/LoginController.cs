@@ -30,7 +30,9 @@ namespace BoardGamesRentalApplication.Controllers
             switch (loginService.Login(userEntity))
             {
                 case LoginServiceResponse.LoginSuccessful:
+                    ModelState.Clear();
                     Session["Username"] = userEntity.Username;
+                    Session["UserType"] = userEntity.UserType;
                     ViewBag.LoginSuccessfulMessage = $"Zalogowano jako {userEntity.Username}.";
                     return RedirectToAction("Index", "Home");
                 case LoginServiceResponse.UserDoesntExist:

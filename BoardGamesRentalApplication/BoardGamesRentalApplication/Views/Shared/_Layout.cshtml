@@ -42,6 +42,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Nasze gry</a>
                     </li>
+                    @{
+                        try
+                        {
+                            var userType = (BoardGamesRentalApplication.DAL.Models.UserType)Session["UserType"];
+                            if (userType == BoardGamesRentalApplication.DAL.Models.UserType.Administrator)
+                            {
+                            <li>@Html.ActionLink("Panel Admina", "Index", "Category")</li>
+                            }
+                            else
+                            {
+                            <li class="label">@Session["Username"]</li>
+                            }
+                        }catch (Exception)
+                        {
+
+                        }
+                    }
                 </ul>
             </div>
         </div>
