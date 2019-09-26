@@ -19,7 +19,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">111-111-111</div>
-                <div class="col-6 login">@Html.ActionLink("Logowanie/", "Login", "Login") @Html.ActionLink("Rejestracja", "Register", "Register")</div>
+                @{
+                    if (string.IsNullOrEmpty(Session["Username"] as string))
+                    {
+                        <div class="col-6 login">@Html.ActionLink("Logowanie/", "Login", "Login") @Html.ActionLink("Rejestracja", "Register", "Register")</div>
+                    }
+                    else
+                    {
+                        <div class="col-6 login">@Session["Username"]</div>
+                    }
+                }
             </div>
         </div>
     </div>
@@ -48,11 +57,9 @@
                             var userType = (BoardGamesRentalApplication.DAL.Models.UserType)Session["UserType"];
                             if (userType == BoardGamesRentalApplication.DAL.Models.UserType.Administrator)
                             {
-                            <li>@Html.ActionLink("Panel Admina", "Index", "Category")</li>
-                            }
-                            else
-                            {
-                            <li class="label">@Session["Username"]</li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Panel Admina", "Index", "Category", null, new { @class = "nav-link" })
+                            </li>
                             }
                         }catch (Exception)
                         {
