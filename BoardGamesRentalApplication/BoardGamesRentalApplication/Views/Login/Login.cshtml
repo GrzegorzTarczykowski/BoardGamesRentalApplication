@@ -4,6 +4,7 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/_LayoutPageLogin.cshtml";
 }
+<!--
 <div class="links">
     <ul class="links-unordered-list">
         <li class="">
@@ -20,30 +21,31 @@
         </li>
     </ul>
 </div>
-    <!-- title -->
-    <h1>
-        Zaloguj się
-    </h1>
+-->
+<!-- title -->
+<h1>
+    Zaloguj się
+</h1>
 
-    <!-- //title -->
-    <!-- content -->
-    <div class="container">
-        <div id="clouds">
-            <div class="cloud x1"></div>
-            <!-- Time for multiple clouds to dance around -->
-            <div class="cloud x2"></div>
-            <div class="cloud x3"></div>
-            <div class="cloud x4"></div>
-            <div class="cloud x5"></div>
-        </div>
-        <!-- content form -->
-        <div class="sub-main-w3">
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+<!-- //title -->
+<!-- content -->
+<div class="container">
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <!-- Time for multiple clouds to dance around -->
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+    <!-- content form -->
+    <div class="sub-main-w3">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <form action="Login" method="post">                    
+                <form action="Login" method="post">
                     <div class="form-group">
                         @if (TempData["SuccessRegisterNewUserMessage"] != null)
                         {
@@ -79,9 +81,9 @@
                     </div>
                 </form>
             </div>
-            }
-        </div>
-        <!-- //content form -->
+        }
     </div>
+    <!-- //content form -->
+</div>
 
 <!-- //content -->

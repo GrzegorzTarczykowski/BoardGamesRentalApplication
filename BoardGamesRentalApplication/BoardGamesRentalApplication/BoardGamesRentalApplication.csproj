@@ -176,7 +176,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\4.jpg" />
+    <Content Include="images\board1.jpg" />
+    <Content Include="images\person.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fa-brands-400.eot" />

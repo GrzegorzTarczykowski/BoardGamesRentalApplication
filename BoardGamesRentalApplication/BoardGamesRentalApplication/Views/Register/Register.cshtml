@@ -4,7 +4,7 @@
     ViewBag.Title = "Register";
     Layout = "~/Views/_LayoutPageLogin.cshtml";
 }
-
+<!--
 <div class="links">
     <ul class="links-unordered-list">
         <li class="">
@@ -21,7 +21,7 @@
         </li>
     </ul>
 </div>
-
+-->
 <h1>
     Zarejestruj się
 </h1>
@@ -40,7 +40,7 @@
         {
             @Html.AntiForgeryToken()
             <div class="form-horizontal">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <form action="Register" method="post">
                     <div class="form-group">
                         <div class="col-md-3">
@@ -113,9 +113,9 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Utwórz" class="btn btn-danger"/>
+                            <input type="submit" value="Utwórz" class="btn btn-danger" />
                         </div>
-                    </div>                  
+                    </div>
 
                 </form>
             </div>
