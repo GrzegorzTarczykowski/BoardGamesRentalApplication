@@ -52,18 +52,12 @@
                         <a class="nav-link" href="#">Nasze gry</a>
                     </li>
                     @{
-                        try
+                        var sessionUserType = Session["UserType"];
+                        if (sessionUserType != null && (BoardGamesRentalApplication.DAL.Models.UserType)sessionUserType == BoardGamesRentalApplication.DAL.Models.UserType.Administrator)
                         {
-                            var userType = (BoardGamesRentalApplication.DAL.Models.UserType)Session["UserType"];
-                            if (userType == BoardGamesRentalApplication.DAL.Models.UserType.Administrator)
-                            {
-                            <li class="nav-item">
-                                @Html.ActionLink("Panel Admina", "Index", "Category", null, new { @class = "nav-link" })
-                            </li>
-                            }
-                        }catch (Exception)
-                        {
-
+                        <li class="nav-item">
+                            @Html.ActionLink("Panel Admina", "Index", "Category", null, new { @class = "nav-link" })
+                        </li>
                         }
                     }
                 </ul>
