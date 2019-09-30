@@ -26,9 +26,9 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                 .WithMany(bge => bge.BoardGames)
                 .Map(bgbge =>
                 {
-                    bgbge.MapLeftKey("BoardGameId");
-                    bgbge.MapRightKey("BoardGameEvaluationId");
-                    bgbge.ToTable("BoardGameBoardGameEvaluation");
+                    bgbge.MapLeftKey($"{nameof(BoardGame)}Id");
+                    bgbge.MapRightKey($"{nameof(BoardGameEvaluation)}Id");
+                    bgbge.ToTable($"{nameof(BoardGame)}{nameof(BoardGameEvaluation)}");
                 });
         }
     }
