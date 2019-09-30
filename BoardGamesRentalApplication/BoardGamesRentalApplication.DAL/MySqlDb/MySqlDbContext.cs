@@ -1,6 +1,5 @@
 ﻿using BoardGamesRentalApplication.DAL.Models;
 using MySql.Data.Entity;
-using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -18,6 +17,8 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
         public DbSet<BoardGameNote> BoardGameNotes { get; set; }
         public DbSet<BoardGamePublisher> BoardGamePublishers { get; set; }
         public DbSet<BoardGameState> BoardGameStates { get; set; }
+        public DbSet<BoardGameCategory> BoardGameCategories { get; set; }
+        public DbSet<BoardGamePublisher> BoardGamePublishers { get; set; }
         public DbSet<BoardGameType> BoardGameTypes { get; set; }
         public DbSet<User> Users { get; set; }
 
@@ -33,6 +34,13 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                     bgbge.MapRightKey($"{nameof(BoardGameEvaluation)}Id");
                     bgbge.ToTable($"{nameof(BoardGame)}{nameof(BoardGameEvaluation)}");
                 });
+            modelBuilder.Entity<BoardGame>()
+                .HasMany<BoardGameCategory>(bg => bg.BoardGameCategories)
+                .WithOptional();
+            modelBuilder.Entity<BoardGamePublisher>()
+                .HasMany<BoardGame>(bgp => bgp.BoardGames)
+                .WithRequired(bg => bg.Publisher)
+                .WillCascadeOnDelete(false);//TODO: Decide if should cascade delete or not
         }
     }
 }

@@ -1,19 +1,64 @@
-﻿<!DOCTYPE html>
-
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href="~/styles/fontawesome-all.css" rel="stylesheet" />
-    <link href="~/styles/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    @Styles.Render("~/styles/style.css")
+
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="container-fluid bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">111-111-111</div>
+                <div class="col-6 login">@Html.ActionLink("Logowanie/", "Login", "Login") @Html.ActionLink("Rejestracja", "Register", "Register")</div>
+            </div>
+        </div>
     </div>
+    <nav class="navbar-light navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            @Html.ActionLink("LOGO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Home/Index">Strona Główna <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">O nas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nasze gry</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    @RenderBody()
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

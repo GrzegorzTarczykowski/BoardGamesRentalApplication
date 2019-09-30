@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Administrowanie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administrowanie</h2>
+@{
+    try
+    {
+        var userType = (BoardGamesRentalApplication.DAL.Models.UserType)Session["UserType"];
+        if (userType == BoardGamesRentalApplication.DAL.Models.UserType.Administrator)
+        {
+            <ul>
+                <li>@Html.ActionLink("Dodaj kategorię", "Index", "Admin")</li>
+            </ul>
+        }
+        else
+        {
+            <h3>Brak wymaganych uprawnień.</h3>
+        }
+    } catch (Exception)
+    {
+
+    }
+}
+

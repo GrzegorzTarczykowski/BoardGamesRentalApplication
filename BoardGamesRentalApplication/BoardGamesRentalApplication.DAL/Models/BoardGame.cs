@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BoardGamesRentalApplication.DAL.Models
 {
@@ -24,6 +19,7 @@ namespace BoardGamesRentalApplication.DAL.Models
         public BoardGamePublisher BoardGamePublisher { get; set; }
 
         public virtual ICollection<BoardGameEvaluation> BoardGameEvaluations { get; set; }
+        public virtual ICollection<BoardGameCategory> BoardGameCategories { get; set; }
         public virtual ICollection<BoardGameNote> BoardGameNotes { get; set; }
     }
 }

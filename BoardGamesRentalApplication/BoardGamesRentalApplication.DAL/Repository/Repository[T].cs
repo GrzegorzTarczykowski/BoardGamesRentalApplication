@@ -72,6 +72,17 @@ namespace BoardGamesRentalApplication.DAL.Repository
             return true;
         }
 
+        public bool Remove(object[] keyValues)
+        {
+            T entityToDelete = set.Find(keyValues);
+            if (mySqlDbContext.Entry(entityToDelete).State == EntityState.Detached)
+            {
+                set.Attach(entityToDelete);
+            }
+            set.Remove(entityToDelete);
+            return true;
+        }
+
         public bool SaveChanges()
         {
             mySqlDbContext.SaveChanges();
