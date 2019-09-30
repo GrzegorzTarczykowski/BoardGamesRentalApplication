@@ -14,9 +14,12 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
 
         public DbSet<BoardGame> BoardGames { get; set; }
         public DbSet<BoardGameEvaluation> BoardGameEvaluations { get; set; }
+        public DbSet<BoardGameNote> BoardGameNotes { get; set; }
+        public DbSet<BoardGamePublisher> BoardGamePublishers { get; set; }
         public DbSet<BoardGameState> BoardGameStates { get; set; }
         public DbSet<BoardGameCategory> BoardGameCategories { get; set; }
         public DbSet<BoardGamePublisher> BoardGamePublishers { get; set; }
+        public DbSet<BoardGameType> BoardGameTypes { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -27,9 +30,9 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                 .WithMany(bge => bge.BoardGames)
                 .Map(bgbge =>
                 {
-                    bgbge.MapLeftKey("BoardGameId");
-                    bgbge.MapRightKey("BoardGameEvaluationId");
-                    bgbge.ToTable("BoardGameBoardGameEvaluation");
+                    bgbge.MapLeftKey($"{nameof(BoardGame)}Id");
+                    bgbge.MapRightKey($"{nameof(BoardGameEvaluation)}Id");
+                    bgbge.ToTable($"{nameof(BoardGame)}{nameof(BoardGameEvaluation)}");
                 });
             modelBuilder.Entity<BoardGame>()
                 .HasMany<BoardGameCategory>(bg => bg.BoardGameCategories)

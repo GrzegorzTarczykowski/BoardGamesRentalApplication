@@ -6,9 +6,20 @@ namespace BoardGamesRentalApplication.DAL.Models
     {
         public int BoardGameId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public string Content { get; set; }
+        public int PlayerCount { get; set; }
+        public int MinimumAge { get; set; }
+        
+        public int BoardGameStateId { get; set; }
+        public BoardGameState BoardGameState { get; set; }
+        public int BoardGameTypeId { get; set; }
+        public BoardGameType BoardGameType { get; set; }
+        public int BoardGamePublisherId { get; set; }
+        public BoardGamePublisher BoardGamePublisher { get; set; }
 
         public virtual ICollection<BoardGameEvaluation> BoardGameEvaluations { get; set; }
         public virtual ICollection<BoardGameCategory> BoardGameCategories { get; set; }
-        public virtual BoardGamePublisher Publisher { get; set; }
+        public virtual ICollection<BoardGameNote> BoardGameNotes { get; set; }
     }
 }
