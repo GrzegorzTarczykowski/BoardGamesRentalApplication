@@ -12,9 +12,9 @@ namespace BoardGamesRentalApplication.DAL.Models
         public int PlayerCount { get; set; }
         public int MinimumAge { get; set; }
 
-        public int? BoardGamePublisherId { get; set; }
+        public int BoardGamePublisherId { get; set; }
         public BoardGamePublisher BoardGamePublisher { get; set; }
-        public int? BoardGameStateId { get; set; }
+        public int BoardGameStateId { get; set; }
         public BoardGameState BoardGameState { get; set; }
 
         public virtual ICollection<BoardGameEvaluation> BoardGameEvaluations { get; set; }
