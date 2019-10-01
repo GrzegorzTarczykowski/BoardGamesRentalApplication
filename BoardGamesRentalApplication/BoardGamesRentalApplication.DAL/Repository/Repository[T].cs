@@ -61,6 +61,11 @@ namespace BoardGamesRentalApplication.DAL.Repository
             return set;
         }
 
+        public IQueryable<T> GetAll(params string[] includeProperties)
+        {
+            return includeProperties.Aggregate(set.AsQueryable(), (query, path) => query.Include(path));
+        }
+
         public bool Remove(T entity)
         {
             T entityToDelete = set.Find(entity);

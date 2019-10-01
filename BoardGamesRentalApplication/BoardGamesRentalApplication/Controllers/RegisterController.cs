@@ -1,8 +1,6 @@
 ﻿using BoardGamesRentalApplication.BLL.Enums;
 using BoardGamesRentalApplication.BLL.IService;
-using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.UnitOfWork;
 using BoardGamesRentalApplication.Models;
 using System;
 using System.Web.Mvc;

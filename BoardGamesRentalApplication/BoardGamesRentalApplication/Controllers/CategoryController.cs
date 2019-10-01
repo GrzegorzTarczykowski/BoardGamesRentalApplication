@@ -1,11 +1,7 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
-using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.MySqlDb;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BoardGamesRentalApplication.Controllers

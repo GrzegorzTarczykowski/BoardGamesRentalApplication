@@ -1,19 +1,32 @@
-﻿using BoardGamesRentalApplication.DAL.Models;
-using System;
-using System.Collections.Generic;
+﻿using BoardGamesRentalApplication.BLL.IService;
+using BoardGamesRentalApplication.Models;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BoardGamesRentalApplication.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IBoardGamesService boardGamesService;
+
+        public HomeController(IBoardGamesService boardGamesService)
         {
-            return View();
+            this.boardGamesService = boardGamesService;
+        }
+
+        public ActionResult Index(HomePageData homePageData)
+        {
+            homePageData.RecommendedBoardGames = boardGamesService
+                                                .GetFourRecommendedBoardGames()
+                                                .Select(bg => new BoardGame()
+                                                {
+                                                    BoardGameId = bg.BoardGameId,
+                                                    Name = bg.Name,
+                                                    Image = bg.Image,
+                                                    PlayerCount = bg.PlayerCount,
+                                                    MinimumAge = bg.MinimumAge
+                                                });
+            return View(homePageData);
         }
 
         public ActionResult About()
