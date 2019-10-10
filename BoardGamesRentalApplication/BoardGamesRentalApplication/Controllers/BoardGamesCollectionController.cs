@@ -1,10 +1,8 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
-using BoardGamesRentalApplication.Models;
-using System;
-using System.Collections.Generic;
+using BoardGamesRentalApplication.DAL.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using BoardGame = BoardGamesRentalApplication.Models.BoardGame;
 
 namespace BoardGamesRentalApplication.Controllers
 {
@@ -20,6 +18,8 @@ namespace BoardGamesRentalApplication.Controllers
         // GET: BoardGamesCollection
         public ActionResult BoardGamesCollection()
         {
+            if (string.IsNullOrEmpty(Session["Username"] as string) || (Session["UserType"] is UserType && (UserType)Session["UserType"] != UserType.Administrator))
+                return RedirectToAction("Index", "Home");
             return View(boardGamesService.GetAll().Select(bg => new BoardGame()
             {
                 BoardGameId = bg.BoardGameId,

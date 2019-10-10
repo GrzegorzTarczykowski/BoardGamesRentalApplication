@@ -17,6 +17,8 @@ namespace BoardGamesRentalApplication.Controllers
         
         public ActionResult Login()
         {
+            if (!string.IsNullOrEmpty(Session["Username"] as string))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
