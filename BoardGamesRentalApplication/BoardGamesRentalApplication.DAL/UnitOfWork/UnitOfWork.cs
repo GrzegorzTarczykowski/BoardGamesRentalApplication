@@ -19,6 +19,7 @@ namespace BoardGamesRentalApplication.DAL.UnitOfWork
 
         public void Register(IRepository repository)
         {
+            if (repositories.ContainsKey(repository.GetType().Name)) return;
             repositories.Add(repository.GetType().Name, repository);
         }
 

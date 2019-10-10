@@ -154,6 +154,7 @@
     <Compile Include="Autofac\RepositoryModule.cs" />
     <Compile Include="Autofac\ServiceModule.cs" />
     <Compile Include="Autofac\UnitOfWorkModule.cs" />
+    <Compile Include="Controllers\BoardGameController.cs" />
     <Compile Include="Controllers\BoardGamesCollectionController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -234,6 +235,7 @@
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\BoardGamesCollection\BoardGamesCollection.cshtml" />
+    <Content Include="Views\BoardGame\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
