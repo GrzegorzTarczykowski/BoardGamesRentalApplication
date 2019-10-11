@@ -240,6 +240,7 @@
     <Content Include="Views\BoardGamesCollection\BoardGamesCollection.cshtml" />
     <Content Include="Views\BoardGame\Details.cshtml" />
     <Content Include="Views\AdminPanel\Index.cshtml" />
+    <Content Include="Views\BoardGamesCollection\Edit.cshtml" />
     <Content Include="Views\BoardGamesCollection\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
