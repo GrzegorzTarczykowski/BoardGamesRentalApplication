@@ -44,14 +44,18 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="IService\IBoardGameCategoryService.cs" />
     <Compile Include="IService\IBoardGamesService.cs" />
+    <Compile Include="IService\IBoardGameStatesService.cs" />
     <Compile Include="IService\ICryptographyService.cs" />
     <Compile Include="IService\ILoginService.cs" />
     <Compile Include="IService\IRegisterService.cs" />
     <Compile Include="IService\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BoardGameCategoryService.cs" />
+    <Compile Include="Service\BoardGamePublishersService.cs" />
     <Compile Include="Service\BoardGamesService.cs" />
+    <Compile Include="Service\BoardGameStatesService.cs" />
     <Compile Include="Service\CryptographyService.cs" />
+    <Compile Include="IService\IBoardGamePublishersService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\RegisterService.cs" />
   </ItemGroup>

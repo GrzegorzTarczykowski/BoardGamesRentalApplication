@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Panel Admina</h2>
 <p>
+    @Html.ActionLink("Zarządzanie grami", "BoardGamesCollection", "BoardGamesCollection")
+    <br/>
     @Html.ActionLink("Zarządzanie kategoriami", "Index", "Category")
 </p>

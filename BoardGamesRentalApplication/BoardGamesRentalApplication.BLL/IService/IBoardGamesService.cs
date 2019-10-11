@@ -7,5 +7,6 @@ namespace BoardGamesRentalApplication.BLL.IService
     {
         IQueryable<BoardGame> GetFourRecommendedBoardGames();
         IQueryable<BoardGame> GetAll();
+        void AddBoardGame(BoardGame boardGame);
     }
 }
