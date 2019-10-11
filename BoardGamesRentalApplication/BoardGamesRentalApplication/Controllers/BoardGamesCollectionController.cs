@@ -1,26 +1,32 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
-using BoardGamesRentalApplication.Models;
-using System;
+using BoardGamesRentalApplication.DAL.Models;
+using BoardGamesRentalApplication.Service;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using BoardGame = BoardGamesRentalApplication.Models.BoardGame;
 
 namespace BoardGamesRentalApplication.Controllers
 {
     public class BoardGamesCollectionController : Controller
     {
         private readonly IBoardGamesService boardGamesService;
+        private readonly IBoardGamePublishersService publishersService;
+        private readonly IBoardGameStatesService statesService;
+        private readonly IUserTypeService userTypeService;
 
-        public BoardGamesCollectionController(IBoardGamesService boardGamesService)
+        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGamePublishersService publishersService, IBoardGameStatesService statesService)
         {
             this.boardGamesService = boardGamesService;
+            this.publishersService = publishersService;
+            this.statesService = statesService;
+            this.userTypeService = new UserTypeService(this, RedirectToAction("Index", "Home"));
         }
 
         // GET: BoardGamesCollection
         public ActionResult BoardGamesCollection()
         {
-            return View(boardGamesService.GetAll().Select(bg => new BoardGame()
+            return userTypeService.Authorize(() => View(boardGamesService.GetAll().Select(bg => new BoardGame()
             {
                 BoardGameId = bg.BoardGameId,
                 Name = bg.Name,
@@ -31,7 +37,47 @@ namespace BoardGamesRentalApplication.Controllers
                 MinimumAge = bg.MinimumAge,
                 BoardGameStateName = bg.BoardGameState.Name,
                 BoardGamePublisherName = bg.BoardGamePublisher.Name
-            }).ToList());
+            }).ToList()), UserType.Administrator);
+        }
+
+        public ActionResult Create()
+        {
+            return userTypeService.Authorize(() =>
+            {
+                var allPublishers = publishersService.GetAll().AsEnumerable();
+                List<SelectListItem> listOfPublishers = new List<SelectListItem>();
+                foreach (var publisher in allPublishers)
+                    listOfPublishers.Add(new SelectListItem { Value = publisher.BoardGamePublisherId.ToString(), Text = publisher.Name });
+                ViewBag.Publishers = new SelectList(listOfPublishers, "Value", "Text");
+
+                var allStates = statesService.GetAll().AsEnumerable();
+                List<SelectListItem> listOfStates = new List<SelectListItem>();
+                foreach (var state in allStates)
+                    listOfStates.Add(new SelectListItem { Value = state.BoardGameStateId.ToString(), Text = state.Name });
+                ViewBag.States = new SelectList(listOfStates, "Value", "Text");
+
+                return View();
+            }, UserType.Administrator);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(FormCollection collection)
+        {
+            return userTypeService.Authorize(() =>
+            {
+                boardGamesService.AddBoardGame(new DAL.Models.BoardGame()
+                {
+                    Name = collection["Name"],
+                    Description = collection["Description"],
+                    Content = collection["Content"],
+                    MinimumAge = int.Parse(collection["MinimumAge"]),
+                    PlayerCount = int.Parse(collection["PlayerCount"]),
+                    BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
+                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
+                });
+                return RedirectToAction("BoardGamesCollection");
+            }, UserType.Administrator);
         }
     }
 }

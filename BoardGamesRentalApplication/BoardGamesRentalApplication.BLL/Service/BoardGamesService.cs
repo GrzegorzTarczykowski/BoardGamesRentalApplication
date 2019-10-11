@@ -14,6 +14,12 @@ namespace BoardGamesRentalApplication.BLL.Service
             this.boardGameRepository = boardGameRepository;
         }
 
+        public void AddBoardGame(BoardGame boardGame)
+        {
+            boardGameRepository.Add(boardGame);
+            boardGameRepository.SaveChanges();
+        }
+
         public IQueryable<BoardGame> GetAll()
         {
             return boardGameRepository.GetAll(nameof(BoardGame.BoardGamePublisher)

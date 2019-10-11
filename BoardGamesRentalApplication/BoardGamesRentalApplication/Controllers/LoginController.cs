@@ -17,6 +17,8 @@ namespace BoardGamesRentalApplication.Controllers
         
         public ActionResult Login()
         {
+            if (!string.IsNullOrEmpty(Session["Username"] as string))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -41,6 +43,13 @@ namespace BoardGamesRentalApplication.Controllers
                     return View();
             }
             return View(userEntity);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
