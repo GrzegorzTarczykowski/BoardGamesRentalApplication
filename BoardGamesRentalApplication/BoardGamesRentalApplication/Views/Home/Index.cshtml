@@ -51,45 +51,12 @@
         <div class="row">
             <h2>Wyszukaj grę dla siebie</h2>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 category  ">
-                <h4>Kategoria</h4>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Default checkbox
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                    <label class="form-check-label" for="defaultCheck2">
-                        Default checkbox
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                    <label class="form-check-label" for="defaultCheck3">
-                        Default checkbox
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-                    <label class="form-check-label" for="defaultCheck4">
-                        Default checkbox
-                    </label>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 category">
-                <h4>Minimum graczy</h4>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 category">
-                <h4>Kategoria</h4>
-            </div>
-
-
-            <div class="col-12">
-                <a href="#">Szukaj</a>
-            </div>
+        <div class="row form-horizontal">
+            @using (Html.BeginForm("Index", "BoardGamesOffer", FormMethod.Post))
+            {
+                @Html.EditorFor(x => x.FilterParameters)
+                <input type="submit" value="Szukaj"/>
+            }
         </div>
     </section>
     <section class="recommended">

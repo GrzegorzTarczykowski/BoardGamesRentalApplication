@@ -8,14 +8,18 @@ namespace BoardGamesRentalApplication.Controllers
     public class HomeController : Controller
     {
         private readonly IBoardGamesService boardGamesService;
+        private readonly IBoardGameFilterService boardGameFilterService;
 
-        public HomeController(IBoardGamesService boardGamesService)
+        public HomeController(IBoardGamesService boardGamesService, IBoardGameFilterService boardGameFilterService)
         {
             this.boardGamesService = boardGamesService;
+            this.boardGameFilterService = boardGameFilterService;
         }
 
         public ActionResult Index(HomePageData homePageData)
         {
+            homePageData.FilterParameters = boardGameFilterService.GetAllFilterParameters();
+
             homePageData.RecommendedBoardGames = boardGamesService
                                                 .GetFourRecommendedBoardGames()
                                                 .Select(bg => new BoardGame()

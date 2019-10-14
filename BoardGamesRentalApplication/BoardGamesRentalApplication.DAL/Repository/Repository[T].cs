@@ -50,6 +50,11 @@ namespace BoardGamesRentalApplication.DAL.Repository
         {
             return set.Where(predicate);
         }
+        
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, params string[] includeProperties)
+        {
+            return includeProperties.Aggregate(set.Where(predicate).AsQueryable(), (query, path) => query.Include(path));
+        }
 
         public T FindById(int id)
         {
