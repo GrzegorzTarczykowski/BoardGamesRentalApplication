@@ -1,0 +1,85 @@
+﻿@model BoardGamesRentalApplication.Models.BoardGamesCollectionPageData
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ BoardGamesRentalApplication.Models.BoardGame dummyBoardGameModel = null; }
+
+<h3>Filtry</h3>
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(x => x.FilterParameters)
+    <input type="submit" value="Szukaj" />
+}
+
+<h2>Nasze Gry</h2>
+
+<table class="table">
+    <tr>
+        @foreach (var item in Model.SortingOptions.Select((value, i) => new { i, value }))
+        {
+            <th>
+                @Html.ActionLink(item.value, "Index", new { sortByOptionId = item.i, selectedFilterOption = ViewBag.SelectedFilterOption })
+            </th>
+        }
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.PlayerCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.MinimumAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.BoardGamePublisherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(dummyParam => dummyBoardGameModel.BoardGameStateName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.BoardGames)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", "BoardGameDetailsOffer", new { boardGameId = item.BoardGameId }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoardGamePublisherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoardGameStateName)
+            </td>
+        </tr>
+    }
+
+</table>
+    Page @(Model.BoardGames.PageCount < Model.BoardGames.PageNumber ? 0 : Model.BoardGames.PageNumber) of @Model.BoardGames.PageCount
+
+    @Html.PagedListPager(Model.BoardGames, page => Url.Action("Index",
+        new { page, sortByOptionId = ViewBag.CurrentSortOptionId, selectedFilterOption = ViewBag.SelectedFilterOption }))

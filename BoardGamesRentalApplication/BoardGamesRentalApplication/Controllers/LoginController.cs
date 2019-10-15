@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using BoardGamesRentalApplication.BLL.Service;
 using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.BLL.Enums;
-using BoardGamesRentalApplication.DAL.UnitOfWork;
 using BoardGamesRentalApplication.BLL.IService;
 
 namespace BoardGamesRentalApplication.Controllers
@@ -19,6 +17,8 @@ namespace BoardGamesRentalApplication.Controllers
         
         public ActionResult Login()
         {
+            if (!string.IsNullOrEmpty(Session["Username"] as string))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -43,6 +43,13 @@ namespace BoardGamesRentalApplication.Controllers
                     return View();
             }
             return View(userEntity);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

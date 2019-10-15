@@ -1,32 +1,35 @@
 ﻿@model IEnumerable<BoardGamesRentalApplication.DAL.Models.BoardGameCategory>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>
+    Zarządzanie<br />
+    kategoriami
+</h2>
 
-<p>
+<p class="container">
     @Html.ActionLink("Dodaj nową kategorię", "Create")
 </p>
-<table class="table">
+<table class="table row">
     <tr>
         <th>
-            @Html.DisplayName("Kategorie gier planszowych")
+            Kategorie gier planszowych
         </th>
         <th></th>
     </tr>
-    @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameCategoryId }) |
-            @Html.ActionLink("Szczegóły", "Details", new { id = item.BoardGameCategoryId }) |
-            @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameCategoryId })
-        </td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameCategoryId }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.BoardGameCategoryId }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameCategoryId })
+            </td>
+        </tr>
     }
 </table>

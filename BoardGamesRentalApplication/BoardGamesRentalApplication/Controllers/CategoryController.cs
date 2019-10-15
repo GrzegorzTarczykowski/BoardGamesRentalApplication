@@ -1,11 +1,7 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
-using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
-using BoardGamesRentalApplication.DAL.MySqlDb;
-using System;
-using System.Collections.Generic;
+using BoardGamesRentalApplication.Service;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BoardGamesRentalApplication.Controllers
@@ -13,34 +9,17 @@ namespace BoardGamesRentalApplication.Controllers
     public class CategoryController : Controller
     {
         private readonly IBoardGameCategoryService categoryService;
+        private readonly IUserTypeService userTypeService;
 
         public CategoryController(IBoardGameCategoryService service)
         {
             this.categoryService = service;
+            this.userTypeService = new UserTypeService(this, RedirectToAction("Index", "Home"));
         }
 
         public ActionResult Index()
         {
-            return HandleUserType(ListCategories);
-        }
-
-        private ActionResult HandleUserType(Func<ActionResult> actionToAuthorize)
-        {
-            try
-            {
-                if (Session["UserType"] is UserType && (UserType)Session["UserType"] == UserType.Administrator)
-                {
-                    return actionToAuthorize();
-                }
-                else
-                {
-                    throw new UnauthorizedAccessException();
-                }
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return userTypeService.Authorize(ListCategories, UserType.Administrator);
         }
 
         private ActionResult ListCategories()
@@ -51,13 +30,13 @@ namespace BoardGamesRentalApplication.Controllers
         // GET: Admin/Details/5
         public ActionResult Details(int id)
         {
-            return HandleUserType(() => View(categoryService.FindById(id)));
+            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator);
         }
         
         // GET: Admin/Create
         public ActionResult Create()
         {
-            return HandleUserType(View);
+            return userTypeService.Authorize(View, UserType.Administrator);
         }
 
         // POST: Admin/Create
@@ -65,34 +44,34 @@ namespace BoardGamesRentalApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FormCollection collection)
         {
-            return HandleUserType(() =>
+            return userTypeService.Authorize(() =>
             {
                 categoryService.AddCategory(new BoardGameCategory { Name = collection["Name"] });
                 return RedirectToAction("Index");
-            });
+            }, UserType.Administrator);
         }
         
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
-            return HandleUserType(View);
+            return userTypeService.Authorize(View, UserType.Administrator);
         }
         
         // POST: Admin/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            return HandleUserType(() =>
+            return userTypeService.Authorize(() =>
             {
                 categoryService.UpdateCategory(id, new BoardGameCategory { Name = collection["Name"] });
                 return RedirectToAction("Index");
-            });
+            }, UserType.Administrator);
         }
         
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
-            return HandleUserType(() => View(categoryService.FindById(id)));
+            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator);
         }
         
         // POST: Admin/Delete/5
@@ -100,11 +79,11 @@ namespace BoardGamesRentalApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            return HandleUserType(() =>
+            return userTypeService.Authorize(() =>
             {
                 categoryService.DeleteCategory(id);
                 return RedirectToAction("Index");
-            });
+            }, UserType.Administrator);
         }
     }
 }

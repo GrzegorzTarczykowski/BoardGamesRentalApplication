@@ -13,12 +13,11 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
         }
 
         public DbSet<BoardGame> BoardGames { get; set; }
+        public DbSet<BoardGameCategory> BoardGameCategories { get; set; }
         public DbSet<BoardGameEvaluation> BoardGameEvaluations { get; set; }
         public DbSet<BoardGameNote> BoardGameNotes { get; set; }
         public DbSet<BoardGamePublisher> BoardGamePublishers { get; set; }
         public DbSet<BoardGameState> BoardGameStates { get; set; }
-        public DbSet<BoardGameCategory> BoardGameCategories { get; set; }
-        public DbSet<BoardGameType> BoardGameTypes { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -34,14 +33,22 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                     bgbge.ToTable($"{nameof(BoardGame)}{nameof(BoardGameEvaluation)}");
                 });
 
+            //modelBuilder.Entity<BoardGamePublisher>()
+            //    .HasMany<BoardGame>(bgp => bgp.BoardGames)
+            //    .WithRequired(bg => bg.BoardGamePublisher)
+            //    .WillCascadeOnDelete(false);//TODO: Decide if should cascade delete or not
+            
             modelBuilder.Entity<BoardGame>()
-                .HasMany<BoardGameCategory>(bg => bg.BoardGameCategories)
-                .WithOptional();
+                        .HasRequired(bg => bg.BoardGamePublisher)
+                        .WithMany(bgp => bgp.BoardGames)
+                        .HasForeignKey(bg => bg.BoardGamePublisherId)
+                        .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<BoardGamePublisher>()
-                .HasMany<BoardGame>(bgp => bgp.BoardGames)
-                .WithRequired(bg => bg.BoardGamePublisher)
-                .WillCascadeOnDelete(false);//TODO: Decide if should cascade delete or not
+            modelBuilder.Entity<BoardGame>()
+                        .HasRequired(bg => bg.BoardGameState)
+                        .WithMany(bgs => bgs.BoardGames)
+                        .HasForeignKey(bg => bg.BoardGameStateId)
+                        .WillCascadeOnDelete(false);
         }
     }
 }
