@@ -9,7 +9,9 @@ namespace BoardGamesRentalApplication.DAL.Abstraction
     {
         T FindById(int id);
         IQueryable<T> GetAll();
+        IQueryable<T> GetAll(params string[] includeProperties);
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
+        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, params string[] includeProperties);
         bool Any(Expression<Func<T, bool>> predicate);
         bool Add(T entity);
         bool AddRange(IEnumerable<T> entities);

@@ -1,0 +1,70 @@
+﻿@model BoardGamesRentalApplication.Models.BoardGame
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BoardGame</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinimumAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinimumAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardGamePublisherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardGamePublisherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardGameStateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardGameStateName)
+        </dd>
+
+    </dl>
+</div>
