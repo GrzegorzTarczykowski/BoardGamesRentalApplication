@@ -252,7 +252,7 @@
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\BoardGamesCollection\Edit.cshtml" />
     <Content Include="Views\BoardGamesCollection\Create.cshtml" />
-    <Content Include="Views\BoardGamesOffer\Index.cshtml" />
+    <Content Include="Views\BoardGamesOffer\BoardGamesOffer.cshtml" />
     <Content Include="Views\Home\EditorTemplates\Filter.cshtml" />
     <Content Include="Views\BoardGamesOffer\EditorTemplates\Filter.cshtml" />
     <Content Include="Views\BoardGameDetailsOffer\Details.cshtml" />

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Board Games Universe";
 }
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">111-111-111</div>
-                <div class="col-6 login">@Html.ActionLink("Logowanie/", "Login", "Login") @Html.ActionLink("Rejestracja", "BoardGamesCollection", "BoardGamesCollection")</div>
+                <div class="col-6 login">@Html.ActionLink("Logowanie/", "Login", "Login") @Html.ActionLink("Rejestracja", "Register", "Register")</div>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
                         <a class="nav-link" href="#">O nas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nasze gry</a>
+                        @Html.ActionLink("Nasze xd", "Login", "Login", new { @class = "nav-link" })
                     </li>
                 </ul>
             </div>

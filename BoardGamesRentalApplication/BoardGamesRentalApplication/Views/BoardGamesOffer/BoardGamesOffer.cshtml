@@ -1,0 +1,120 @@
+﻿@model BoardGamesRentalApplication.Models.BoardGamesCollectionPageData
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ BoardGamesRentalApplication.Models.BoardGame dummyBoardGameModel = null; }
+
+<section class="main">
+    <div class="row">
+        <div class="col-3">
+            <section class="search_form">
+
+                <form action="">
+                    <div class="row">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.EditorFor(x => x.FilterParameters, new { htmlAttributes = new { @class = "category" } })
+                            <input type="submit" value="Szukaj" />
+                        }
+                    </div>
+                </form>
+            </section>
+
+        </div>
+        <div class="col-9">
+            <section class="products_list">
+                <div class="row">
+                    @foreach (var item in Model.SortingOptions.Select((value, i) => new { i, value }))
+                    {
+                        <div class="col-3">
+                            @Html.ActionLink(item.value, "Index", new { sortByOptionId = item.i, selectedFilterOption = ViewBag.SelectedFilterOption })
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-12 pagination">
+                        <!-- <nav aria-label="Page navigation"> -->
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                        <!-- </nav> -->
+                    </div>
+                </div>
+                <div class="row">
+
+                    @foreach (var item in Model.BoardGames)
+                    {
+                        <div class="col-12 product">
+
+                            <img src="~/images/board1.jpg" alt="">
+                            <table>
+                                <tr>
+                                    <td colspan="3">
+                                        <h3>
+                                            <a href="BoardGame/Details">
+                                                @Html.ActionLink(item.Name, "Details", "BoardGameDetailsOffer", new { boardGameId = item.BoardGameId }, null)
+                                            </a>
+                                        </h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class='category_list'>Opis: </span>@Html.DisplayFor(modelItem => item.Description)</td>
+                                    <td><span class='category_list'>Ilość graczy: </span>@Html.DisplayFor(modelItem => item.PlayerCount)</td>
+                                    <td><span class='category_list'>Wiek: </span>@Html.DisplayFor(modelItem => item.MinimumAge)</td>
+                                </tr>
+                                <tr>
+                                    <td><span class='category_list'>Zawartość: </span>@Html.DisplayFor(modelItem => item.Content)</td>
+                                    <td><span class='category_list'>Wydawca: </span>@Html.DisplayFor(modelItem => item.BoardGamePublisherName)</td>
+                                    <td><span class='category_list'>Stan: </span>@Html.DisplayFor(modelItem => item.BoardGameStateName)</td>
+                                </tr>
+                            </table>
+
+                            <div class="price_box">
+                                <span class="price_title">Cena wypozyczenia: </span><span class="price">2zl</span>
+                                <span class="day">/dzien</span>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="row">
+                    Page @(Model.BoardGames.PageCount < Model.BoardGames.PageNumber ? 0 : Model.BoardGames.PageNumber) of @Model.BoardGames.PageCount
+
+                    @Html.PagedListPager(Model.BoardGames, page => Url.Action("Index",
+                        new { page, sortByOptionId = ViewBag.CurrentSortOptionId, selectedFilterOption = ViewBag.SelectedFilterOption }))
+                </div>
+                
+                @*<div class="row">
+            <div class="col-12 pagination">
+                <!-- <nav aria-label="Page navigation"> -->
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+                <!-- </nav> -->
+            </div>
+        </div>*@
+            </section>
+        </div>
+    </div>
+</section>
+    
