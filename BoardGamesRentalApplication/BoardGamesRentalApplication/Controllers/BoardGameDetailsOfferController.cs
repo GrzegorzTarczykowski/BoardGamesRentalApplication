@@ -31,7 +31,9 @@ namespace BoardGamesRentalApplication.Controllers
                 Content = boardGame.Content,
                 Description = boardGame.Description,
                 MinimumAge = boardGame.MinimumAge,
-                PlayerCount = boardGame.PlayerCount,
+                GameTimeInMinutes = boardGame.GameTimeInMinutes,
+                MinPlayerCount = boardGame.MinPlayerCount,
+                MaxPlayerCount = boardGame.MaxPlayerCount,
                 BoardGamePublisherName = boardGame.BoardGamePublisher.Name,
                 BoardGameStateName = boardGame.BoardGameState.Name,
                 Image = boardGame.Image
