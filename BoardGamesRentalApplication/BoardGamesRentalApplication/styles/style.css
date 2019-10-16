@@ -100,6 +100,7 @@ h2 {
 
 .category {
     padding: 20px;
+    width: 100%;
 }
 
     .category:nth-child(2n) {
@@ -132,8 +133,26 @@ h2 {
     border: 2px solid #16a085;
 }
 
+div.form-horizontal {
+    vertical-align: top;
+    display: inline-block;
+    padding-inline-end: 0.5vw;
+    padding-inline-start: 0.5vw;
+    border-right: #5a5a5a;
+    border-right: inset;
+}
 
-
+input {
+    float: right;
+    width: 7vw;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #5a5a5a;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* recommended */
 .recommended {
@@ -269,4 +288,120 @@ footer {
     .recommended_panel {
         margin-bottom: 20px;
     }
+}
+
+
+/* products */
+/* category */
+
+.product:nth-child(2n) {
+    background-color: #ebebeb;
+}
+
+.product:nth-child(2n+1) {
+    background-color: #d9d9d9;
+}
+
+.category_list {
+    font-weight: bolder;
+}
+
+.products_list img {
+    float: left;
+    margin-right: 40px;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 250px;
+}
+
+
+.products_list .product {
+    padding: 20px;
+}
+
+/* .products_list h3 {
+    text-shadow: 2px 2px 2px #13816b
+} */
+
+.products_list td {
+    padding: 5px 15px;
+}
+
+.products_list .price,
+.products_list .day {
+    color: #0f836a;
+}
+
+.products_list .price_title {
+    font-size: 150%;
+}
+
+.products_list .price {
+    font-size: 200%;
+}
+
+.products_list .price_box {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.products_list a:link,
+.products_list a:visited {
+    color: #0f836a;
+}
+
+.products_list a:hover {
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #13816b
+}
+
+/* paginator */
+.products_list .pagination {
+    background-color: #535353;
+    padding: 5px;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+}
+/* game-attributes */
+.game-attributes img {
+    max-width: 100%;
+}
+
+
+.game-attributes tr,
+.game-attributes table {
+    width: 100%;
+}
+
+.game-attributes td {
+    width: 50%;
+}
+
+.game-attributes tr:nth-child(2n) {
+    background-color: #ececec;
+}
+
+.game-attributes tr:nth-child(2n+1) {
+    background-color: #f3f3f3;
+}
+
+.game-attributes td {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+    .game-attributes td:nth-child(1) {
+        padding-left: 40px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .game-attributes td:nth-child(2) {
+        padding-left: 40px;
+        text-align: left;
+    }
+
+.game-attributes .rental {
+    margin-top: 30px;
 }

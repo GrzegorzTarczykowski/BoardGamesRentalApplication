@@ -24,7 +24,7 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(int? sortByOptionId, int? page, string selectedFilterOption)
+        public ActionResult BoardGamesOffer(int? sortByOptionId, int? page, string selectedFilterOption)
         {
             BoardGamesCollectionPageData boardGamesCollectionPageData = new BoardGamesCollectionPageData();
 
@@ -53,13 +53,13 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(BoardGamesCollectionPageData boardGamesCollectionPageData)
+        public ActionResult BoardGamesOffer(BoardGamesCollectionPageData boardGamesCollectionPageData)
         {
             if (ModelState.IsValid)
             {
                 string selectedFilterOption = boardGameFilterService.GetSelectedFilterOptionByFilterParameters(boardGamesCollectionPageData.FilterParameters);
                 ViewBag.SelectedFilterOption = selectedFilterOption;
-                return RedirectToAction(nameof(Index), new { selectedFilterOption });
+                return RedirectToAction(nameof(BoardGamesOffer), new { selectedFilterOption });
             }
             return View(boardGamesCollectionPageData);
         }
