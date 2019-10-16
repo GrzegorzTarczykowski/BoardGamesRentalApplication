@@ -60,7 +60,7 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
             IList<BoardGameState> defaultBoardGameStates = new List<BoardGameState>();
 
             defaultBoardGameStates.Add(new BoardGameState() { Name = "Bardzo dobry" });
-            defaultBoardGameStates.Add(new BoardGameState() { Name = "Second Name" });
+            defaultBoardGameStates.Add(new BoardGameState() { Name = "Dobry" });
             defaultBoardGameStates.Add(new BoardGameState() { Name = "Uszkodzony" });
 
             context.BoardGameStates.AddRange(defaultBoardGameStates);
@@ -78,8 +78,8 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                                                     , BoardGamePublisher = defaultBoardGamePublishers[9]
                                                     , BoardGameStateId = 2
                                                     , BoardGameState = defaultBoardGameStates[1]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2]});
+                                                    , BoardGameCategoryId = 1
+                                                    , BoardGameCategory = defaultBoardGameCategories[0]});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Rattus: Szczuro³ap"
                                                     , Description = @"Gra dziêki której nauka staje siê zabaw¹!
@@ -95,10 +95,10 @@ w polskim alfabecie.
                                                     , MaxPlayerCount = 4
                                                     , BoardGamePublisherId = 2
                                                     , BoardGamePublisher = defaultBoardGamePublishers[1]
-                                                    , BoardGameStateId = 2
-                                                    , BoardGameState = defaultBoardGameStates[1]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
+                                                    , BoardGameStateId = 1
+                                                    , BoardGameState = defaultBoardGameStates[0]
+                                                    , BoardGameCategoryId = 2
+                                                    , BoardGameCategory = defaultBoardGameCategories[1] });
 
             defaultBoardGames.Add(new BoardGame() { Name = "Gemino"
                                                     , Description = "Gemino to bardzo przyjemna gra logiczna dla ca³ej rodziny. Proste zasady (podobne do kó³ko i krzy¿yk) umo¿liwiaj¹ ciekaw¹, wci¹gaj¹c¹ rozgrywkê. Dziêki temu, do gry chêtnie zasi¹d¹ zarówno rodzice, dzieci, jak i dziadkowie. Aby wygraæ, trzeba planowaæ swoje ruchy, blokowaæ i przechytrzyæ przeciwników na dwóch planszach jednoczeœnie!"
@@ -125,8 +125,8 @@ w polskim alfabecie.
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
+                                                    , BoardGameCategoryId = 4
+                                                    , BoardGameCategory = defaultBoardGameCategories[3] });
 
             defaultBoardGames.Add(new BoardGame() { Name = "Fifth Name"
                                                     , Description = "Fifth Description"
@@ -139,8 +139,8 @@ w polskim alfabecie.
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
+                                                    , BoardGameCategoryId = 5
+                                                    , BoardGameCategory = defaultBoardGameCategories[4] });
 
             defaultBoardGames.Add(new BoardGame() { Name = "Sixth Name"
                                                     , Description = "Sixth Description"
@@ -153,8 +153,8 @@ w polskim alfabecie.
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
+                                                    , BoardGameCategoryId = 6
+                                                    , BoardGameCategory = defaultBoardGameCategories[5] });
 
             context.BoardGames.AddRange(defaultBoardGames);
 

@@ -28,7 +28,8 @@ namespace BoardGamesRentalApplication.BLL.Service
         public IQueryable<BoardGame> GetAll()
         {
             return boardGameRepository.GetAll(nameof(BoardGame.BoardGamePublisher)
-                                            , nameof(BoardGame.BoardGameState));
+                                            , nameof(BoardGame.BoardGameState)
+                                            , nameof(BoardGame.BoardGameCategory));
         }
 
         public IQueryable<BoardGame> GetFourRecommendedBoardGames()

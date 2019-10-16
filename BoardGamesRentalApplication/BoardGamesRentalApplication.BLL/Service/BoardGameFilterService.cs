@@ -25,7 +25,8 @@ namespace BoardGamesRentalApplication.BLL.Service
         {
             if (filterParametersDict.TryGetValue((int)BoardGameFilterParameter.FilterByBoardGameCategory, out int boardGameCategoryValue))
             {
-                boardGamesQuery.Where(bg => bg.BoardGameCategoryId == boardGameCategoryValue);
+                boardGamesQuery.Where(bg => bg.BoardGameCategory.BoardGameCategoryId == boardGameCategoryValue
+                                        && bg.BoardGameCategoryId == boardGameCategoryValue);
             }
 
             if (filterParametersDict.TryGetValue((int)BoardGameFilterParameter.FilterByMinPlayerCount, out int minPlayerCountValue))

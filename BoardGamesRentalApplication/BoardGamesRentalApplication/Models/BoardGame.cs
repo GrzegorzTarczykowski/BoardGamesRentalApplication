@@ -16,6 +16,7 @@ namespace BoardGamesRentalApplication.Models
         public int MaxPlayerCount { get; set; }
         public int GameTimeInMinutes { get; set; }
         public int MinimumAge { get; set; }
+        public string BoardGameCategoryName { get; set; }
         public string BoardGamePublisherName { get; set; }
         public string BoardGameStateName { get; set; }
     }

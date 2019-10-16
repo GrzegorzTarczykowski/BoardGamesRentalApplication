@@ -10,16 +10,13 @@
     <div class="row">
         <div class="col-3">
             <section class="search_form">
-
-                <form action="">
-                    <div class="row">
-                        @using (Html.BeginForm())
-                        {
-                            @Html.EditorFor(x => x.FilterParameters, new { htmlAttributes = new { @class = "category" } })
-                            <input type="submit" value="Szukaj" />
-                        }
-                    </div>
-                </form>
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.EditorFor(x => x.FilterParameters, new { htmlAttributes = new { @class = "category" } })
+                        <input type="submit" value="Szukaj" />
+                    }
+                </div>
             </section>
 
         </div>
@@ -69,13 +66,16 @@
                                 </tr>
                                 <tr>
                                     <td><span class='category_list'>Opis: </span>@Html.DisplayFor(modelItem => item.Description)</td>
-                                    <td><span class='category_list'>Ilość graczy: </span>@Html.DisplayFor(modelItem => item.MinPlayerCount)</td>
-                                    <td><span class='category_list'>Wiek: </span>@Html.DisplayFor(modelItem => item.MinimumAge)</td>
+                                    <td><span class='category_list'>Minimalna ilość graczy: </span>@Html.DisplayFor(modelItem => item.MinPlayerCount)</td>
+                                    <td><span class='category_list'>Maksymalna ilość graczy: </span>@Html.DisplayFor(modelItem => item.MaxPlayerCount)</td>
+                                    <td><span class='category_list'>Czas rozgrywki: </span>@Html.DisplayFor(modelItem => item.GameTimeInMinutes)</td>
                                 </tr>
                                 <tr>
                                     <td><span class='category_list'>Zawartość: </span>@Html.DisplayFor(modelItem => item.Content)</td>
+                                    <td><span class='category_list'>Wiek: </span>@Html.DisplayFor(modelItem => item.MinimumAge)</td>
                                     <td><span class='category_list'>Wydawca: </span>@Html.DisplayFor(modelItem => item.BoardGamePublisherName)</td>
                                     <td><span class='category_list'>Stan: </span>@Html.DisplayFor(modelItem => item.BoardGameStateName)</td>
+                                    <td><span class='category_list'>Kategoria: </span>@Html.DisplayFor(modelItem => item.BoardGameCategoryName)</td>
                                 </tr>
                             </table>
 

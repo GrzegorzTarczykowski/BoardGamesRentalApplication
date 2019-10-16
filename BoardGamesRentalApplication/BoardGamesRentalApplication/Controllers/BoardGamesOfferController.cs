@@ -30,13 +30,16 @@ namespace BoardGamesRentalApplication.Controllers
 
             ViewBag.SelectedFilterOption = selectedFilterOption;
             boardGamesCollectionPageData.FilterParameters = boardGameFilterService.GetAllFilterParameters();
+
             Dictionary<int, int> filterParametersDict = boardGameFilterService.GetFilterParametersDictByString(selectedFilterOption);
             boardGameFilterService.SetSelectedFilterOptionInFilterParameters(boardGamesCollectionPageData.FilterParameters, filterParametersDict);
             
             ViewBag.CurrentSortOptionId = sortByOptionId;
             boardGamesCollectionPageData.SortingOptions = boardGameSortService.GetAllSortingOptions();
 
-            boardGamesCollectionPageData.BoardGames = boardGameSortService.SortBy(boardGamesService.GetAll(), (BoardGameSortOption)(sortByOptionId ?? 0))
+            IQueryable<DAL.Models.BoardGame> boardGamesQuery = boardGamesService.GetAll();
+            boardGamesQuery = boardGameFilterService.FilterBy(boardGamesQuery, filterParametersDict);
+            boardGamesCollectionPageData.BoardGames = boardGameSortService.SortBy(boardGamesQuery, (BoardGameSortOption)(sortByOptionId ?? 0))
                                                                           .Select(bg => new BoardGame()
                                                                           {
                                                                               BoardGameId = bg.BoardGameId,
@@ -48,6 +51,7 @@ namespace BoardGamesRentalApplication.Controllers
                                                                               MinPlayerCount = bg.MinPlayerCount,
                                                                               MaxPlayerCount = bg.MaxPlayerCount,
                                                                               MinimumAge = bg.MinimumAge,
+                                                                              BoardGameCategoryName = bg.BoardGameCategory.Name,
                                                                               BoardGameStateName = bg.BoardGameState.Name,
                                                                               BoardGamePublisherName = bg.BoardGamePublisher.Name
                                                                           })
