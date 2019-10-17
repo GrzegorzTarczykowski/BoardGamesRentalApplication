@@ -46,4 +46,44 @@ namespace BoardGamesRentalApplication.BLL.Enums
         [Description("Wiek gracza")]
         FilterByAge
     }
+
+    public enum FilterByPlayerCount
+    {
+        [Description("1")]
+        OnePlayer = 1,
+        [Description("2")]
+        TwoPlayers,
+        [Description("3")]
+        ThreePlayers,
+        [Description("4")]
+        FourPlayers,
+        [Description("5")]
+        FivePlayers,
+        [Description("6")]
+        SixPlayers
+    }
+
+    public enum FilterByGameTime
+    {
+        [Description("< 15min")]
+        LessThanFifteenMin = 1,
+        [Description("< 30min")]
+        LessThanThirtyMin,
+        [Description("< 1 godzina")]
+        LessThanAnHour,
+        [Description("> 1 godzina")]
+        ForMoreThanAnHour
+    }
+
+    public enum FilterByAge
+    {
+        [Description("5 - 7 lat")]
+        FromFiveToSevenYears = 1,
+        [Description("8 - 11 lat")]
+        FromEightToElevenYears,
+        [Description("12 - 17 lat")]
+        FromTwelveToSeventeenYears,
+        [Description("18 +")]
+        ForEighteenYears
+    }
 }

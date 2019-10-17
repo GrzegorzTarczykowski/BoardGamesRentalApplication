@@ -27,7 +27,9 @@ namespace BoardGamesRentalApplication.Controllers
                                                     BoardGameId = bg.BoardGameId,
                                                     Name = bg.Name,
                                                     Image = bg.Image,
-                                                    PlayerCount = bg.PlayerCount,
+                                                    GameTimeInMinutes = bg.GameTimeInMinutes,
+                                                    MinPlayerCount = bg.MinPlayerCount,
+                                                    MaxPlayerCount = bg.MaxPlayerCount,
                                                     MinimumAge = bg.MinimumAge
                                                 });
             return View(homePageData);

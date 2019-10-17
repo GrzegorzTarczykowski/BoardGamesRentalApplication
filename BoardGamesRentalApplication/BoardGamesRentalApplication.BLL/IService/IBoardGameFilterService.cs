@@ -11,9 +11,10 @@ namespace BoardGamesRentalApplication.BLL.IService
 {
     public interface IBoardGameFilterService
     {
-        IQueryable<BoardGame> FilterBy(IQueryable<BoardGame> boardGamesQuery, params BoardGameFilterParameter[] filterByParameter);
+        IQueryable<BoardGame> FilterBy(IQueryable<BoardGame> boardGamesQuery, Dictionary<int, int> filterParametersDict);
         IList<Filter> GetAllFilterParameters();
         string GetSelectedFilterOptionByFilterParameters(IList<Filter> filterParameters);
-        void SetSelectedFilterOptionInFilterParameters(IList<Filter> filterParameters, string selectedFilterOption);
+        Dictionary<int, int> GetFilterParametersDictByString(string selectedFilterOption);
+        void SetSelectedFilterOptionInFilterParameters(IList<Filter> filterParameters, Dictionary<int, int> filterParametersDict);
     }
 }

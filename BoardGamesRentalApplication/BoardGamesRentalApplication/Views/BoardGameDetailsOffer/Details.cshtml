@@ -22,8 +22,16 @@
                         <td>@Html.DisplayFor(model => model.Content)</td>
                     </tr>
                     <tr>
-                        <td>Ilość graczy</td>
-                        <td>@Html.DisplayFor(model => model.PlayerCount)</td>
+                        <td>Minimalna ilość graczy</td>
+                        <td>@Html.DisplayFor(model => model.MinPlayerCount)</td>
+                    </tr>
+                    <tr>
+                        <td>Maksymalna ilość graczy</td>
+                        <td>@Html.DisplayFor(model => model.MaxPlayerCount)</td>
+                    </tr>
+                    <tr>
+                        <td>Czas rozgrywki</td>
+                        <td>@Html.DisplayFor(model => model.GameTimeInMinutes)</td>
                     </tr>
                     <tr>
                         <td>Min. wiek</td>
@@ -36,6 +44,10 @@
                     <tr>
                         <td>Status</td>
                         <td>@Html.DisplayFor(model => model.BoardGameStateName)</td>
+                    </tr>
+                    <tr>
+                        <td>Kategoria</td>
+                        <td>@Html.DisplayFor(model => model.BoardGameCategoryName)</td>
                     </tr>
                 </table>
 
