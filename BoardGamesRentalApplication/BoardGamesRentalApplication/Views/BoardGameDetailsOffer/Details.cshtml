@@ -1,0 +1,99 @@
+﻿@model BoardGamesRentalApplication.Models.BoardGame
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <section class="game-attributes">
+        <div class="row">
+            <div class="col-6">
+                <img src="~/images/board1.jpg" alt="">
+            </div>
+            <div class="col-6">
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
+                <table>
+                    <tr>
+                        <td>Kategoria</td>
+                        <td>logiczne</td>
+                    </tr>
+                    <tr>
+                        <td>Zawartość</td>
+                        <td>@Html.DisplayFor(model => model.Content)</td>
+                    </tr>
+                    <tr>
+                        <td>Minimalna ilość graczy</td>
+                        <td>@Html.DisplayFor(model => model.MinPlayerCount)</td>
+                    </tr>
+                    <tr>
+                        <td>Maksymalna ilość graczy</td>
+                        <td>@Html.DisplayFor(model => model.MaxPlayerCount)</td>
+                    </tr>
+                    <tr>
+                        <td>Czas rozgrywki</td>
+                        <td>@Html.DisplayFor(model => model.GameTimeInMinutes)</td>
+                    </tr>
+                    <tr>
+                        <td>Min. wiek</td>
+                        <td>@Html.DisplayFor(model => model.MinimumAge)</td>
+                    </tr>
+                    <tr>
+                        <td>Wydawnictwo</td>
+                        <td>@Html.DisplayFor(model => model.BoardGamePublisherName)</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>@Html.DisplayFor(model => model.BoardGameStateName)</td>
+                    </tr>
+                    <tr>
+                        <td>Kategoria</td>
+                        <td>@Html.DisplayFor(model => model.BoardGameCategoryName)</td>
+                    </tr>
+                </table>
+
+                <form action="">
+                    <div class="row rental">
+                        <div class="col-6"><label for="rental_from">Wypożyczenie od dnia</label></div>
+                        <div class="col-6">
+                            <input type="text" name="rental_from" class="datepicker"
+                                   placeholder="mm/dd/rrrr">
+                        </div>
+                        <div class="col-6"><label for="rental_from">Wypożyczenie do dnia</label></div>
+                        <div class="col-6">
+                            <input type="text" name="rental_to" class="datepicker"
+                                   placeholder="mm/dd/rrrr">
+                        </div>
+                        <input type="submit" value="Wypożycz" class="btn">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="description">
+        <div class="row">
+            <h2>Opis</h2>
+        </div>
+        <div class="row">
+            <p>
+                @Html.DisplayFor(model => model.Description)
+            </p>
+        </div>
+    </section>
+    <footer>
+        <div class="row">
+            <div class="col-4">
+                <a href="#">Strona Główna</a>
+                <a href="#">O nas</a>
+                <a href="#">Nasze gry</a>
+            </div>
+            <div class="col-4">
+                Copyright 2019. All rights reserved.
+            </div>
+            <div class="col-4 logo">
+                LOGO
+            </div>
+        </div>
+    </footer>
+</div>

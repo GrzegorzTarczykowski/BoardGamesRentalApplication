@@ -28,7 +28,8 @@ namespace BoardGamesRentalApplication.BLL.Service
         public IQueryable<BoardGame> GetAll()
         {
             return boardGameRepository.GetAll(nameof(BoardGame.BoardGamePublisher)
-                                            , nameof(BoardGame.BoardGameState));
+                                            , nameof(BoardGame.BoardGameState)
+                                            , nameof(BoardGame.BoardGameCategory));
         }
 
         public IQueryable<BoardGame> GetFourRecommendedBoardGames()
@@ -47,7 +48,9 @@ namespace BoardGamesRentalApplication.BLL.Service
                 edited.BoardGameStateId = boardGame.BoardGameStateId;
                 edited.BoardGamePublisherId = boardGame.BoardGamePublisherId;
                 edited.MinimumAge = boardGame.MinimumAge;
-                edited.PlayerCount = boardGame.PlayerCount;
+                edited.MinPlayerCount = boardGame.MinPlayerCount;
+                edited.MaxPlayerCount = boardGame.MaxPlayerCount;
+                edited.GameTimeInMinutes = boardGame.GameTimeInMinutes;
 
                 boardGameRepository.Edit(edited);
                 boardGameRepository.SaveChanges();

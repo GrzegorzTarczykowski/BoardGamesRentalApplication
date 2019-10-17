@@ -33,10 +33,6 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                     bgbge.ToTable($"{nameof(BoardGame)}{nameof(BoardGameEvaluation)}");
                 });
 
-            modelBuilder.Entity<BoardGame>()
-                .HasMany<BoardGameCategory>(bg => bg.BoardGameCategories)
-                .WithOptional();
-
             //modelBuilder.Entity<BoardGamePublisher>()
             //    .HasMany<BoardGame>(bgp => bgp.BoardGames)
             //    .WithRequired(bg => bg.BoardGamePublisher)

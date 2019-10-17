@@ -64,6 +64,12 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.Entity.6.10.8\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.Configuration.Install" />
@@ -156,7 +162,9 @@
     <Compile Include="Autofac\UnitOfWorkModule.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\BoardGameController.cs" />
+    <Compile Include="Controllers\BoardGameDetailsOfferController.cs" />
     <Compile Include="Controllers\BoardGamesCollectionController.cs" />
+    <Compile Include="Controllers\BoardGamesOfferController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -165,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BoardGame.cs" />
+    <Compile Include="Models\BoardGamesCollectionPageData.cs" />
     <Compile Include="Models\HomePageData.cs" />
     <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,6 +185,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fa-brands-400.svg" />
     <Content Include="fonts\fa-regular-400.svg" />
@@ -242,6 +252,10 @@
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\BoardGamesCollection\Edit.cshtml" />
     <Content Include="Views\BoardGamesCollection\Create.cshtml" />
+    <Content Include="Views\BoardGamesOffer\Index.cshtml" />
+    <Content Include="Views\Home\EditorTemplates\Filter.cshtml" />
+    <Content Include="Views\BoardGamesOffer\EditorTemplates\Filter.cshtml" />
+    <Content Include="Views\BoardGameDetailsOffer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
