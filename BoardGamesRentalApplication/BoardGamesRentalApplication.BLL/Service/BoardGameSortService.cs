@@ -33,10 +33,10 @@ namespace BoardGamesRentalApplication.BLL.Service
                     boardGamesQuery = boardGamesQuery.OrderByDescending(bg => bg.Name);
                     break;
                 case BoardGameSortOption.SortAscendingByNumberOfPlayers:
-                    boardGamesQuery = boardGamesQuery.OrderBy(bg => bg.PlayerCount);
+                    boardGamesQuery = boardGamesQuery.OrderBy(bg => bg.MinPlayerCount);
                     break;
                 case BoardGameSortOption.SortDescendingByNumberOfPlayers:
-                    boardGamesQuery = boardGamesQuery.OrderByDescending(bg => bg.PlayerCount);
+                    boardGamesQuery = boardGamesQuery.OrderByDescending(bg => bg.MinPlayerCount);
                     break;
                 default:
                     boardGamesQuery = boardGamesQuery.OrderBy(bg => bg.Name);

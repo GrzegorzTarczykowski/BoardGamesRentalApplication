@@ -45,7 +45,9 @@ namespace BoardGamesRentalApplication.Controllers
                 Description = bg.Description,
                 Content = bg.Content,
                 Image = bg.Image,
-                PlayerCount = bg.PlayerCount,
+                GameTimeInMinutes = bg.GameTimeInMinutes,
+                MinPlayerCount = bg.MinPlayerCount,
+                MaxPlayerCount = bg.MaxPlayerCount,
                 MinimumAge = bg.MinimumAge,
                 BoardGameStateName = bg.BoardGameState.Name,
                 BoardGamePublisherName = bg.BoardGamePublisher.Name
@@ -72,7 +74,9 @@ namespace BoardGamesRentalApplication.Controllers
                     Description = collection["Description"],
                     Content = collection["Content"],
                     MinimumAge = int.Parse(collection["MinimumAge"]),
-                    PlayerCount = int.Parse(collection["PlayerCount"]),
+                    GameTimeInMinutes = int.Parse(collection["GameTimeInMinutes"]),
+                    MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
+                    MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
                     BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
                 });
@@ -100,7 +104,9 @@ namespace BoardGamesRentalApplication.Controllers
                     Description = collection["Description"],
                     Content = collection["Content"],
                     MinimumAge = int.Parse(collection["MinimumAge"]),
-                    PlayerCount = int.Parse(collection["PlayerCount"]),
+                    GameTimeInMinutes = int.Parse(collection["GameTimeInMinutes"]),
+                    MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
+                    MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
                     BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
                 });

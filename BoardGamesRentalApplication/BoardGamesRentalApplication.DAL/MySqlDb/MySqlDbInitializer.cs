@@ -60,7 +60,7 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
             IList<BoardGameState> defaultBoardGameStates = new List<BoardGameState>();
 
             defaultBoardGameStates.Add(new BoardGameState() { Name = "Bardzo dobry" });
-            defaultBoardGameStates.Add(new BoardGameState() { Name = "Second Name" });
+            defaultBoardGameStates.Add(new BoardGameState() { Name = "Dobry" });
             defaultBoardGameStates.Add(new BoardGameState() { Name = "Uszkodzony" });
 
             context.BoardGameStates.AddRange(defaultBoardGameStates);
@@ -71,46 +71,90 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                                                     , Description = "Warcaby to klasyczna gra towarzyska znana na ca³ym œwiecie od niemal¿e oœmiuset lat. Celem gry jest „zbicie” wszystkich pionków przeciwnika."
                                                     , Content = "Plansza do gry 24 pionki w dwóch kolorach (czarnym i bia³ym)"
                                                     , MinimumAge = 5
-                                                    , PlayerCount = 2
+                                                    , GameTimeInMinutes = 15
+                                                    , MinPlayerCount = 2
+                                                    , MaxPlayerCount = 2
                                                     , BoardGamePublisherId = 10
                                                     , BoardGamePublisher = defaultBoardGamePublishers[9]
                                                     , BoardGameStateId = 2
                                                     , BoardGameState = defaultBoardGameStates[1]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2]});
-            defaultBoardGames.Add(new BoardGame() { Name = "Second Name"
-                                                    , Description = "Second Description"
-                                                    , Content = "Second Content"
-                                                    , MinimumAge = 2
-                                                    , PlayerCount = 2
+                                                    , BoardGameCategoryId = 1
+                                                    , BoardGameCategory = defaultBoardGameCategories[0]});
+
+            defaultBoardGames.Add(new BoardGame() { Name = "Rattus: Szczuro³ap"
+                                                    , Description = @"Gra dziêki której nauka staje siê zabaw¹!
+¯etony z literkami uk³adamy zakryte na stole,
+planszê z piramid¹ uk³adamy przed graj¹cymi.Uczestnicy zabawy maj¹ za zadanie zbudowaæ na planszy piramidê z liter.Odkrywaj¹ kolejne literki i dok³adaj¹ na planszê,
+musz¹ przy tym zachowaæ odpowiedni¹ kolejnoœæ liter.Gra pomaga w nauce poprawnego nazywania liter i w nauce kolejnoœci liter
+w polskim alfabecie.
+"
+                                                    , Content = "32 ¿etony literek plansza 4 pionki instrukcja"
+                                                    , MinimumAge = 5
+                                                    , GameTimeInMinutes = 35
+                                                    , MinPlayerCount = 2
+                                                    , MaxPlayerCount = 4
                                                     , BoardGamePublisherId = 2
                                                     , BoardGamePublisher = defaultBoardGamePublishers[1]
-                                                    , BoardGameStateId = 2
-                                                    , BoardGameState = defaultBoardGameStates[1]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
-            defaultBoardGames.Add(new BoardGame() { Name = "Third Name"
-                                                    , Description = "Third Description"
-                                                    , Content = "Third Content"
-                                                    , MinimumAge = 3
-                                                    , PlayerCount = 3
+                                                    , BoardGameStateId = 1
+                                                    , BoardGameState = defaultBoardGameStates[0]
+                                                    , BoardGameCategoryId = 2
+                                                    , BoardGameCategory = defaultBoardGameCategories[1] });
+
+            defaultBoardGames.Add(new BoardGame() { Name = "Gemino"
+                                                    , Description = "Gemino to bardzo przyjemna gra logiczna dla ca³ej rodziny. Proste zasady (podobne do kó³ko i krzy¿yk) umo¿liwiaj¹ ciekaw¹, wci¹gaj¹c¹ rozgrywkê. Dziêki temu, do gry chêtnie zasi¹d¹ zarówno rodzice, dzieci, jak i dziadkowie. Aby wygraæ, trzeba planowaæ swoje ruchy, blokowaæ i przechytrzyæ przeciwników na dwóch planszach jednoczeœnie!"
+                                                    , Content = "2 dwustronne plansze 56 p³ytek instrukcja"
+                                                    , MinimumAge = 7
+                                                    , GameTimeInMinutes = 70
+                                                    , MinPlayerCount = 2
+                                                    , MaxPlayerCount = 4
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 3
                                                     , BoardGameCategory = defaultBoardGameCategories[2] });
+
             defaultBoardGames.Add(new BoardGame() { Name = "Fourth Name"
                                                     , Description = "Fourth Description"
                                                     , Content = "Fourth Content"
-                                                    , MinimumAge = 4
-                                                    , PlayerCount = 4
+                                                    , MinimumAge = 10
+                                                    , GameTimeInMinutes = 35
+                                                    , MinPlayerCount = 4
+                                                    , MaxPlayerCount = 6
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
-                                                    , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
+                                                    , BoardGameCategoryId = 4
+                                                    , BoardGameCategory = defaultBoardGameCategories[3] });
+
+            defaultBoardGames.Add(new BoardGame() { Name = "Fifth Name"
+                                                    , Description = "Fifth Description"
+                                                    , Content = "Fifth Content"
+                                                    , MinimumAge = 15
+                                                    , GameTimeInMinutes = 10
+                                                    , MinPlayerCount = 2
+                                                    , MaxPlayerCount = 5
+                                                    , BoardGamePublisherId = 3
+                                                    , BoardGamePublisher = defaultBoardGamePublishers[2]
+                                                    , BoardGameStateId = 3
+                                                    , BoardGameState = defaultBoardGameStates[2]
+                                                    , BoardGameCategoryId = 5
+                                                    , BoardGameCategory = defaultBoardGameCategories[4] });
+
+            defaultBoardGames.Add(new BoardGame() { Name = "Sixth Name"
+                                                    , Description = "Sixth Description"
+                                                    , Content = "Sixth Content"
+                                                    , MinimumAge = 18
+                                                    , GameTimeInMinutes = 45
+                                                    , MinPlayerCount = 2
+                                                    , MaxPlayerCount = 6
+                                                    , BoardGamePublisherId = 3
+                                                    , BoardGamePublisher = defaultBoardGamePublishers[2]
+                                                    , BoardGameStateId = 3
+                                                    , BoardGameState = defaultBoardGameStates[2]
+                                                    , BoardGameCategoryId = 6
+                                                    , BoardGameCategory = defaultBoardGameCategories[5] });
 
             context.BoardGames.AddRange(defaultBoardGames);
 
