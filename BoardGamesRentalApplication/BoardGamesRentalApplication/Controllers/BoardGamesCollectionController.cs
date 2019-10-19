@@ -1,6 +1,7 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.Service;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BoardGame = BoardGamesRentalApplication.Models.BoardGame;
@@ -13,25 +14,33 @@ namespace BoardGamesRentalApplication.Controllers
         private readonly IBoardGamePublishersService publishersService;
         private readonly IBoardGameStatesService statesService;
         private readonly IUserTypeService userTypeService;
-        private readonly ISelectListService selectListService;
+        private readonly IBoardGameCategoryService categoryService;
 
-        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGamePublishersService publishersService, IBoardGameStatesService statesService, ISelectListService selectListService)
+        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGamePublishersService publishersService, IBoardGameStatesService statesService, IBoardGameCategoryService categoryService)
         {
             this.boardGamesService = boardGamesService;
             this.publishersService = publishersService;
             this.statesService = statesService;
-            this.selectListService = selectListService;
+            this.categoryService = categoryService;
             this.userTypeService = new UserTypeService(this, RedirectToAction("Index", "Home"));
 
-            var allPublishers = publishersService.GetAll();
-            var publisherIds = allPublishers.Select(p => p.BoardGamePublisherId.ToString()).ToList();
-            var publisherNames = allPublishers.Select(p => p.Name).ToList();
-            ViewBag.Publishers = selectListService.Retrieve(publisherIds, publisherNames);
+            var allPublishers = publishersService.GetAll().AsEnumerable();
+            List<SelectListItem> listOfPublishers = new List<SelectListItem>();
+            foreach (var publisher in allPublishers)
+                listOfPublishers.Add(new SelectListItem { Value = publisher.BoardGamePublisherId.ToString(), Text = publisher.Name });
+            ViewBag.Publishers = new SelectList(listOfPublishers, "Value", "Text");
 
-            var allStates = statesService.GetAll();
-            var stateIds = allStates.Select(s => s.BoardGameStateId.ToString()).ToList();
-            var stateNames = allStates.Select(s => s.Name).ToList();
-            ViewBag.States = selectListService.Retrieve(stateIds, stateNames);
+            var allStates = statesService.GetAll().AsEnumerable();
+            List<SelectListItem> listOfStates = new List<SelectListItem>();
+            foreach (var state in allStates)
+                listOfStates.Add(new SelectListItem { Value = state.BoardGameStateId.ToString(), Text = state.Name });
+            ViewBag.States = new SelectList(listOfStates, "Value", "Text");
+
+            var allCategories = categoryService.GetAll().AsEnumerable();
+            List<SelectListItem> listOfCategories = new List<SelectListItem>();
+            foreach (var category in allCategories)
+                listOfCategories.Add(new SelectListItem { Value = category.BoardGameCategoryId.ToString(), Text = category.Name });
+            ViewBag.Categories = new SelectList(listOfCategories, "Value", "Text");
         }
 
         // GET: BoardGamesCollection
@@ -49,7 +58,8 @@ namespace BoardGamesRentalApplication.Controllers
                 MaxPlayerCount = bg.MaxPlayerCount,
                 MinimumAge = bg.MinimumAge,
                 BoardGameStateName = bg.BoardGameState.Name,
-                BoardGamePublisherName = bg.BoardGamePublisher.Name
+                BoardGamePublisherName = bg.BoardGamePublisher.Name,
+                BoardGameCategoryName = bg.BoardGameCategory.Name
             }).ToList()), UserType.Administrator);
         }
 
@@ -77,7 +87,8 @@ namespace BoardGamesRentalApplication.Controllers
                     MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
-                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
+                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue),
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
                 });
                 return RedirectToAction("BoardGamesCollection");
             }, UserType.Administrator);
@@ -107,7 +118,8 @@ namespace BoardGamesRentalApplication.Controllers
                     MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
-                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
+                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue),
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator);
