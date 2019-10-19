@@ -164,11 +164,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Service\ISelectListService.cs" />
     <Compile Include="Models\BoardGame.cs" />
     <Compile Include="Models\HomePageData.cs" />
     <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IUserTypeService.cs" />
+    <Compile Include="Service\SelectListService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
