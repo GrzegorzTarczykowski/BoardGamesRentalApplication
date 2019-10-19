@@ -1,0 +1,11 @@
+﻿@model BoardGamesRentalApplication.BLL.Models.Filter
+<div class="category">
+    @Html.HiddenFor(x => x.ID)
+    <h4>@Model.Header</h4>
+    @foreach (var a in Model.FilterOptions)
+    {
+        <p>
+            @Html.RadioButtonFor(b => b.SelectedFilterOption, a.FilterOptionId)  @a.FilterOptionText
+        </p>
+    }
+</div>
