@@ -1,0 +1,105 @@
+﻿@model BoardGamesRentalApplication.DAL.Models.BoardGame
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BoardGame</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinPlayerCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinPlayerCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxPlayerCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxPlayerCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameTimeInMinutes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameTimeInMinutes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinimumAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinimumAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardGameCategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardGameCategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardGamePublisherId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardGamePublisherId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardGameStateId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardGameStateId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

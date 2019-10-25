@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BoardGamesRentalApplication.Models.BoardGame>
+﻿@using BoardGamesRentalApplication.Service
+@model IEnumerable<BoardGamesRentalApplication.Models.BoardGame>
 
 @{
     ViewBag.Title = "BoardGamesCollection";
@@ -33,16 +34,23 @@
         <th>
             @Html.DisplayNameFor(model => model.BoardGameStateName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoardGameCategoryName)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@{ 
+    IEllipsisService ellipsisService = new EllipsisService();
+    int maxChars = 100;
+    foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @ellipsisService.EllipsisOf(item.Description, maxChars)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Content)
@@ -60,10 +68,14 @@
             @Html.DisplayFor(modelItem => item.BoardGameStateName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BoardGameId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BoardGameId })
+            @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
         </td>
     </tr>
+    }
 }
 
 </table>

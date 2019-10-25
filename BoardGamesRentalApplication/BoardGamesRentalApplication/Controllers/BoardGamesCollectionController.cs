@@ -124,5 +124,23 @@ namespace BoardGamesRentalApplication.Controllers
                 return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator);
         }
+
+        public ActionResult Delete(int id)
+        {
+            return userTypeService.Authorize(() =>
+            {
+                return View(boardGamesService.FindById(id));
+            }, UserType.Administrator);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            return userTypeService.Authorize(() => {
+                boardGamesService.RemoveBoardGame(id);
+                return RedirectToAction(nameof(BoardGamesCollection));
+                }, UserType.Administrator);
+        }
     }
 }

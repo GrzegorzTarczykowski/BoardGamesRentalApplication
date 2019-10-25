@@ -177,6 +177,8 @@
     <Compile Include="Models\HomePageData.cs" />
     <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\EllipsisService.cs" />
+    <Compile Include="Service\IEllipsisService.cs" />
     <Compile Include="Service\IUserTypeService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
   </ItemGroup>
@@ -256,6 +258,7 @@
     <Content Include="Views\Home\EditorTemplates\Filter.cshtml" />
     <Content Include="Views\BoardGamesOffer\EditorTemplates\Filter.cshtml" />
     <Content Include="Views\BoardGameDetailsOffer\Details.cshtml" />
+    <Content Include="Views\BoardGamesCollection\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
