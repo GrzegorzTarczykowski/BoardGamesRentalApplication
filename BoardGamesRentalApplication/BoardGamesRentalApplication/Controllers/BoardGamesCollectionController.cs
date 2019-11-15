@@ -117,9 +117,9 @@ namespace BoardGamesRentalApplication.Controllers
                     GameTimeInMinutes = int.Parse(collection["GameTimeInMinutes"]),
                     MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
-                    BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
-                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue),
-                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
+                    BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisherId").AttemptedValue),
+                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameStateId").AttemptedValue),
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategoryId").AttemptedValue)
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator);

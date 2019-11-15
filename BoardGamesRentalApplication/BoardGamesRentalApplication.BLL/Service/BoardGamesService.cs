@@ -51,6 +51,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                 edited.MinPlayerCount = boardGame.MinPlayerCount;
                 edited.MaxPlayerCount = boardGame.MaxPlayerCount;
                 edited.GameTimeInMinutes = boardGame.GameTimeInMinutes;
+                edited.BoardGameCategoryId = boardGame.BoardGameCategoryId;
 
                 boardGameRepository.Edit(edited);
                 boardGameRepository.SaveChanges();

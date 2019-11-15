@@ -1,18 +1,18 @@
 ﻿@model BoardGamesRentalApplication.DAL.Models.BoardGame
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edytuj";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>BoardGame</h4>
+        <h4>Gra planszowa</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -74,24 +74,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BoardGamePublisher, "Wydawca gry", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BoardGamePublisher, ViewBag.Publishers as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGamePublisher, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.BoardGamePublisherId, ViewBag.Publishers as SelectList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BoardGamePublisherId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.BoardGameState, "Stan gry", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BoardGameState, ViewBag.States as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGameState, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.BoardGameStateId, ViewBag.States as SelectList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BoardGameStateId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.BoardGameCategory, "Kategoria", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BoardGameCategory, ViewBag.Categories as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGameCategory, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.BoardGameCategoryId, ViewBag.Categories as SelectList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BoardGameCategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
 
