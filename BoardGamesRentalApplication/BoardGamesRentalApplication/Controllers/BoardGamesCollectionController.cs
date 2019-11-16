@@ -90,7 +90,7 @@ namespace BoardGamesRentalApplication.Controllers
                     BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue),
                     BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
                 });
-                return RedirectToAction("BoardGamesCollection");
+                return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator);
         }
 
