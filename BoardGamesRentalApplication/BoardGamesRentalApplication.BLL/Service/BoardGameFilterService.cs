@@ -25,18 +25,27 @@ namespace BoardGamesRentalApplication.BLL.Service
         {
             if (filterParametersDict.TryGetValue((int)BoardGameFilterParameter.FilterByBoardGameCategory, out int boardGameCategoryValue))
             {
-                boardGamesQuery.Where(bg => bg.BoardGameCategory.BoardGameCategoryId == boardGameCategoryValue
+                if (boardGameCategoryValue > 0)
+                {
+                    boardGamesQuery = boardGamesQuery.Where(bg => bg.BoardGameCategory.BoardGameCategoryId == boardGameCategoryValue
                                         && bg.BoardGameCategoryId == boardGameCategoryValue);
+                }
             }
 
             if (filterParametersDict.TryGetValue((int)BoardGameFilterParameter.FilterByMinPlayerCount, out int minPlayerCountValue))
             {
-                boardGamesQuery.Where(bg => bg.MinPlayerCount >= minPlayerCountValue);
+                if (minPlayerCountValue > 0)
+                {
+                    boardGamesQuery = boardGamesQuery.Where(bg => bg.MinPlayerCount >= minPlayerCountValue);
+                }
             }
 
             if (filterParametersDict.TryGetValue((int)BoardGameFilterParameter.FilterByMaxPlayerCount, out int maxPlayerCountValue))
             {
-                boardGamesQuery.Where(bg => bg.MaxPlayerCount <= maxPlayerCountValue);
+                if (maxPlayerCountValue > 0)
+                {
+                    boardGamesQuery = boardGamesQuery.Where(bg => bg.MaxPlayerCount <= maxPlayerCountValue);
+                }
             }
 
             if (filterParametersDict.TryGetValue((int)BoardGameFilterParameter.FilterByGameTime, out int gameTimeValue))
