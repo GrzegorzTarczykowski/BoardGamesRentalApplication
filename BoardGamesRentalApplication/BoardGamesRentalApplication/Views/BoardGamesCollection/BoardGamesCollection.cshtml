@@ -1,5 +1,8 @@
 ﻿@using BoardGamesRentalApplication.Service
-@model IEnumerable<BoardGamesRentalApplication.Models.BoardGame>
+@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model IPagedList<BoardGamesRentalApplication.Models.BoardGame>
 
 @{
     ViewBag.Title = "BoardGamesCollection";
@@ -11,71 +14,89 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<div class="row">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("BoardGamesCollection",
+        new { page }))
+</div>
+<table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nazwa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Opis
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Content)
+            Zawartość
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MinPlayerCount)
+            Minimalna liczba graczy
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MinimumAge)
+            Maksymalna liczba graczy
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BoardGamePublisherName)
+            Minimalny wiek
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BoardGameStateName)
+            Wydawca
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BoardGameCategoryName)
+            Stan
+        </th>
+        <th>
+            Kategoria
         </th>
         <th></th>
     </tr>
 
-@{ 
-    IEllipsisService ellipsisService = new EllipsisService();
-    int maxChars = 100;
-    foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @ellipsisService.EllipsisOf(item.Description, maxChars)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinPlayerCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinimumAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BoardGamePublisherName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BoardGameStateName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
-        </td>
-    </tr>
+    @{
+        IEllipsisService ellipsisService = new EllipsisService();
+        int maxChars = 100;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @ellipsisService.EllipsisOf(item.Description, maxChars)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinPlayerCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxPlayerCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BoardGamePublisherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BoardGameStateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
+                </td>
+            </tr>
+        }
     }
-}
-
 </table>
+
+<div class="row">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("BoardGamesCollection",
+        new { page }))
+</div>

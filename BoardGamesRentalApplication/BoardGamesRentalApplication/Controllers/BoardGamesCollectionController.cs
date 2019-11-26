@@ -1,6 +1,7 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.Service;
+using PagedList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -11,42 +12,23 @@ namespace BoardGamesRentalApplication.Controllers
     public class BoardGamesCollectionController : Controller
     {
         private readonly IBoardGamesService boardGamesService;
-        private readonly IBoardGamePublishersService publishersService;
-        private readonly IBoardGameStatesService statesService;
         private readonly IUserTypeService userTypeService;
-        private readonly IBoardGameCategoryService categoryService;
+        private readonly IBoardGameFilterService boardGameFilterService;
+        private readonly IBoardGameSortService boardGameSortService;
 
-        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGamePublishersService publishersService, IBoardGameStatesService statesService, IBoardGameCategoryService categoryService)
+        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGameFilterService boardGameFilterService, IBoardGameSortService boardGameSortService)
         {
             this.boardGamesService = boardGamesService;
-            this.publishersService = publishersService;
-            this.statesService = statesService;
-            this.categoryService = categoryService;
+            this.boardGameFilterService = boardGameFilterService;
+            this.boardGameSortService = boardGameSortService;
             this.userTypeService = new UserTypeService(this, RedirectToAction("Index", "Home"));
-
-            var allPublishers = publishersService.GetAll().AsEnumerable();
-            List<SelectListItem> listOfPublishers = new List<SelectListItem>();
-            foreach (var publisher in allPublishers)
-                listOfPublishers.Add(new SelectListItem { Value = publisher.BoardGamePublisherId.ToString(), Text = publisher.Name });
-            ViewBag.Publishers = new SelectList(listOfPublishers, "Value", "Text");
-
-            var allStates = statesService.GetAll().AsEnumerable();
-            List<SelectListItem> listOfStates = new List<SelectListItem>();
-            foreach (var state in allStates)
-                listOfStates.Add(new SelectListItem { Value = state.BoardGameStateId.ToString(), Text = state.Name });
-            ViewBag.States = new SelectList(listOfStates, "Value", "Text");
-
-            var allCategories = categoryService.GetAll().AsEnumerable();
-            List<SelectListItem> listOfCategories = new List<SelectListItem>();
-            foreach (var category in allCategories)
-                listOfCategories.Add(new SelectListItem { Value = category.BoardGameCategoryId.ToString(), Text = category.Name });
-            ViewBag.Categories = new SelectList(listOfCategories, "Value", "Text");
         }
 
         // GET: BoardGamesCollection
-        public ActionResult BoardGamesCollection()
+        public ActionResult BoardGamesCollection(int? page)
         {
-            return userTypeService.Authorize(() => View(boardGamesService.GetAll().Select(bg => new BoardGame()
+            IQueryable<DAL.Models.BoardGame> boardGamesQuery = boardGamesService.GetAll();
+            return userTypeService.Authorize(() => View(boardGameSortService.SortBy(boardGamesQuery, BLL.Enums.BoardGameSortOption.SortAscendingByName).Select(bg => new BoardGame()
             {
                 BoardGameId = bg.BoardGameId,
                 Name = bg.Name,
@@ -60,7 +42,7 @@ namespace BoardGamesRentalApplication.Controllers
                 BoardGameStateName = bg.BoardGameState.Name,
                 BoardGamePublisherName = bg.BoardGamePublisher.Name,
                 BoardGameCategoryName = bg.BoardGameCategory.Name
-            }).ToList()), UserType.Administrator);
+            }).ToPagedList(page ?? 1, 5)), UserType.Administrator);
         }
 
         public ActionResult Create()
