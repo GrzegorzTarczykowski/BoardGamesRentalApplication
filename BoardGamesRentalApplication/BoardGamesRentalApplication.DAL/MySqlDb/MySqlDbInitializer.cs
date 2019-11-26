@@ -185,6 +185,14 @@ w polskim alfabecie.
                 LastLogin = DateTime.MinValue
             };
             context.Users.Add(adminUser);
+
+            IList<ReservationStatus> defaultReservationStatuses = new List<ReservationStatus>();
+
+            defaultReservationStatuses.Add(new ReservationStatus() { Name = "Rozpoczêta" });
+            defaultReservationStatuses.Add(new ReservationStatus() { Name = "Zakoñczona" });
+            defaultReservationStatuses.Add(new ReservationStatus() { Name = "Przetrzymanie" });
+
+            context.ReservationStatuses.AddRange(defaultReservationStatuses);
         }
     }
 }

@@ -31,6 +31,7 @@ namespace BoardGamesRentalApplication.Controllers
             {
                 case LoginServiceResponse.LoginSuccessful:
                     ModelState.Clear();
+                    Session["UserId"] = userEntity.UserId;
                     Session["Username"] = userEntity.Username;
                     Session["UserType"] = userEntity.UserType;
                     ViewBag.LoginSuccessfulMessage = $"Zalogowano jako {userEntity.Username}.";
