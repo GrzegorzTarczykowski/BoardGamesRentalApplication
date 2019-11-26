@@ -21,6 +21,7 @@ namespace BoardGamesRentalApplication.Controllers
         public ActionResult Details(int boardGameId)
         {
             BoardGame boardGame = boardGameRepository.FindBy(bg => bg.BoardGameId == boardGameId
+                                                            , nameof(BoardGameCategory)
                                                             , nameof(BoardGamePublisher)
                                                             , nameof(BoardGameState))
                                                             .FirstOrDefault();
@@ -39,6 +40,12 @@ namespace BoardGamesRentalApplication.Controllers
                 BoardGameStateName = boardGame.BoardGameState.Name,
                 Image = boardGame.Image
             });
+        }
+
+        [HttpGet]
+        public ActionResult Rental(DateTime rental_from, DateTime rental_to, int boardGameId)
+        {
+            return RedirectToAction("Index", "Rental", new { rental_from, rental_to, boardGameId });
         }
     }
 }

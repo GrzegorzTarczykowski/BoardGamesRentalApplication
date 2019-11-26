@@ -18,6 +18,8 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
         public DbSet<BoardGameNote> BoardGameNotes { get; set; }
         public DbSet<BoardGamePublisher> BoardGamePublishers { get; set; }
         public DbSet<BoardGameState> BoardGameStates { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<ReservationStatus> ReservationStatuses { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
