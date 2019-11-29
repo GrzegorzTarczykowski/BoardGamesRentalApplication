@@ -163,6 +163,7 @@
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\BoardGameController.cs" />
     <Compile Include="Controllers\BoardGameDetailsOfferController.cs" />
+    <Compile Include="Controllers\BoardGamePublisherController.cs" />
     <Compile Include="Controllers\BoardGamesCollectionController.cs" />
     <Compile Include="Controllers\BoardGamesOfferController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -178,6 +179,8 @@
     <Compile Include="Models\HomePageData.cs" />
     <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\EllipsisService.cs" />
+    <Compile Include="Service\IEllipsisService.cs" />
     <Compile Include="Service\IUserTypeService.cs" />
     <Compile Include="Service\UserTypeService.cs" />
   </ItemGroup>
@@ -257,6 +260,11 @@
     <Content Include="Views\Home\EditorTemplates\Filter.cshtml" />
     <Content Include="Views\BoardGamesOffer\EditorTemplates\Filter.cshtml" />
     <Content Include="Views\BoardGameDetailsOffer\Details.cshtml" />
+    <Content Include="Views\BoardGamesCollection\Delete.cshtml" />
+    <Content Include="Views\BoardGamePublisher\Index.cshtml" />
+    <Content Include="Views\BoardGamePublisher\Create.cshtml" />
+    <Content Include="Views\BoardGamePublisher\Edit.cshtml" />
+    <Content Include="Views\BoardGamePublisher\Delete.cshtml" />
     <Content Include="Views\Rental\Rental.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
   </ItemGroup>
