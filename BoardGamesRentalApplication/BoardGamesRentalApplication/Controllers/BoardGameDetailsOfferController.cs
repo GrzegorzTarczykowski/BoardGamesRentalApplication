@@ -1,5 +1,6 @@
 ﻿using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
+using BoardGamesRentalApplication.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,13 @@ namespace BoardGamesRentalApplication.Controllers
 {
     public class BoardGameDetailsOfferController : Controller
     {
-        IRepository<BoardGame> boardGameRepository;
+        readonly IRepository<BoardGame> boardGameRepository;
+        private readonly IUserTypeService userTypeService;
 
         public BoardGameDetailsOfferController(IRepository<BoardGame> boardGameRepository)
         {
             this.boardGameRepository = boardGameRepository;
+            this.userTypeService = new UserTypeService(this, RedirectToAction("Index", "Home"));
         }
 
         [HttpGet]
@@ -45,7 +48,10 @@ namespace BoardGamesRentalApplication.Controllers
         [HttpGet]
         public ActionResult Rental(DateTime rental_from, DateTime rental_to, int boardGameId)
         {
-            return RedirectToAction("Index", "Rental", new { rental_from, rental_to, boardGameId });
+            return userTypeService.Authorize(() =>
+            {
+                return RedirectToAction("Index", "Rental", new { rental_from, rental_to, boardGameId });
+            }, UserType.Regular);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace BoardGamesRentalApplication.DAL.Models
         public int MaxPlayerCount { get; set; }
         public int GameTimeInMinutes { get; set; }
         public int MinimumAge { get; set; }
+        public int Quantity { get; set; }
 
         public int BoardGameCategoryId { get; set; }
         public BoardGameCategory BoardGameCategory { get; set; }
