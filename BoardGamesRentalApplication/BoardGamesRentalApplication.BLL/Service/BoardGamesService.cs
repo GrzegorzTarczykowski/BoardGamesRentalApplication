@@ -51,8 +51,19 @@ namespace BoardGamesRentalApplication.BLL.Service
                 edited.MinPlayerCount = boardGame.MinPlayerCount;
                 edited.MaxPlayerCount = boardGame.MaxPlayerCount;
                 edited.GameTimeInMinutes = boardGame.GameTimeInMinutes;
+                edited.BoardGameCategoryId = boardGame.BoardGameCategoryId;
 
                 boardGameRepository.Edit(edited);
+                boardGameRepository.SaveChanges();
+            }
+        }
+
+        public void RemoveBoardGame(int id)
+        {
+            BoardGame gameBeingDeleted = boardGameRepository.FindById(id);
+            if (gameBeingDeleted != null)
+            {
+                boardGameRepository.Remove(new object[] { id });
                 boardGameRepository.SaveChanges();
             }
         }
