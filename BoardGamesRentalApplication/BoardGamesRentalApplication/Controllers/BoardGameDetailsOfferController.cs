@@ -46,11 +46,11 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult Rental(DateTime rental_from, DateTime rental_to, int boardGameId)
+        public ActionResult Rental(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count)
         {
             return userTypeService.Authorize(() =>
             {
-                return RedirectToAction("Index", "Rental", new { rental_from, rental_to, boardGameId });
+                return RedirectToAction("Index", "Rental", new { rentalStartDate, rentalEndDate, boardGameId, boardGameName, count });
             }, UserType.Regular);
         }
     }
