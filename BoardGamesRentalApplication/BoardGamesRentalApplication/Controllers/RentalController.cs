@@ -1,4 +1,7 @@
-﻿using BoardGamesRentalApplication.DAL.Models;
+﻿using BoardGamesRentalApplication.BLL.Enums;
+using BoardGamesRentalApplication.BLL.IService;
+using BoardGamesRentalApplication.DAL.Models;
+using BoardGamesRentalApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,36 +12,56 @@ namespace BoardGamesRentalApplication.Controllers
 {
     public class RentalController : Controller
     {
-        [HttpGet]
-        public ActionResult Index(DateTime rental_from, DateTime rental_to, int boardGameId)
+        private readonly IReservationService reservationService;
+
+        public RentalController(IReservationService reservationService)
         {
-            return View(new Reservation
+            this.reservationService = reservationService;
+        }
+
+        [HttpGet]
+        public ActionResult Index(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count)
+        {
+            Models.Reservation reservation = new Models.Reservation
             {
-                RentalStartDate = rental_from,
-                RentalEndDate = rental_to,
+                RentalStartDate = rentalStartDate,
+                RentalEndDate = rentalEndDate,
                 BoardGameId = boardGameId,
-                UserId = 1, //(int)Session["UserId"],
-                Count = 1,
-                ReservationStatusId = 1
-            });
+                Count = count,
+                BoardGameName = boardGameName
+            };
+            return View(reservation);
         }
 
         [HttpPost]
-        public ActionResult Rental(Reservation reservation)
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(Models.Reservation model)
         {
             if (ModelState.IsValid)
             {
-                //Reservation reservation = new Reservation
-                //{
-                //    RentalStartDate = rental_from,
-                //    RentalEndDate = rental_to,
-                //    BoardGameId = boardGameId,
-                //    UserId = (int)Session["UserId"],
-                //    Count = 1,
-                //    ReservationStatusId = 1
-                //};
+                DAL.Models.Reservation reservation = new DAL.Models.Reservation()
+                {
+                    RentalStartDate = model.RentalStartDate,
+                    RentalEndDate = model.RentalEndDate,
+                    Count = model.Count,
+                    UserId = (int)Session["UserId"],
+                    BoardGameId = model.BoardGameId,
+                    ReservationStatusId = 1
+                };
+                switch (reservationService.AddReservation(reservation))
+                {
+                    case ReservationServiceResponse.SuccessReservation:
+                        ModelState.Clear();
+                        TempData["SuccessReservation"] = $"Z powodzeniem dokonano rezerwacji: {model.BoardGameName}.";
+                        return RedirectToAction("Login", "Login");
+                    case ReservationServiceResponse.NotEnoughBoardGame:
+                        ViewBag.NotEnoughBoardGameMessage = "Nie posiadamy wystarczającej liczby gier.";
+                        return RedirectToAction("Details", "BoardGameDetailsOffer", new { boardGameId = model.BoardGameId });
+                    default:
+                        break;
+                }
             }
-            return View(reservation);
+            return View(model);
         }
     }
 }

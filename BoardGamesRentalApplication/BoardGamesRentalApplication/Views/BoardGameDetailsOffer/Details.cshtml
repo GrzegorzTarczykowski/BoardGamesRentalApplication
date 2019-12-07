@@ -53,17 +53,22 @@
 
                 <form action="Rental" method="get">
                     <div class="row rental">
-                        <div class="col-6"><label for="rental_from">Wypożyczenie od dnia</label></div>
+                        <div class="col-6"><label for="rentalStartDate">Wypożyczenie od dnia</label></div>
                         <div class="col-6">
-                            <input type="datetime" name="rental_from" class="datepicker"
+                            <input type="datetime" name="rentalStartDate" class="datepicker"
                                    placeholder="mm/dd/rrrr">
                         </div>
-                        <div class="col-6"><label for="rental_from">Wypożyczenie do dnia</label></div>
+                        <div class="col-6"><label for="rentalEndDate">Wypożyczenie do dnia</label></div>
                         <div class="col-6">
-                            <input type="datetime" name="rental_to" class="datepicker"
+                            <input type="datetime" name="rentalEndDate" class="datepicker"
                                    placeholder="mm/dd/rrrr">
+                        </div>
+                        <div class="col-6"><label for="count">Ilość</label></div>
+                        <div class="col-6">
+                            <input type="number" name="count">
                         </div>
                         <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
+                        <input type="hidden" id="boardGameName" name="boardGameName" value="@Model.Name" />
                         <input type="submit" value="Wypożycz" class="btn">
                     </div>
                 </form>

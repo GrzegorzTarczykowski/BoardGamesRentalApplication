@@ -178,6 +178,7 @@
     <Compile Include="Models\BoardGamesCollectionPageData.cs" />
     <Compile Include="Models\HomePageData.cs" />
     <Compile Include="Models\RegisterUser.cs" />
+    <Compile Include="Models\Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\EllipsisService.cs" />
     <Compile Include="Service\IEllipsisService.cs" />
@@ -265,7 +266,6 @@
     <Content Include="Views\BoardGamePublisher\Create.cshtml" />
     <Content Include="Views\BoardGamePublisher\Edit.cshtml" />
     <Content Include="Views\BoardGamePublisher\Delete.cshtml" />
-    <Content Include="Views\Rental\Rental.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

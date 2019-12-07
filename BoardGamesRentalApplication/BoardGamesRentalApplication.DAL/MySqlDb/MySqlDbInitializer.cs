@@ -74,6 +74,7 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                                                     , GameTimeInMinutes = 15
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 2
+                                                    , Quantity = 0
                                                     , BoardGamePublisherId = 10
                                                     , BoardGamePublisher = defaultBoardGamePublishers[9]
                                                     , BoardGameStateId = 2
@@ -93,6 +94,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 35
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 4
+                                                    , Quantity = 3
                                                     , BoardGamePublisherId = 2
                                                     , BoardGamePublisher = defaultBoardGamePublishers[1]
                                                     , BoardGameStateId = 1
@@ -107,6 +109,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 70
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 4
+                                                    , Quantity = 2
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
@@ -121,6 +124,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 35
                                                     , MinPlayerCount = 4
                                                     , MaxPlayerCount = 6
+                                                    , Quantity = 0
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
@@ -135,6 +139,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 10
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 5
+                                                    , Quantity = 1
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
@@ -149,6 +154,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 45
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 6
+                                                    , Quantity = 3
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
                                                     , BoardGameStateId = 3
