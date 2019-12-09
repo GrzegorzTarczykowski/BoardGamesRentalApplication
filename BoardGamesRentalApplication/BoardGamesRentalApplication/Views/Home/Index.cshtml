@@ -64,141 +64,44 @@
             <h2>Polecamy</h2>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="recommended_panel">
-                    <table>
+            @{
+                foreach (var item in Model.RecommendedBoardGames.Where((item, index) => index < 4 || index > 0))
+                {
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="recommended_panel">
+                            <table>
 
-                        <tr>
-                            <td colspan="2">
-                                <div class="game_photo" style="background-image: url('../../images/board1.jpg');">
-                                    <div class="photo_cover">
-                                        <h3>Chińczyk</h3>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                    </table>
-                    <span class="more"><a href="#">Więcej>>></a></span>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="recommended_panel">
-                    <table>
-
-                        <tr>
-                            <td colspan="2">
-                                <div class="game_photo" style="background-image: url('../../images/board1.jpg');">
-                                    <div class="photo_cover">
-                                        <h3>Chińczyk</h3>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                    </table>
-                    <span class="more"><a href="#">Więcej>>></a></span>
-
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="recommended_panel">
-                    <table>
-
-                        <tr>
-                            <td colspan="2">
-                                <div class="game_photo" style="background-image: url('../../images/board1.jpg');">
-                                    <div class="photo_cover">
-                                        <h3>Chińczyk</h3>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                    </table>
-                    <span class="more"><a href="#">Więcej>>></a></span>
-
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="recommended_panel">
-                    <table>
-
-                        <tr>
-                            <td colspan="2">
-                                <div class="game_photo" style="background-image: url('../../images/board1.jpg');">
-                                    <div class="photo_cover">
-                                        <h3>Chińczyk</h3>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>logiczne</td>
-                        </tr>
-                    </table>
-                    <span class="more"><a href="#">Więcej>>></a></span>
-
-                </div>
-            </div>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="game_photo" style="background-image: url('../../images/board1.jpg');">
+                                            <div class="photo_cover">
+                                                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kategoria</td>
+                                    <td>@Html.DisplayFor(modelItem => item.BoardGameCategoryName)</td>
+                                </tr>
+                                <tr>
+                                    <td>Wydawca</td>
+                                    <td>@Html.DisplayFor(modelItem => item.BoardGamePublisherName)</td>
+                                </tr>
+                                <tr>
+                                    <td>Wiek</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MinimumAge)</td>
+                                </tr>
+                                <tr>
+                                    <td>Stan</td>
+                                    <td>@Html.DisplayFor(modelItem => item.BoardGameStateName)</td>
+                                </tr>
+                            </table>
+                            <span class="more"><a href="#">Więcej>>></a></span>
+                        </div>
+                    </div>
+                }
+            }
         </div>
 
     </section>

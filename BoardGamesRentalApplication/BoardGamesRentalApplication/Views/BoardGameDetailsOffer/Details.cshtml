@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-6"><label for="count">Ilość</label></div>
                         <div class="col-6">
-                            <input type="number" name="count">
+                            <input type="number" name="count" placeholder="1">
                         </div>
                         <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
                         <input type="hidden" id="boardGameName" name="boardGameName" value="@Model.Name" />
@@ -103,3 +103,10 @@
         </div>
     </footer>
 </div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(".datepicker").datepicker();
+</script>

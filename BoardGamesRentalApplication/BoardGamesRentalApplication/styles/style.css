@@ -111,6 +111,10 @@ h2 {
         background-color: #d9d9d9;
     }
 
+    .category p{
+        margin-bottom: 0px;
+    }
+
 .search_form {
     background-color: #f3f3f3;
 }
@@ -189,7 +193,7 @@ input {
 
 
     .recommended h3 {
-        padding-top: 60px;
+        padding-top: 50px;
         padding-right: 10px;
         color: white;
         /* transform: translate(0, -50%); */
@@ -375,6 +379,7 @@ footer {
 .products_list a:link,
 .products_list a:visited {
     color: #0f836a;
+    font-weight: bold;
 }
 
 .products_list a:hover {
@@ -384,6 +389,13 @@ footer {
 
 /* paginator */
 .products_list .pagination {
+    background-color: #535353;
+    padding: 5px;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+}
+.admin .pagination {
     background-color: #535353;
     padding: 5px;
     width: 100%;
@@ -471,4 +483,23 @@ p.create-account {
     color: #ffffff;
     text-align: center;
     padding: 30px 50px;
+}
+
+/* SECTION ADMIN */
+
+.admin .btn-full {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.admin table a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.admin table{
+    margin-bottom: 0px;
+}
+
+.admin .page-link {
+    color: #0f836a;
 }
