@@ -154,7 +154,9 @@ input {
     margin-right: auto;
 }
 
-    input[type=text] {
+    input[type=text],
+    input[type=email],
+    input[type=password] {
         border: solid 2px #16a085;
         padding-left: 5px;
         font: 400 13.3333px Arial;
@@ -179,6 +181,11 @@ input {
     border: 2px solid #16a085;
 }
 
+    .btn:hover,
+    .btn-full {
+        background-color: rgba(22, 160, 133, 1);
+        color: white;
+    }
 
 
     .recommended h3 {
@@ -424,4 +431,44 @@ footer {
 
 .game-attributes .rental {
     margin-top: 30px;
+}
+
+/* LOGIN */
+.login_register {
+    /* text-align: right; */
+}
+
+.img-bg {
+    background-image: url("../images/computer.jpg");
+    text-align: right;
+    /* padding-right: 100px; */
+}
+
+.login_register input {
+    width: 50%;
+}
+
+.login_register label {
+    padding-right: 10px;
+    color: #fff;
+}
+
+.login_register h2 {
+    color: #ffffff;
+}
+
+.alert {
+    padding: 0px 5px;
+    font-size: 90%;
+    color: #e62222
+}
+
+.panel-left {
+    padding-right: 150px;
+}
+
+p.create-account {
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 50px;
 }

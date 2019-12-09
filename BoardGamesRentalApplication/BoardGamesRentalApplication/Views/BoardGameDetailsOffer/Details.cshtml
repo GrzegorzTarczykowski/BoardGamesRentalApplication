@@ -55,12 +55,12 @@
                     <div class="row rental">
                         <div class="col-6"><label for="rental_from">Wypożyczenie od dnia</label></div>
                         <div class="col-6">
-                            <input type="datetime" name="rental_from" class="datepicker"
+                            <input type="text" name="rental_from" class="datepicker"
                                    placeholder="mm/dd/rrrr">
                         </div>
                         <div class="col-6"><label for="rental_from">Wypożyczenie do dnia</label></div>
                         <div class="col-6">
-                            <input type="datetime" name="rental_to" class="datepicker"
+                            <input type="text" name="rental_to" class="datepicker"
                                    placeholder="mm/dd/rrrr">
                         </div>
                         <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
@@ -98,3 +98,10 @@
         </div>
     </footer>
 </div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+<script>
+        $(".datepicker").datepicker();
+</script>
