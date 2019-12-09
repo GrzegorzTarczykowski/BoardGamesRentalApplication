@@ -53,6 +53,7 @@
     <Compile Include="IService\ICryptographyService.cs" />
     <Compile Include="IService\ILoginService.cs" />
     <Compile Include="IService\IRegisterService.cs" />
+    <Compile Include="IService\IReservationService.cs" />
     <Compile Include="IService\IService.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\FilterOption.cs" />
@@ -67,12 +68,16 @@
     <Compile Include="IService\IBoardGamePublishersService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\RegisterService.cs" />
+    <Compile Include="Service\ReservationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoardGamesRentalApplication.DAL\BoardGamesRentalApplication.DAL.csproj">
       <Project>{e82d0aa2-ed6e-4344-a07b-4d56ff864eeb}</Project>
       <Name>BoardGamesRentalApplication.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

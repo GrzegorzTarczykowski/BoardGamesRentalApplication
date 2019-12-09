@@ -13,12 +13,19 @@ namespace BoardGamesRentalApplication.BLL.Enums
         DuplicateUsername,
         DuplicateEmail
     }
-
+    
     public enum LoginServiceResponse
     {
         LoginSuccessful,
         UserDoesntExist,
         IncorrectPassword
+    }
+
+    public enum ReservationServiceResponse
+    {
+        SuccessReservation,
+        NotEnoughBoardGame,
+        DuplicateEmail
     }
 
     public enum BoardGameSortOption

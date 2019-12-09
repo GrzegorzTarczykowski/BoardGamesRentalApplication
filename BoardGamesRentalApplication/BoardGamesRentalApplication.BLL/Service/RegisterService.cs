@@ -36,6 +36,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     user.Salt = salt;
                     user.Password = Convert.ToBase64String(hashedPassword);
                     user.CreateDate = DateTime.Now;
+                    user.UserType = UserType.Regular;
                     userRepository.Add(user);
                     userRepository.SaveChanges();
                     return RegisterServiceResponse.SuccessRegister;

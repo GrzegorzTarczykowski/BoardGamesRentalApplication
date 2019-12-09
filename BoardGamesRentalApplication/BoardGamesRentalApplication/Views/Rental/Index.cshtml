@@ -1,4 +1,4 @@
-﻿@model BoardGamesRentalApplication.DAL.Models.Reservation
+﻿@model BoardGamesRentalApplication.Models.Reservation
 
 @{
     ViewBag.Title = "Index";
@@ -6,68 +6,64 @@
 
 <h2>Index</h2>
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ReservationId)
+    @Html.HiddenFor(model => model.ReservationStatusId)
+    <div>
         <h4>Reservation</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ReservationId)
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RentalStartDate)
+            </dt>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RentalStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RentalStartDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RentalStartDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dd>
+                @Html.DisplayFor(model => model.RentalStartDate)
+            </dd>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RentalEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RentalEndDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RentalEndDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.RentalEndDate)
+            </dt>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Count, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dd>
+                @Html.DisplayFor(model => model.RentalEndDate)
+            </dd>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Count)
+            </dt>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.BoardGameId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BoardGameId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGameId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dd>
+                @Html.DisplayFor(model => model.Count)
+            </dd>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReservationStatusId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReservationStatusId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReservationStatusId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dt>
+                @Html.HiddenFor(model => model.UserId)
+            </dt>
 
+            <dd>
+                @Html.HiddenFor(model => model.BoardGameId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BoardGameName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BoardGameName)
+            </dd>
+
+        </dl>
+    </div>
+    <form action="Index" method="post">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Zarezerwuj">
             </div>
         </div>
-    </div>
+    </form>
 }

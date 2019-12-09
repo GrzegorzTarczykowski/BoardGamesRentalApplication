@@ -1,6 +1,7 @@
 ﻿using BoardGamesRentalApplication.BLL.IService;
 using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.Service;
+using PagedList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -11,34 +12,23 @@ namespace BoardGamesRentalApplication.Controllers
     public class BoardGamesCollectionController : Controller
     {
         private readonly IBoardGamesService boardGamesService;
-        private readonly IBoardGamePublishersService publishersService;
-        private readonly IBoardGameStatesService statesService;
         private readonly IUserTypeService userTypeService;
+        private readonly IBoardGameFilterService boardGameFilterService;
+        private readonly IBoardGameSortService boardGameSortService;
 
-        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGamePublishersService publishersService, IBoardGameStatesService statesService)
+        public BoardGamesCollectionController(IBoardGamesService boardGamesService, IBoardGameFilterService boardGameFilterService, IBoardGameSortService boardGameSortService)
         {
             this.boardGamesService = boardGamesService;
-            this.publishersService = publishersService;
-            this.statesService = statesService;
+            this.boardGameFilterService = boardGameFilterService;
+            this.boardGameSortService = boardGameSortService;
             this.userTypeService = new UserTypeService(this, RedirectToAction("Index", "Home"));
-
-            var allPublishers = publishersService.GetAll().AsEnumerable();
-            List<SelectListItem> listOfPublishers = new List<SelectListItem>();
-            foreach (var publisher in allPublishers)
-                listOfPublishers.Add(new SelectListItem { Value = publisher.BoardGamePublisherId.ToString(), Text = publisher.Name });
-            ViewBag.Publishers = new SelectList(listOfPublishers, "Value", "Text");
-
-            var allStates = statesService.GetAll().AsEnumerable();
-            List<SelectListItem> listOfStates = new List<SelectListItem>();
-            foreach (var state in allStates)
-                listOfStates.Add(new SelectListItem { Value = state.BoardGameStateId.ToString(), Text = state.Name });
-            ViewBag.States = new SelectList(listOfStates, "Value", "Text");
         }
 
         // GET: BoardGamesCollection
-        public ActionResult BoardGamesCollection()
+        public ActionResult BoardGamesCollection(int? page)
         {
-            return userTypeService.Authorize(() => View(boardGamesService.GetAll().Select(bg => new BoardGame()
+            IQueryable<DAL.Models.BoardGame> boardGamesQuery = boardGamesService.GetAll();
+            return userTypeService.Authorize(() => View(boardGameSortService.SortBy(boardGamesQuery, BLL.Enums.BoardGameSortOption.SortAscendingByName).Select(bg => new BoardGame()
             {
                 BoardGameId = bg.BoardGameId,
                 Name = bg.Name,
@@ -50,8 +40,9 @@ namespace BoardGamesRentalApplication.Controllers
                 MaxPlayerCount = bg.MaxPlayerCount,
                 MinimumAge = bg.MinimumAge,
                 BoardGameStateName = bg.BoardGameState.Name,
-                BoardGamePublisherName = bg.BoardGamePublisher.Name
-            }).ToList()), UserType.Administrator);
+                BoardGamePublisherName = bg.BoardGamePublisher.Name,
+                BoardGameCategoryName = bg.BoardGameCategory.Name
+            }).ToPagedList(page ?? 1, 5)), UserType.Administrator);
         }
 
         public ActionResult Create()
@@ -78,9 +69,10 @@ namespace BoardGamesRentalApplication.Controllers
                     MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
-                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
+                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue),
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
                 });
-                return RedirectToAction("BoardGamesCollection");
+                return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator);
         }
 
@@ -107,11 +99,30 @@ namespace BoardGamesRentalApplication.Controllers
                     GameTimeInMinutes = int.Parse(collection["GameTimeInMinutes"]),
                     MinPlayerCount = int.Parse(collection["MinPlayerCount"]),
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
-                    BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
-                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue)
+                    BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisherId").AttemptedValue),
+                    BoardGameStateId = int.Parse(collection.GetValue("BoardGameStateId").AttemptedValue),
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategoryId").AttemptedValue)
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return userTypeService.Authorize(() =>
+            {
+                return View(boardGamesService.FindById(id));
+            }, UserType.Administrator);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            return userTypeService.Authorize(() => {
+                boardGamesService.RemoveBoardGame(id);
+                return RedirectToAction(nameof(BoardGamesCollection));
+                }, UserType.Administrator);
         }
     }
 }

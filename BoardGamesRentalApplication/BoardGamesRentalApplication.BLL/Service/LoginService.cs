@@ -41,6 +41,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                     matchingUser.LastLogin = DateTime.Now;
                     userRepository.SaveChanges();
                     user.UserType = matchingUser.UserType;
+                    user.UserId = matchingUser.UserId;
                     return LoginServiceResponse.LoginSuccessful;
                 }
             }
