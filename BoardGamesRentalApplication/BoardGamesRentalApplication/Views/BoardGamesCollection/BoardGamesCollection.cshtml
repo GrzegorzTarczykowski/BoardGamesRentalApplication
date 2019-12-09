@@ -8,95 +8,102 @@
     ViewBag.Title = "BoardGamesCollection";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>BoardGamesCollection</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div class="row">
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("BoardGamesCollection",
-        new { page }))
-</div>
-<table>
-    <tr>
-        <th>
-            Nazwa
-        </th>
-        <th>
-            Opis
-        </th>
-        <th>
-            Zawartość
-        </th>
-        <th>
-            Minimalna liczba graczy
-        </th>
-        <th>
-            Maksymalna liczba graczy
-        </th>
-        <th>
-            Minimalny wiek
-        </th>
-        <th>
-            Wydawca
-        </th>
-        <th>
-            Stan
-        </th>
-        <th>
-            Kategoria
-        </th>
-        <th></th>
-    </tr>
-
-    @{
-        IEllipsisService ellipsisService = new EllipsisService();
-        int maxChars = 100;
-        foreach (var item in Model)
-        {
+<div class="container">
+    <section class="admin">
+        <div class="row">
+            <h2>Zarządzanie grami</h2>
+        </div>
+        <div class="row">
+            @Html.ActionLink("Dodaj grę", "Create", new { area = "" }, new { @class = "btn btn-full" })
+        </div>
+        <table class="table table-hover table-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @ellipsisService.EllipsisOf(item.Description, maxChars)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MinPlayerCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaxPlayerCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MinimumAge)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BoardGamePublisherName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BoardGameStateName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
-                </td>
+                <th>
+                    Nazwa
+                </th>
+                <th>
+                    Opis
+                </th>
+                <th>
+                    Zawartość
+                </th>
+                <th>
+                    Minimalna liczba graczy
+                </th>
+                <th>
+                    Maksymalna liczba graczy
+                </th>
+                <th>
+                    Minimalny wiek
+                </th>
+                <th>
+                    Wydawca
+                </th>
+                <th>
+                    Stan
+                </th>
+                <th>
+                    Kategoria
+                </th>
+                <th></th>
             </tr>
-        }
-    }
-</table>
 
-<div class="row">
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @{
+                IEllipsisService ellipsisService = new EllipsisService();
+                int maxChars = 20;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @ellipsisService.EllipsisOf(item.Description, maxChars)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MinPlayerCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaxPlayerCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MinimumAge)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BoardGamePublisherName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BoardGameStateName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
 
-    @Html.PagedListPager(Model, page => Url.Action("BoardGamesCollection",
-        new { page }))
+            @Html.PagedListPager(Model, page => Url.Action("BoardGamesCollection",
+                new { page }),
+                new PagedListRenderOptions
+                {
+                    LiElementClasses = new string[] { "page-item" },
+                    UlElementClasses = new string[] { "pagination justify-content-end" },
+                    ContainerDivClasses = new[] { "pagination" },
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    LinkToPreviousPageFormat = "Previous",
+                    LinkToNextPageFormat = "Next"
+                })
+    </section>
 </div>
+
+
+

@@ -3,33 +3,36 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <section class="admin">
+        <div class="row">
+            <h2>Zarządzanie kategoriami</h2>
+        </div>
+        <div class="row">
+            @Html.ActionLink("Dodaj nową kategorię", "Create", new { area = "" }, new { @class = "btn btn-full" })
+        </div>
+        <table class="table table-hover table-dark">
+            <tr>
+                <th>
+                    Kategorie gier planszowych
+                </th>
+                <th style="min-width: 200px;"></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameCategoryId }) |
+                        @Html.ActionLink("Szczegóły", "Details", new { id = item.BoardGameCategoryId }) |
+                        @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameCategoryId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </section>
+</div>
 
-<h2>
-    Zarządzanie<br />
-    kategoriami
-</h2>
 
-<p class="container">
-    @Html.ActionLink("Dodaj nową kategorię", "Create")
-</p>
-<table class="table row">
-    <tr>
-        <th>
-            Kategorie gier planszowych
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameCategoryId }) |
-                @Html.ActionLink("Szczegóły", "Details", new { id = item.BoardGameCategoryId }) |
-                @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameCategoryId })
-            </td>
-        </tr>
-    }
-</table>
