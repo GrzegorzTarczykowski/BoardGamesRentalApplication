@@ -14,7 +14,7 @@
                     @using (Html.BeginForm())
                     {
                         @Html.EditorFor(x => x.FilterParameters, new { htmlAttributes = new { @class = "category" } })
-                        <input type="submit" value="Szukaj" />
+                        <input type="submit" value="Szukaj" class="btn "/>
                     }
                 </div>
             </section>
@@ -22,7 +22,7 @@
         </div>
         <div class="col-9">
             <section class="products_list">
-                <div class="row">
+                <div class="row pagination">
                     @foreach (var item in Model.SortingOptions.Select((value, i) => new { i, value }))
                     {
                         <div class="col-3">
@@ -30,7 +30,7 @@
                         </div>
                     }
                 </div>
-                <div class="row">
+                @*<div class="row">
                     <div class="col-12 pagination">
                         <!-- <nav aria-label="Page navigation"> -->
                         <ul class="pagination justify-content-end">
@@ -46,7 +46,7 @@
                         </ul>
                         <!-- </nav> -->
                     </div>
-                </div>
+                </div>*@
                 <div class="row">
 
                     @foreach (var item in Model.BoardGames)
@@ -88,10 +88,19 @@
 
                 </div>
                 <div class="row">
-                    Page @(Model.BoardGames.PageCount < Model.BoardGames.PageNumber ? 0 : Model.BoardGames.PageNumber) of @Model.BoardGames.PageCount
-
+                    
                     @Html.PagedListPager(Model.BoardGames, page => Url.Action("Index",
-                        new { page, sortByOptionId = ViewBag.CurrentSortOptionId, selectedFilterOption = ViewBag.SelectedFilterOption }))
+                new { page }),
+                new PagedListRenderOptions
+                {
+                    LiElementClasses = new string[] { "page-item" },
+                    UlElementClasses = new string[] { "pagination justify-content-end" },
+                    ContainerDivClasses = new[] { "pagination" },
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    LinkToPreviousPageFormat = "Previous",
+                    LinkToNextPageFormat = "Next"
+                })
                 </div>
                 
                 @*<div class="row">

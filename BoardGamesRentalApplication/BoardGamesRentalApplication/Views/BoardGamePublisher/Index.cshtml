@@ -4,30 +4,33 @@
     ViewBag.Title = "Wydawcy gier planszowych";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("Dodaj", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.BoardGamePublisherId }) |
-            @Html.ActionLink("Usuń", "Delete", new { id=item.BoardGamePublisherId })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="container">
+    <section class="admin">
+        <div class="row">
+            <h2>Wydawcy gier planszowych</h2>
+        </div>
+        <div class="row">
+            @Html.ActionLink("Dodaj wydawcę", "Create", new { area = "" }, new { @class = "btn btn-full" })
+        </div>
+        <table class="table table-hover table-dark">
+            <tr>
+                <th>
+                    Wydawcy
+                </th>
+                <th style="min-width: 200px;"></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGamePublisherId }) |
+                        @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGamePublisherId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </section>
+</div>
