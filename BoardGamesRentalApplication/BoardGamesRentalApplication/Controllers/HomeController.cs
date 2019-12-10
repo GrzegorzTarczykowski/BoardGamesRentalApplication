@@ -33,7 +33,11 @@ namespace BoardGamesRentalApplication.Controllers
                                                     MinimumAge = bg.MinimumAge,
                                                     BoardGameCategoryName = bg.BoardGameCategory.Name,
                                                     BoardGamePublisherName = bg.BoardGamePublisher.Name,
-                                                    BoardGameStateName = bg.BoardGameState.Name
+                                                    BoardGameStateName = bg.BoardGameState.Name,
+                                                    Content = bg.Content,
+                                                    Description = bg.Description,
+                                                    Quantity = bg.Quantity,
+                                                    RentalCostPerDay = bg.RentalCostPerDay
                                                 });
             return View(homePageData);
         }

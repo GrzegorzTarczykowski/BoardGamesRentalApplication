@@ -65,10 +65,15 @@
                         </div>
                         <div class="col-6"><label for="count">Ilość</label></div>
                         <div class="col-6">
-                            <input type="number" name="count" placeholder="1" required min="0" max="10">
+                            <input type="number" name="count" placeholder="podaj ilość" required min="0" max="10">
+                        </div>
+                        <div class="col-6"><label for="discountCode">Kod rabatowy</label></div>
+                        <div class="col-6">
+                            <input type="text" name="discountCode">
                         </div>
                         <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
                         <input type="hidden" id="boardGameName" name="boardGameName" value="@Model.Name" />
+                        <input type="hidden" id="rentalCostPerDay" name="rentalCostPerDay" value="@Model.RentalCostPerDay.ToString()" />
                         <input type="submit" value="Wypożycz" class="btn">
                     </div>
                 </form>

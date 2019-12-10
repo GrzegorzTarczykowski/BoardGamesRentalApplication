@@ -14,11 +14,13 @@ namespace BoardGamesRentalApplication.BLL.Service
     {
         private readonly IRepository<Reservation> reservatioRepository;
         private readonly IRepository<BoardGame> boardGameRepository;
+        private readonly IDiscountCodeService discountCodeService;
 
-        public ReservationService(IRepository<Reservation> reservatioRepository, IRepository<BoardGame> boardGameRepository)
+        public ReservationService(IRepository<Reservation> reservatioRepository, IRepository<BoardGame> boardGameRepository, IDiscountCodeService discountCodeService)
         {
             this.reservatioRepository = reservatioRepository;
             this.boardGameRepository = boardGameRepository;
+            this.discountCodeService = discountCodeService;
         }
 
         public ReservationServiceResponse AddReservation(Reservation reservation)
@@ -31,6 +33,7 @@ namespace BoardGamesRentalApplication.BLL.Service
                 }
                 else
                 {
+                    reservation.ReservationStatusId = 1;
                     reservatioRepository.Add(reservation);
                     reservatioRepository.SaveChanges();
                     BoardGame boardGame = boardGameRepository.FindById(reservation.BoardGameId);
@@ -42,6 +45,21 @@ namespace BoardGamesRentalApplication.BLL.Service
             catch (Exception)
             {
                 throw new Exception("Błąd tworzenia nowej rezerwacji.");
+            }
+        }
+
+        public decimal CaculateTotalCostByBoardGameDiscountCode(string boardGameDiscountCode, int boardGameId, DateTime rentalStartDate, DateTime rentalEndDate, decimal rentalCostPerDay)
+        {
+            double numberOfDayRental = (rentalEndDate - rentalStartDate).TotalDays;
+            decimal totalCost = (decimal)numberOfDayRental * rentalCostPerDay;
+            if (discountCodeService.CheckDiscountCode(boardGameDiscountCode, boardGameId))
+            {
+                decimal discount = (totalCost * 10M / 100M);
+                return totalCost - discount;
+            }
+            else
+            {
+                return totalCost;
             }
         }
     }

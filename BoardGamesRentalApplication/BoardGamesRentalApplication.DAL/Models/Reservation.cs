@@ -16,7 +16,7 @@ namespace BoardGamesRentalApplication.DAL.Models
         public DateTime RentalEndDate { get; set; }
         [Display(Name = "Wypożyczona ilość")]
         public int Count { get; set; }
-
+        public decimal TotalCost { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public int BoardGameId { get; set; }

@@ -11,6 +11,7 @@ namespace BoardGamesRentalApplication.Models
         public DateTime RentalStartDate { get; set; }
         public DateTime RentalEndDate { get; set; }
         public int Count { get; set; }
+        public decimal TotalCost { get; set; }
         public int UserId { get; set; }
         public int BoardGameId { get; set; }
         public string BoardGameName { get; set; }

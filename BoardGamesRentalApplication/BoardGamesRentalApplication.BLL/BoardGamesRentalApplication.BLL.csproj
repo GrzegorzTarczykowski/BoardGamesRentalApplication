@@ -51,6 +51,7 @@
     <Compile Include="IService\IBoardGamesService.cs" />
     <Compile Include="IService\IBoardGameStatesService.cs" />
     <Compile Include="IService\ICryptographyService.cs" />
+    <Compile Include="IService\IDiscountCodeService.cs" />
     <Compile Include="IService\ILoginService.cs" />
     <Compile Include="IService\IRegisterService.cs" />
     <Compile Include="IService\IReservationService.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Service\BoardGameStatesService.cs" />
     <Compile Include="Service\CryptographyService.cs" />
     <Compile Include="IService\IBoardGamePublishersService.cs" />
+    <Compile Include="Service\DiscountCodeService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\RegisterService.cs" />
     <Compile Include="Service\ReservationService.cs" />

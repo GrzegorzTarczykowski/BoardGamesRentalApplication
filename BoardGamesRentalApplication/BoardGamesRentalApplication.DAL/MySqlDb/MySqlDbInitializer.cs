@@ -74,6 +74,7 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                                                     , GameTimeInMinutes = 15
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 2
+                                                    , RentalCostPerDay = 6.50M
                                                     , Quantity = 0
                                                     , BoardGamePublisherId = 10
                                                     , BoardGamePublisher = defaultBoardGamePublishers[9]
@@ -94,6 +95,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 35
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 4
+                                                    , RentalCostPerDay = 3.50M
                                                     , Quantity = 3
                                                     , BoardGamePublisherId = 2
                                                     , BoardGamePublisher = defaultBoardGamePublishers[1]
@@ -109,6 +111,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 70
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 4
+                                                    , RentalCostPerDay = 2.50M
                                                     , Quantity = 2
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
@@ -124,6 +127,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 35
                                                     , MinPlayerCount = 4
                                                     , MaxPlayerCount = 6
+                                                    , RentalCostPerDay = 6.50M
                                                     , Quantity = 0
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
@@ -139,6 +143,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 10
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 5
+                                                    , RentalCostPerDay = 9.50M
                                                     , Quantity = 1
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]
@@ -154,6 +159,7 @@ w polskim alfabecie.
                                                     , GameTimeInMinutes = 45
                                                     , MinPlayerCount = 2
                                                     , MaxPlayerCount = 6
+                                                    , RentalCostPerDay = 3.50M
                                                     , Quantity = 3
                                                     , BoardGamePublisherId = 3
                                                     , BoardGamePublisher = defaultBoardGamePublishers[2]

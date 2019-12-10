@@ -41,16 +41,18 @@ namespace BoardGamesRentalApplication.Controllers
                 BoardGameCategoryName = boardGame.BoardGameCategory.Name,
                 BoardGamePublisherName = boardGame.BoardGamePublisher.Name,
                 BoardGameStateName = boardGame.BoardGameState.Name,
-                Image = boardGame.Image
+                Image = boardGame.Image,
+                Quantity = boardGame.Quantity,
+                RentalCostPerDay = boardGame.RentalCostPerDay
             });
         }
 
         [HttpGet]
-        public ActionResult Rental(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count)
+        public ActionResult Rental(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count, string discountCode, string rentalCostPerDay)
         {
             return userTypeService.Authorize(() =>
             {
-                return RedirectToAction("Index", "Rental", new { rentalStartDate, rentalEndDate, boardGameId, boardGameName, count });
+                return RedirectToAction("Index", "Rental", new { rentalStartDate, rentalEndDate, boardGameId, boardGameName, count, discountCode, rentalCostPerDay });
             }, UserType.Regular);
         }
     }

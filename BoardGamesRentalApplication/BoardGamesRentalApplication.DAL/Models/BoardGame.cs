@@ -21,6 +21,8 @@ namespace BoardGamesRentalApplication.DAL.Models
         public int GameTimeInMinutes { get; set; }
         [Display(Name = "Minimalny wiek")]
         public int MinimumAge { get; set; }
+        [Display(Name = "Cena wypożyczenia / Dzień")]
+        public decimal RentalCostPerDay { get; set; }
         [Display(Name = "Ilość")]
         public int Quantity { get; set; }
 
