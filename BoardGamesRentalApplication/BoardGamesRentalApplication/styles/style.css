@@ -472,7 +472,8 @@ footer {
 .alert {
     padding: 0px 5px;
     font-size: 90%;
-    color: #e62222
+    color: #0f836a;
+    font-weight: bold;
 }
 
 .panel-left {

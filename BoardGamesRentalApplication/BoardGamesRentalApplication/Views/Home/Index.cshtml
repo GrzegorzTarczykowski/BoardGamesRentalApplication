@@ -97,7 +97,7 @@
                                     <td>@Html.DisplayFor(modelItem => item.BoardGameStateName)</td>
                                 </tr>
                             </table>
-                            <span class="more"><a href="#">Więcej>>></a></span>
+                            <span class="more"><a href="#">@Html.ActionLink("Więcej>>>", "Details", "BoardGameDetailsOffer", new { boardGameId = item.BoardGameId }, null)</a></span>
                         </div>
                     </div>
                 }
