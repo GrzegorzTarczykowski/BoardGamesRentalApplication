@@ -273,6 +273,7 @@
     <Content Include="Views\RentalAdmin\Index.cshtml" />
     <Content Include="Views\DiscountAdmin\Index.cshtml" />
     <Content Include="Views\DiscountAdmin\Create.cshtml" />
+    <Content Include="Views\RentalAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
