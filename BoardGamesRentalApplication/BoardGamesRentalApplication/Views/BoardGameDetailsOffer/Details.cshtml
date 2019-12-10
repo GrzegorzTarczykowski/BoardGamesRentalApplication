@@ -30,7 +30,7 @@
                         <td>@Html.DisplayFor(model => model.MaxPlayerCount)</td>
                     </tr>
                     <tr>
-                        <td>Czas rozgrywki</td>
+                        <td>Czas rozgrywki [m]</td>
                         <td>@Html.DisplayFor(model => model.GameTimeInMinutes)</td>
                     </tr>
                     <tr>
@@ -56,16 +56,16 @@
                         <div class="col-6"><label for="rentalStartDate">Wypożyczenie od dnia</label></div>
                         <div class="col-6">
                             <input type="datetime" name="rentalStartDate" class="datepicker"
-                                   placeholder="mm/dd/rrrr">
+                                   placeholder="mm/dd/rrrr" required>
                         </div>
                         <div class="col-6"><label for="rentalEndDate">Wypożyczenie do dnia</label></div>
                         <div class="col-6">
                             <input type="datetime" name="rentalEndDate" class="datepicker"
-                                   placeholder="mm/dd/rrrr">
+                                   placeholder="mm/dd/rrrr" required>
                         </div>
                         <div class="col-6"><label for="count">Ilość</label></div>
                         <div class="col-6">
-                            <input type="number" name="count" placeholder="1">
+                            <input type="number" name="count" placeholder="1" required min="0" max="10">
                         </div>
                         <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
                         <input type="hidden" id="boardGameName" name="boardGameName" value="@Model.Name" />

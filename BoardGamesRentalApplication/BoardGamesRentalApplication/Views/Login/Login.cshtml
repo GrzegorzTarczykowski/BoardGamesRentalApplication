@@ -22,7 +22,7 @@
                             <form action="Login" method="post">
                                 @if (TempData["SuccessRegisterNewUserMessage"] != null)
                                 {
-                                    <div class="alert alert-success">@TempData["SuccessRegisterNewUserMessage"]</div>
+                                    <div class="alert">@TempData["SuccessRegisterNewUserMessage"]</div>
                                 }
                                 @Html.LabelFor(model => model.Username)
                                 @Html.EditorFor(model => model.Username)
