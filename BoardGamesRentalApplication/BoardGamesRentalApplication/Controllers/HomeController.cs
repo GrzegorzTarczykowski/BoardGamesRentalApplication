@@ -30,7 +30,10 @@ namespace BoardGamesRentalApplication.Controllers
                                                     GameTimeInMinutes = bg.GameTimeInMinutes,
                                                     MinPlayerCount = bg.MinPlayerCount,
                                                     MaxPlayerCount = bg.MaxPlayerCount,
-                                                    MinimumAge = bg.MinimumAge
+                                                    MinimumAge = bg.MinimumAge,
+                                                    BoardGameCategoryName = bg.BoardGameCategory.Name,
+                                                    BoardGamePublisherName = bg.BoardGamePublisher.Name,
+                                                    BoardGameStateName = bg.BoardGameState.Name
                                                 });
             return View(homePageData);
         }

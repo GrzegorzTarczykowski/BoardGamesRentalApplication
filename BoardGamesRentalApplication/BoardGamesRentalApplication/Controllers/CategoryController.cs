@@ -54,7 +54,7 @@ namespace BoardGamesRentalApplication.Controllers
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
-            return userTypeService.Authorize(View, UserType.Administrator);
+            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator);
         }
         
         // POST: Admin/Edit/5

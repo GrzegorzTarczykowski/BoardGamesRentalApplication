@@ -93,4 +93,11 @@ namespace BoardGamesRentalApplication.BLL.Enums
         [Description("18 +")]
         ForEighteenYears
     }
+
+    public enum DefaultReservationStatus
+    {
+        Rozpoczeta = 1,
+        Zakonczona = 2,
+        Przetrzymana = 3
+    }
 }
