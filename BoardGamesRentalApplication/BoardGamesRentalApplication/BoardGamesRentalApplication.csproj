@@ -167,9 +167,11 @@
     <Compile Include="Controllers\BoardGamesCollectionController.cs" />
     <Compile Include="Controllers\BoardGamesOfferController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\DiscountAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\RentalAdminController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,6 +269,9 @@
     <Content Include="Views\BoardGamePublisher\Edit.cshtml" />
     <Content Include="Views\BoardGamePublisher\Delete.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
+    <Content Include="Views\RentalAdmin\Index.cshtml" />
+    <Content Include="Views\DiscountAdmin\Index.cshtml" />
+    <Content Include="Views\DiscountAdmin\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

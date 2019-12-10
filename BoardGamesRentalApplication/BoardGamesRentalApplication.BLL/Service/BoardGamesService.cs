@@ -2,6 +2,7 @@
 using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace BoardGamesRentalApplication.BLL.Service
 {
@@ -66,6 +67,11 @@ namespace BoardGamesRentalApplication.BLL.Service
                 boardGameRepository.Remove(new object[] { id });
                 boardGameRepository.SaveChanges();
             }
+        }
+
+        public IQueryable<BoardGame> FindBy(Expression<System.Func<BoardGame, bool>> predicate, params string[] includeProperties)
+        {
+            return boardGameRepository.FindBy(predicate, includeProperties);
         }
     }
 }
