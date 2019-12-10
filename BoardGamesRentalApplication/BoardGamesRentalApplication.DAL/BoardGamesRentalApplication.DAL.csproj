@@ -70,6 +70,7 @@
     <Compile Include="Models\BoardGameNote.cs" />
     <Compile Include="Models\BoardGamePublisher.cs" />
     <Compile Include="Models\BoardGameState.cs" />
+    <Compile Include="Models\DiscountCode.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\ReservationStatus.cs" />
     <Compile Include="Models\User.cs" />
