@@ -269,11 +269,11 @@
     <Content Include="Views\BoardGamePublisher\Create.cshtml" />
     <Content Include="Views\BoardGamePublisher\Edit.cshtml" />
     <Content Include="Views\BoardGamePublisher\Delete.cshtml" />
-    <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\RentalAdmin\Index.cshtml" />
     <Content Include="Views\DiscountAdmin\Index.cshtml" />
     <Content Include="Views\DiscountAdmin\Create.cshtml" />
     <Content Include="Views\RentalAdmin\Edit.cshtml" />
+    <Content Include="Views\Rental\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

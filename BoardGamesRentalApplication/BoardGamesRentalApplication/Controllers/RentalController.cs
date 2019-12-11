@@ -20,15 +20,20 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count)
+        public ActionResult Index(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count, string discountCode, string rentalCostPerDay)
         {
+            decimal totalCost = reservationService.CaculateTotalCostByBoardGameDiscountCode(discountCode, boardGameId, rentalStartDate, rentalEndDate, decimal.Parse(rentalCostPerDay));
+
+            Session["TotalCost"] = totalCost; //brzydka lata
+
             Models.Reservation reservation = new Models.Reservation
             {
                 RentalStartDate = rentalStartDate,
                 RentalEndDate = rentalEndDate,
                 BoardGameId = boardGameId,
                 Count = count,
-                BoardGameName = boardGameName
+                TotalCost = totalCost,
+                BoardGameName = boardGameName,
             };
             return View(reservation);
         }
@@ -44,9 +49,10 @@ namespace BoardGamesRentalApplication.Controllers
                     RentalStartDate = model.RentalStartDate,
                     RentalEndDate = model.RentalEndDate,
                     Count = model.Count,
+                    TotalCost = (decimal)Session["TotalCost"], //model.TotalCostString, nie mam pojecia dlaczego nawet w stringu niechce sie to przeslac, 
+                                                               //bo w decimallu nie idzie bo ma problem konwertowac z przecinkiem na kropke, robie late
                     UserId = (int)Session["UserId"],
                     BoardGameId = model.BoardGameId,
-                    ReservationStatusId = 1
                 };
                 switch (reservationService.AddReservation(reservation))
                 {

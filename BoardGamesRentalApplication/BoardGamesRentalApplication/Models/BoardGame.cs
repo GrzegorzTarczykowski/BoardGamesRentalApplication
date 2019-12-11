@@ -20,6 +20,10 @@
 
         public int MinimumAge { get; set; }
 
+        public decimal RentalCostPerDay { get; set; }
+
+        public int Quantity { get; set; }
+
         public string BoardGameCategoryName { get; set; }
 
         public string BoardGamePublisherName { get; set; }

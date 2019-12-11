@@ -11,5 +11,6 @@ namespace BoardGamesRentalApplication.BLL.IService
     public interface IReservationService
     {
         ReservationServiceResponse AddReservation(Reservation reservation);
+        decimal CaculateTotalCostByBoardGameDiscountCode(string boardGameDiscountCode, int boardGameId, DateTime rentalStartDate, DateTime rentalEndDate, decimal rentalCostPerDay);
     }
 }

@@ -4,9 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Rezerwacja</h2>
-
-
+<h2>Index</h2>
 
 @using (Html.BeginForm())
 {
@@ -43,11 +41,27 @@
             </dd>
 
             <dt>
-                @Html.HiddenFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.TotalCost)
             </dt>
 
             <dd>
-                @Html.HiddenFor(model => model.BoardGameId)
+                @Html.DisplayFor(model => model.TotalCost)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BoardGameId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BoardGameId)
             </dd>
 
             <dt>
@@ -56,6 +70,14 @@
 
             <dd>
                 @Html.DisplayFor(model => model.BoardGameName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationStatusId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReservationStatusId)
             </dd>
 
         </dl>
