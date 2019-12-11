@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
 @using (Html.BeginForm())
 {
@@ -12,81 +11,82 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ReservationId)
     @Html.HiddenFor(model => model.ReservationStatusId)
-    <div>
-        <h4>Reservation</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.RentalStartDate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.RentalStartDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.RentalEndDate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.RentalEndDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Count)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Count)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.TotalCost)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TotalCost)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.UserId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.UserId)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.BoardGameId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.BoardGameId)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.BoardGameName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.BoardGameName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ReservationStatusId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ReservationStatusId)
-            </dd>
-
-        </dl>
-    </div>
-    <form action="Index" method="post">
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zarezerwuj">
+    <div class="container">
+        <section class="summary">
+            <div class="row">
+                <h2>Podsumowanie</h2>
             </div>
-        </div>
-    </form>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Adres</div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title">Adres dostawy</h5>
+                            <p class="card-text">
+                                Jan Kowalski<br />
+                                ul.Piękna 23/33 <br />
+                                00-000 Warszawa<br />
+                                tel. 123 456 789<br />
+                                sampleemail@mail.pl<br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="card">
+                        <h5 class="card-header">Zamówienie</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @Html.DisplayFor(model => model.BoardGameName)
+                            </h5>
+                            <img src="~/images/board1.jpg" />
+                            <table>
+                                <tr>
+                                    <td>Wypożyczenie od</td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.RentalStartDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Wypożyczenie do</td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.RentalEndDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ilość</td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Count)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Całkowity koszt</td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.TotalCost)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dostępność</td>
+                                    <td><span class="available">Dostępny</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Dostępność</td>
+                                    <td><span class="inaccessible">Niedostępny</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <form action="Index" method="post">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn" value="Zarezerwuj">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    
 }
