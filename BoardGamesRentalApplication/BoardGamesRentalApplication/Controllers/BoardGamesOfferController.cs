@@ -53,7 +53,9 @@ namespace BoardGamesRentalApplication.Controllers
                                                                               MinimumAge = bg.MinimumAge,
                                                                               BoardGameCategoryName = bg.BoardGameCategory.Name,
                                                                               BoardGameStateName = bg.BoardGameState.Name,
-                                                                              BoardGamePublisherName = bg.BoardGamePublisher.Name
+                                                                              BoardGamePublisherName = bg.BoardGamePublisher.Name,
+                                                                              Quantity = bg.Quantity,
+                                                                              RentalCostPerDay = bg.RentalCostPerDay
                                                                           })
                                                                           .ToPagedList(page ?? 1, 3);
             return View(boardGamesCollectionPageData);
