@@ -49,6 +49,10 @@
                         <td>Kategoria</td>
                         <td>@Html.DisplayFor(model => model.BoardGameCategoryName)</td>
                     </tr>
+                    <tr>
+                        <td>Cena za dzień</td>
+                        <td>@Html.DisplayFor(model => model.RentalCostPerDay) zł</td>
+                    </tr>
                 </table>
 
                 <form action="Rental" method="get">

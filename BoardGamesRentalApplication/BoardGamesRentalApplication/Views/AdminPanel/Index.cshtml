@@ -1,10 +1,17 @@
-﻿
+﻿@using BoardGamesRentalApplication.DAL.Models
 @{
-    ViewBag.Title = "Index";
+    if (Session["UserType"].Equals(UserType.Administrator))
+    {
+        ViewBag.Title = "Panel Admina";
+    }
+    else
+    {
+        ViewBag.Title = "Panel Pracownika";
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Panel Admina</h2>
+<h2>@ViewBag.Title</h2>
 <p>
     @Html.ActionLink("Zarządzanie grami", "BoardGamesCollection", "BoardGamesCollection")
     <br/>

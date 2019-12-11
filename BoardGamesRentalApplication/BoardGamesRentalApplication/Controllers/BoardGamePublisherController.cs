@@ -23,13 +23,13 @@ namespace BoardGamesRentalApplication.Controllers
         // GET: BoardGamePublisher
         public ActionResult Index()
         {
-            return userTypeService.Authorize(() => View(boardGamePublishersService.GetAll().ToList()), UserType.Administrator);
+            return userTypeService.Authorize(() => View(boardGamePublishersService.GetAll().ToList()), UserType.Administrator, UserType.Employee);
         }
 
         // GET: BoardGamePublisher/Create
         public ActionResult Create()
         {
-            return userTypeService.Authorize(View, UserType.Administrator);
+            return userTypeService.Authorize(View, UserType.Administrator, UserType.Employee);
         }
 
         // POST: BoardGamePublisher/Create
@@ -40,13 +40,13 @@ namespace BoardGamesRentalApplication.Controllers
             {
                 boardGamePublishersService.AddPublisher(new BoardGamePublisher { Name = collection["Name"] });
                 return RedirectToAction(nameof(Index));
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         // GET: BoardGamePublisher/Edit/5
         public ActionResult Edit(int id)
         {
-            return userTypeService.Authorize(() => View(boardGamePublishersService.FindById(id)), UserType.Administrator);
+            return userTypeService.Authorize(() => View(boardGamePublishersService.FindById(id)), UserType.Administrator, UserType.Employee);
         }
 
         // POST: BoardGamePublisher/Edit/5
@@ -57,7 +57,7 @@ namespace BoardGamesRentalApplication.Controllers
             {
                 boardGamePublishersService.UpdatePublisher(id, new BoardGamePublisher { Name = collection["Name"] });
                 return RedirectToAction(nameof(Index));
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         // GET: BoardGamePublisher/Delete/5

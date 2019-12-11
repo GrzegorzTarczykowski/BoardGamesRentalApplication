@@ -31,7 +31,7 @@ namespace BoardGamesRentalApplication.Controllers
             return userTypeService.Authorize(() =>
             {
                 return View(reservationRepository.GetAll(nameof(Reservation.User), nameof(Reservation.ReservationStatus), nameof(Reservation.BoardGame)).ToList());
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         [HttpGet]
@@ -43,7 +43,7 @@ namespace BoardGamesRentalApplication.Controllers
                 ViewBag.ReservationStatus = new SelectList(reservationStatusRepository.GetAll().Select(rs => new SelectListItem { Text = rs.Name, Value = rs.ReservationStatusId.ToString() }),
                     "Value", "Text", model.ReservationStatusId);
                 return View(model);
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         public ActionResult Edit(int id, FormCollection collection)
@@ -62,7 +62,7 @@ namespace BoardGamesRentalApplication.Controllers
                 reservationRepository.Edit(editedReservation);
                 reservationRepository.SaveChanges();
                 return RedirectToAction(nameof(Index));
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
     }
 }
