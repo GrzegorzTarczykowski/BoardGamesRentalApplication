@@ -21,6 +21,7 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ReservationStatus> ReservationStatuses { get; set; }
         public DbSet<DiscountCode> DiscountCodes { get; set; }
+        public DbSet<DiscountCodeStatus> DiscountCodeStatuses { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

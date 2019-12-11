@@ -167,15 +167,23 @@ w polskim alfabecie.
             byte[] implicitPassword;
             string explicitPassword = "1234321PasswordHere";
             byte[] salt = new byte[32];
+            byte[] implicitWorkerPassword;
+            string workerPassword = "Pracownik123"; 
+            byte[] salt2 = new byte[32];
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(salt);
+                rng.GetBytes(salt2);
             }
             using (SHA512 sha512 = SHA512.Create())
             {
                 byte[] password = Encoding.UTF8.GetBytes(explicitPassword);
                 byte[] saltedPassword = password.Concat(salt).ToArray();
                 implicitPassword = sha512.ComputeHash(saltedPassword);
+
+                byte[] password2 = Encoding.UTF8.GetBytes(workerPassword);
+                byte[] saltedPassword2 = password2.Concat(salt2).ToArray();
+                implicitWorkerPassword = sha512.ComputeHash(saltedPassword2);
             }
 
             User adminUser = new User
@@ -192,6 +200,20 @@ w polskim alfabecie.
             };
             context.Users.Add(adminUser);
 
+            User worker = new User
+            {
+                Email = "contact.me@wp.pl",
+                Username = "Pracownik",
+                Salt = salt2,
+                Password = Convert.ToBase64String(implicitWorkerPassword),
+                FirstName = "Jan",
+                LastName = "Kowalski",
+                UserType = UserType.Employee,
+                CreateDate = DateTime.Now,
+                LastLogin = DateTime.MinValue
+            };
+            context.Users.Add(worker);
+
             IList<ReservationStatus> defaultReservationStatuses = new List<ReservationStatus>();
 
             defaultReservationStatuses.Add(new ReservationStatus() { Name = "Rozpoczêta" });
@@ -199,6 +221,14 @@ w polskim alfabecie.
             defaultReservationStatuses.Add(new ReservationStatus() { Name = "Przetrzymanie" });
 
             context.ReservationStatuses.AddRange(defaultReservationStatuses);
+
+            IList<DiscountCodeStatus> discountCodeStatuses = new List<DiscountCodeStatus>();
+
+            discountCodeStatuses.Add(new DiscountCodeStatus { Name = "Niedostêpny" });
+            discountCodeStatuses.Add(new DiscountCodeStatus { Name = "Dostêpny" });
+            discountCodeStatuses.Add(new DiscountCodeStatus { Name = "U¿yty" });
+
+            context.DiscountCodeStatuses.AddRange(discountCodeStatuses);
         }
     }
 }

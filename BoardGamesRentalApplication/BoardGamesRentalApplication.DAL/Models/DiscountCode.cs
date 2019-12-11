@@ -13,8 +13,9 @@ namespace BoardGamesRentalApplication.DAL.Models
         [Display(Name = "Kod")]
         [RegularExpression(@"^[A-z0-9]{5,10}$")]
         public string Code { get; set; }
+        public int DiscountCodeStatusId { get; set; }
         [Display(Name = "Status kodu")]
-        public string CodeStatus { get; set; }
+        public DiscountCodeStatus DiscountCodeStatus { get; set; }
         public int BoardGameId { get; set; }
         public BoardGame BoardGame { get; set; }
     }
