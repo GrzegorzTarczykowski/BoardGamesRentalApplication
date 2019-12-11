@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Code)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodeStatus)
+            @Html.DisplayNameFor(model => model.DiscountCodeStatus)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BoardGame.Name)
@@ -30,15 +30,13 @@
             @Html.DisplayFor(modelItem => item.Code)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CodeStatus)
+            @Html.DisplayFor(modelItem => item.DiscountCodeStatus.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BoardGame.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountCodeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DiscountCodeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DiscountCodeId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountCodeId })
         </td>
     </tr>
 }

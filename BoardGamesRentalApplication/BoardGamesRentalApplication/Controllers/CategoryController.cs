@@ -19,7 +19,7 @@ namespace BoardGamesRentalApplication.Controllers
 
         public ActionResult Index()
         {
-            return userTypeService.Authorize(ListCategories, UserType.Administrator);
+            return userTypeService.Authorize(ListCategories, UserType.Administrator, UserType.Employee);
         }
 
         private ActionResult ListCategories()
@@ -30,13 +30,13 @@ namespace BoardGamesRentalApplication.Controllers
         // GET: Admin/Details/5
         public ActionResult Details(int id)
         {
-            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator);
+            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator, UserType.Employee);
         }
         
         // GET: Admin/Create
         public ActionResult Create()
         {
-            return userTypeService.Authorize(View, UserType.Administrator);
+            return userTypeService.Authorize(View, UserType.Administrator,  UserType.Employee);
         }
 
         // POST: Admin/Create
@@ -48,13 +48,13 @@ namespace BoardGamesRentalApplication.Controllers
             {
                 categoryService.AddCategory(new BoardGameCategory { Name = collection["Name"] });
                 return RedirectToAction("Index");
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
         
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
-            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator);
+            return userTypeService.Authorize(() => View(categoryService.FindById(id)), UserType.Administrator, UserType.Employee);
         }
         
         // POST: Admin/Edit/5
@@ -65,7 +65,7 @@ namespace BoardGamesRentalApplication.Controllers
             {
                 categoryService.UpdateCategory(id, new BoardGameCategory { Name = collection["Name"] });
                 return RedirectToAction("Index");
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
         
         // GET: Admin/Delete/5
