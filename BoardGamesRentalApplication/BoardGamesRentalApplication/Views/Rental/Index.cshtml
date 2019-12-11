@@ -65,14 +65,20 @@
                                         @Html.DisplayFor(model => model.TotalCost)
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Dostępność</td>
-                                    <td><span class="available">Dostępny</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Dostępność</td>
-                                    <td><span class="inaccessible">Niedostępny</span></td>
-                                </tr>
+                                @if (Model.BoardGameIsAvailable == true)
+                                {
+                                    <tr>
+                                        <td>Dostępność</td>
+                                        <td><span class="available">Dostępny</span></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>Dostępność</td>
+                                        <td><span class="inaccessible">Niedostępny</span></td>
+                                    </tr>
+                                }
                             </table>
                         </div>
                     </div>
