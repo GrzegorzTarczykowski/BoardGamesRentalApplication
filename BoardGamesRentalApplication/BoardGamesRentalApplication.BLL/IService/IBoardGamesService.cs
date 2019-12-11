@@ -13,5 +13,6 @@ namespace BoardGamesRentalApplication.BLL.IService
         void UpdateBoardGame(int id, BoardGame boardGame);
         void RemoveBoardGame(int id);
         IQueryable<BoardGame> FindBy(Expression<System.Func<BoardGame, bool>> predicate, params string[] includeProperties);
+        bool IsAvailable(int boardGameId);
     }
 }
