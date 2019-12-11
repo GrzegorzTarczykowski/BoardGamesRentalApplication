@@ -1,4 +1,5 @@
-﻿@{
+﻿@using BoardGamesRentalApplication.DAL.Models
+@{
     ViewBag.Title = "Home Page";
 }
 <!DOCTYPE html>
@@ -53,12 +54,16 @@
                     </li>
                     @{
                         var sessionUserType = Session["UserType"];
-                        if (sessionUserType != null && (BoardGamesRentalApplication.DAL.Models.UserType)sessionUserType == BoardGamesRentalApplication.DAL.Models.UserType.Administrator)
+                    <li class="nav-item">
+                        @if (sessionUserType != null && (UserType)sessionUserType == UserType.Administrator)
                         {
-                        <li class="nav-item">
                             @Html.ActionLink("Panel Admina", "Index", "AdminPanel", null, new { @class = "nav-link" })
-                        </li>
                         }
+                        else if (sessionUserType != null && (UserType)sessionUserType == UserType.Employee)
+                        {
+                            @Html.ActionLink("Panel Pracownika", "Index", "AdminPanel", null, new { @class = "nav-link" })
+                        }
+                    </li>
                     }
                 </ul>
             </div>

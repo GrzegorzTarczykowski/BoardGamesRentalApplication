@@ -6,20 +6,15 @@ namespace BoardGamesRentalApplication.DAL.Models
     public class BoardGame
     {
         public int BoardGameId { get; set; }
+
         [Display(Name = "Gra planszowa")]
         public string Name { get; set; }
-        [Display(Name = "Opis gry")]
         public string Description { get; set; }
-        [Display(Name = "Zawartość")]
         public string Content { get; set; }
         public byte [] Image { get; set; }
-        [Display(Name = "Minimum graczy")]
         public int MinPlayerCount { get; set; }
-        [Display(Name = "Maskimum graczy")]
         public int MaxPlayerCount { get; set; }
-        [Display(Name = "Czas gry w minutach")]
         public int GameTimeInMinutes { get; set; }
-        [Display(Name = "Minimalny wiek")]
         public int MinimumAge { get; set; }
         [Display(Name = "Cena wypożyczenia / Dzień")]
         public decimal RentalCostPerDay { get; set; }

@@ -51,7 +51,7 @@ namespace BoardGamesRentalApplication.Controllers
                 BoardGameStateName = bg.BoardGameState.Name,
                 BoardGamePublisherName = bg.BoardGamePublisher.Name,
                 BoardGameCategoryName = bg.BoardGameCategory.Name
-            }).ToPagedList(page ?? 1, 5)), UserType.Administrator);
+            }).ToPagedList(page ?? 1, 5)), UserType.Administrator, UserType.Employee);
         }
 
         public ActionResult Create()
@@ -62,7 +62,7 @@ namespace BoardGamesRentalApplication.Controllers
                 ViewBag.BoardGameState = new SelectList(stateRepository.GetAll().Select(bgs => new SelectListItem { Text = bgs.Name, Value = bgs.BoardGameStateId.ToString() }), "Value", "Text");
                 ViewBag.BoardGameCategory = new SelectList(categoryRepository.GetAll().Select(bgc => new SelectListItem { Text = bgc.Name, Value = bgc.BoardGameCategoryId.ToString() }), "Value", "Text");
                 return View();
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         [HttpPost]
@@ -85,7 +85,7 @@ namespace BoardGamesRentalApplication.Controllers
                     BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         public ActionResult Edit(int id)
@@ -96,14 +96,8 @@ namespace BoardGamesRentalApplication.Controllers
                 ViewBag.BoardGamePublisher = new SelectList(publisherRepository.GetAll().Select(bgp => new SelectListItem { Text = bgp.Name, Value = bgp.BoardGamePublisherId.ToString() }), "Value", "Text", model.BoardGamePublisherId);
                 ViewBag.BoardGameState = new SelectList(stateRepository.GetAll().Select(bgs => new SelectListItem { Text = bgs.Name, Value = bgs.BoardGameStateId.ToString() }), "Value", "Text", model.BoardGameStateId);
                 ViewBag.BoardGameCategory = new SelectList(categoryRepository.GetAll().Select(bgc => new SelectListItem { Text = bgc.Name, Value = bgc.BoardGameCategoryId.ToString() }), "Value", "Text", model.BoardGameCategoryId);
-                //ViewBag.BoardGamePublisher.Text = model.BoardGamePublisher.Name;
-                //ViewBag.BoardGameState.Text = model.BoardGameState.Name;
-                //ViewBag.BoardGameCategory.Text = model.BoardGameCategory.Name;
-                //ViewBag.BoardGamePublisher.Value = model.BoardGamePublisher.BoardGamePublisherId.ToString();
-                //ViewBag.BoardGameState.Value = model.BoardGameState.BoardGameStateId.ToString();
-                //ViewBag.BoardGameCategory.Value = model.BoardGameCategory.BoardGameCategoryId.ToString();
                 return View(model);
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         [HttpPost]
@@ -126,7 +120,7 @@ namespace BoardGamesRentalApplication.Controllers
                     BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory.Name").AttemptedValue)
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
-            }, UserType.Administrator);
+            }, UserType.Administrator, UserType.Employee);
         }
 
         public ActionResult Delete(int id)

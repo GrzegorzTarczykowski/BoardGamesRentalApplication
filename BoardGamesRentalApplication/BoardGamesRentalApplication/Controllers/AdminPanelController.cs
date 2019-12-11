@@ -12,7 +12,7 @@ namespace BoardGamesRentalApplication.Controllers
         // GET: AdminPanel
         public ActionResult Index()
         {
-            if (!UserType.Administrator.Equals(Session["UserType"]))
+            if (!UserType.Administrator.Equals(Session["UserType"]) && !UserType.Employee.Equals(Session["UserType"]))
                 return RedirectToAction("Index", "Home");
             return View();
         }
