@@ -504,3 +504,60 @@ p.create-account {
 .admin .page-link {
     color: #0f836a;
 }
+
+/* SUMMARY */
+
+.card {
+    text-align: center;
+}
+
+    .card img {
+        width: 20%;
+        margin-bottom: 10px;
+    }
+
+.summary tr,
+.summary table {
+    width: 100%;
+}
+
+.summary td {
+    width: 50%;
+}
+
+.summary tr:nth-child(2n) {
+    background-color: #ececec;
+}
+
+.summary tr:nth-child(2n+1) {
+    background-color: #f3f3f3;
+}
+
+.summary td {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+    .summary td:nth-child(1) {
+        padding-left: 40px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .summary td:nth-child(2) {
+        padding-left: 40px;
+        text-align: left;
+    }
+
+.available,
+.inaccessible {
+    font-weight: 900;
+}
+
+.available {
+    color: #0ea80e;
+}
+
+.inaccessible {
+    color: #e00808;
+}

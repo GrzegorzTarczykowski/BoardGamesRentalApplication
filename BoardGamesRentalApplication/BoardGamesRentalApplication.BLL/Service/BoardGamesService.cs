@@ -73,5 +73,10 @@ namespace BoardGamesRentalApplication.BLL.Service
         {
             return boardGameRepository.FindBy(predicate, includeProperties);
         }
+
+        public bool IsAvailable(int boardGameId)
+        {
+            return boardGameRepository.Any(bg => bg.BoardGameId == boardGameId && bg.Quantity > 0);
+        }
     }
 }

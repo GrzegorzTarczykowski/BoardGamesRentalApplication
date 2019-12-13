@@ -13,10 +13,12 @@ namespace BoardGamesRentalApplication.Controllers
     public class RentalController : Controller
     {
         private readonly IReservationService reservationService;
+        private readonly IBoardGamesService boardGamesService;
 
-        public RentalController(IReservationService reservationService)
+        public RentalController(IReservationService reservationService, IBoardGamesService boardGamesService)
         {
             this.reservationService = reservationService;
+            this.boardGamesService = boardGamesService;
         }
 
         [HttpGet]
@@ -34,6 +36,7 @@ namespace BoardGamesRentalApplication.Controllers
                 Count = count,
                 TotalCost = totalCost,
                 BoardGameName = boardGameName,
+                BoardGameIsAvailable = boardGamesService.IsAvailable(boardGameId)
             };
             return View(reservation);
         }
