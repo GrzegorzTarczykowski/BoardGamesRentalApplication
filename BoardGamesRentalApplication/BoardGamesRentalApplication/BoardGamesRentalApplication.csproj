@@ -203,6 +203,7 @@
     <Content Include="images\board1.jpg" />
     <Content Include="images\computer.jpg" />
     <Content Include="images\person.jpg" />
+    <Content Include="images\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fa-brands-400.eot" />

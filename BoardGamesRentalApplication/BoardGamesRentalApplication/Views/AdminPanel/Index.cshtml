@@ -10,16 +10,19 @@
     }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    <p>
 
-<h2>@ViewBag.Title</h2>
-<p>
-    @Html.ActionLink("Zarządzanie grami", "BoardGamesCollection", "BoardGamesCollection")
-    <br/>
-    @Html.ActionLink("Zarządzanie kategoriami", "Index", "Category")
-    <br/>
-    @Html.ActionLink("Zarządzanie wydawcami", "Index", "BoardGamePublisher")
-    <br/>
-    @Html.ActionLink("Zarządzanie rezerwacjami", "Index", "RentalAdmin")
-    <br/>
-    @Html.ActionLink("Zarządzanie kodami rabatowymi", "Index", "DiscountAdmin")
-</p>
+        @Html.ActionLink("Zarządzanie grami", "BoardGamesCollection", "BoardGamesCollection", new { area = "" }, new { @class = "btn" })
+        <br />
+        @Html.ActionLink("Zarządzanie kategoriami", "Index", "Category", new { area = "" }, new { @class = "btn" })
+        <br />
+        @Html.ActionLink("Zarządzanie wydawcami", "Index", "BoardGamePublisher", new { area = "" }, new { @class = "btn" })
+        <br />
+        @Html.ActionLink("Zarządzanie rezerwacjami", "Index", "RentalAdmin", new { area = "" }, new { @class = "btn" })
+        <br />
+        @Html.ActionLink("Zarządzanie kodami rabatowymi", "Index", "DiscountAdmin", new { area = "" }, new { @class = "btn" })
+    </p>
+
+</div>
