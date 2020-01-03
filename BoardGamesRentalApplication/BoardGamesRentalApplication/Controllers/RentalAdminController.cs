@@ -2,6 +2,7 @@
 using BoardGamesRentalApplication.DAL.Abstraction;
 using BoardGamesRentalApplication.DAL.Models;
 using BoardGamesRentalApplication.Service;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +27,12 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         // GET: RentalAdmin
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             return userTypeService.Authorize(() =>
             {
-                return View(reservationRepository.GetAll(nameof(Reservation.User), nameof(Reservation.ReservationStatus), nameof(Reservation.BoardGame)).ToList());
+                IQueryable<Reservation> reservationsQuery = reservationRepository.GetAll(nameof(Reservation.User), nameof(Reservation.ReservationStatus), nameof(Reservation.BoardGame));
+                return View(reservationsQuery.OrderBy(r => r.RentalEndDate).ToPagedList(page ?? 1, 10));
             }, UserType.Administrator, UserType.Employee);
         }
 
@@ -39,7 +41,7 @@ namespace BoardGamesRentalApplication.Controllers
         {
             return userTypeService.Authorize(() =>
             {
-                Reservation model = reservationRepository.FindBy(r => r.ReservationId == id, nameof(Reservation.ReservationStatus)).Single();
+                Reservation model = reservationRepository.FindBy(r => r.ReservationId == id, nameof(Reservation.ReservationStatus), nameof(Reservation.BoardGame), nameof(Reservation.User)).Single();
                 ViewBag.ReservationStatus = new SelectList(reservationStatusRepository.GetAll().Select(rs => new SelectListItem { Text = rs.Name, Value = rs.ReservationStatusId.ToString() }),
                     "Value", "Text", model.ReservationStatusId);
                 return View(model);

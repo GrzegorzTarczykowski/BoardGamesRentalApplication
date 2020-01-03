@@ -14,8 +14,8 @@
                 <h3>@Html.DisplayFor(model => model.Name)</h3>
                 <table>
                     <tr>
-                        <td>Kategoria</td>
-                        <td>logiczne</td>
+                        <td>Ilość</td>
+                        <td>@Html.DisplayFor(model => model.Quantity)</td>
                     </tr>
                     <tr>
                         <td>Zawartość</td>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-6"><label for="count">Ilość</label></div>
                         <div class="col-6">
-                            <input type="number" name="count" placeholder="podaj ilość" required min="0" max="10">
+                            <input type="number" name="count" placeholder="podaj ilość" required min="1" max="10">
                         </div>
                         <div class="col-6"><label for="discountCode">Kod rabatowy</label></div>
                         <div class="col-6">

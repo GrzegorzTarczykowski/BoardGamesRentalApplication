@@ -1,4 +1,7 @@
-﻿@model IEnumerable<BoardGamesRentalApplication.DAL.Models.Reservation>
+﻿@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model IPagedList<BoardGamesRentalApplication.DAL.Models.Reservation>
 
 @{
     ViewBag.Title = "Zarządzanie rezerwacjami";
@@ -10,22 +13,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RentalStartDate)
+            @Html.DisplayNameFor(model => model.First().RentalStartDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RentalEndDate)
+            @Html.DisplayNameFor(model => model.First().RentalEndDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Count)
+            @Html.DisplayNameFor(model => model.First().Count)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.Username)
+            @Html.DisplayNameFor(model => model.First().User.Username)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BoardGame.Name)
+            @Html.DisplayNameFor(model => model.First().BoardGame.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReservationStatus.Name)
+            @Html.DisplayNameFor(model => model.First().ReservationStatus.Name)
         </th>
         <th></th>
     </tr>
@@ -57,3 +60,19 @@
 }
 
 </table>
+
+<div class="row">
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page }),
+new PagedListRenderOptions
+{
+    LiElementClasses = new string[] { "page-item" },
+    UlElementClasses = new string[] { "pagination justify-content-end" },
+    ContainerDivClasses = new[] { "pagination" },
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    LinkToPreviousPageFormat = "Previous",
+    LinkToNextPageFormat = "Next"
+})
+</div>
