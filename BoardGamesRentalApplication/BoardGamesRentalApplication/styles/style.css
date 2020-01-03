@@ -1,5 +1,6 @@
 body {
     color: #5a5a5a;
+    background-color: #eee;
 }
 
 .row {
@@ -19,6 +20,7 @@ body {
 
         .bar .login a {
             color: #5a5a5a;
+            font-weight: 800;
         }
 
 /* nav */
@@ -29,9 +31,12 @@ body {
 }
 
 .navbar-brand {
-    font-weight: 800px;
-    text-transform: uppercase;
-    font-size: 2em;
+    background: url("../images/logo.png") no-repeat;
+    object-fit: contain;
+    display: block;
+    width: 250px;
+    height: 90px;
+    text-indent: -9999px; /* hides the link text */
 }
 
 .nav-item {
@@ -45,7 +50,7 @@ body {
 .navbar-light .navbar-nav .nav-link:visited {
     color: #16a085;
     font-size: 1.3em;
-    border-bottom: 2px solid white;
+    /*border-bottom: 2px solid white;*/
 }
 
 
@@ -168,15 +173,15 @@ input {
         float: none;
         width: 15vw;
         height: 5vh;
-        margin-top: 0px;
+        margin-top: 10px;
         margin-bottom: 10px;
     }
 
 .btn {
     display: inline-block;
-    font-weight: 400;
+    font-weight: 700;
     width: 15vw;
-    color: #212529;
+    color: #13816b;
     text-align: center;
     margin-top: 10px;
     margin-left: auto;
