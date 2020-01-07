@@ -235,6 +235,14 @@ w polskim alfabecie.
             discountCodeStatuses.Add(new DiscountCodeStatus { Name = "U¿yty" });
 
             context.DiscountCodeStatuses.AddRange(discountCodeStatuses);
+
+            IList<BoardGameNote> boardGameNotes = new List<BoardGameNote>();
+
+            boardGameNotes.Add(new BoardGameNote { Author = "Zbigniew", Content = "Œwietna gra polecam! Gra³em w ni¹ ca³¹ noc", BoardGameId = 1, BoardGame = defaultBoardGames[0] });
+            boardGameNotes.Add(new BoardGameNote { Author = "Ula", Content = "Kocham t¹ gre! Jest rewelacyjna. Nie moge siê doczekaæ kolejnej parti", BoardGameId = 2, BoardGame = defaultBoardGames[1] });
+            boardGameNotes.Add(new BoardGameNote { Author = "Cichy gracz", Content = "Najlepsza gra na œwiecie", BoardGameId = 1, BoardGame = defaultBoardGames[0] });
+
+            context.BoardGameNotes.AddRange(boardGameNotes);
         }
     }
 }

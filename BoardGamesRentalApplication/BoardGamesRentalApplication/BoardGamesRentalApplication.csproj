@@ -177,6 +177,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BoardGame.cs" />
+    <Compile Include="Models\BoardGameNote.cs" />
     <Compile Include="Models\BoardGamesCollectionPageData.cs" />
     <Compile Include="Models\HomePageData.cs" />
     <Compile Include="Models\RegisterUser.cs" />
