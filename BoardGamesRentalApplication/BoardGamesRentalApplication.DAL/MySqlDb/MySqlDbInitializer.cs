@@ -120,9 +120,9 @@ w polskim alfabecie.
                                                     , BoardGameCategoryId = 3
                                                     , BoardGameCategory = defaultBoardGameCategories[2] });
 
-            defaultBoardGames.Add(new BoardGame() { Name = "Fourth Name"
-                                                    , Description = "Fourth Description"
-                                                    , Content = "Fourth Content"
+            defaultBoardGames.Add(new BoardGame() { Name = "Wyspa Skye"
+                                                    , Description = "Miêkki piasek na pla¿ach, ³agodne wzgórza i potê¿ne ³añcuchy górskie. Tak, ten wspania³y krajobraz mo¿e oczarowaæ ka¿dego. Niech ten sielankowy obraz jednak ciê nie zmyli. Setki lat temu by³ to teren, na którym a¿ piêæ klanów walczy³o o dominacjê. Ka¿dy z nich zawziêcie walczy³ o przejêcie ka¿dego, nawet najmniejszego skrawka ziemi, jednoczeœnie próbuj¹c sprzedaæ tereny o ma³ej u¿ytecznoœci."
+                                                    , Content = @"plansza do gry 16 ¿etonów punktacji 78 ¿etonów terenu 1 worek 5 znaczników punktacji 6 ¿etonów odrzucenia 6 parawanów 1 znacznik rund 1 ¿eton gracza rozpoczynaj¹cego 73 monety instrukcja"
                                                     , MinimumAge = 10
                                                     , GameTimeInMinutes = 35
                                                     , MinPlayerCount = 4
@@ -136,9 +136,9 @@ w polskim alfabecie.
                                                     , BoardGameCategoryId = 4
                                                     , BoardGameCategory = defaultBoardGameCategories[3] });
 
-            defaultBoardGames.Add(new BoardGame() { Name = "Fifth Name"
-                                                    , Description = "Fifth Description"
-                                                    , Content = "Fifth Content"
+            defaultBoardGames.Add(new BoardGame() { Name = "Res Arcana (edycja polska)"
+                                                    , Description = @"W wysokiej wie¿y s³ynny alchemik przygotowuje magiczne eliksiry, zlewaj¹c ze sob¹ wielobarwne ciecze nie z tego œwiata, które przechowuje w ozdobnych flakonach. W œwiêtym gaju druid uciera w skupieniu zio³a potrzebne do pradawnego rytua³u, a skryty w ciemnoœciach katakumb nekromanta przywo³uje koœcianego smoka... Witamy w œwiecie Res Arcana! To tutaj ¿ycie, œmieræ, wigor, spokój i z³oto stanowi¹ esencje niezbêdne tym wszystkim, którzy paraj¹ siê sztuk¹ magii. "
+                                                    , Content = "40 kart artefaktów 10 kart magów 10 kart monumentów 150 drewnianych znaczników esencji 5 p³ytek enklaw mocy(dwustronnych) 8 magicznych przedmiotów znacznik pierwszego gracza 12 ¿etonów esencji "5x" 4 karty pomocy + p³ytka podsumowania instrukcja"
                                                     , MinimumAge = 15
                                                     , GameTimeInMinutes = 10
                                                     , MinPlayerCount = 2
@@ -152,13 +152,13 @@ w polskim alfabecie.
                                                     , BoardGameCategoryId = 5
                                                     , BoardGameCategory = defaultBoardGameCategories[4] });
 
-            defaultBoardGames.Add(new BoardGame() { Name = "Sixth Name"
-                                                    , Description = "Sixth Description"
-                                                    , Content = "Sixth Content"
+            defaultBoardGames.Add(new BoardGame() { Name = "Wszystko albo nic"
+                                                    , Description = "Wszystko albo nic to gra kooperacyjna, czyli oparta na wspó³pracy. Macie wspólny cel, odniesiecie wiêc wspólne zwyciêstwo albo... wspólnie przegracie. Podczas gry bêdziecie wyk³adaæ na stó³ karty akcji o odpowiednich wartoœciach i kolorach. Celem ich wyk³adania jest spe³nienie warunków, opisanych na kartach zadañ. Wygracie, jeœli uda siê Wam wykonaæ wszystkie zadania! Zadania wydaj¹ siê proste, ale wcale nie bêdzie ³atwo je wykonaæ.Podczas gry obowi¹zuje zakaz komunikowania siê ze sob¹ na temat kolorów i wartoœci posiadanych przez Was kart, co znacznie utrudni wykonanie zadañ oraz dostarczy wielkich emocji!"
+                                                    , Content = "56 kart akcji 50 kart zadañ instrukcja"
                                                     , MinimumAge = 18
                                                     , GameTimeInMinutes = 45
                                                     , MinPlayerCount = 2
-                                                    , MaxPlayerCount = 6
+                                                    , MaxPlayerCount = 4
                                                     , RentalCostPerDay = 3.50M
                                                     , Quantity = 3
                                                     , BoardGamePublisherId = 3
