@@ -138,7 +138,7 @@ w polskim alfabecie.
 
             defaultBoardGames.Add(new BoardGame() { Name = "Res Arcana (edycja polska)"
                                                     , Description = @"W wysokiej wie¿y s³ynny alchemik przygotowuje magiczne eliksiry, zlewaj¹c ze sob¹ wielobarwne ciecze nie z tego œwiata, które przechowuje w ozdobnych flakonach. W œwiêtym gaju druid uciera w skupieniu zio³a potrzebne do pradawnego rytua³u, a skryty w ciemnoœciach katakumb nekromanta przywo³uje koœcianego smoka... Witamy w œwiecie Res Arcana! To tutaj ¿ycie, œmieræ, wigor, spokój i z³oto stanowi¹ esencje niezbêdne tym wszystkim, którzy paraj¹ siê sztuk¹ magii. "
-                                                    , Content = "40 kart artefaktów 10 kart magów 10 kart monumentów 150 drewnianych znaczników esencji 5 p³ytek enklaw mocy(dwustronnych) 8 magicznych przedmiotów znacznik pierwszego gracza 12 ¿etonów esencji "5x" 4 karty pomocy + p³ytka podsumowania instrukcja"
+                                                    , Content = "40 kart artefaktów 10 kart magów 10 kart monumentów 150 drewnianych znaczników esencji 5 p³ytek enklaw mocy(dwustronnych) 8 magicznych przedmiotów znacznik pierwszego gracza 12 ¿etonów esencji 5x 4 karty pomocy + p³ytka podsumowania instrukcja"
                                                     , MinimumAge = 15
                                                     , GameTimeInMinutes = 10
                                                     , MinPlayerCount = 2
