@@ -47,6 +47,7 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="IService\IBoardGameCategoryService.cs" />
     <Compile Include="IService\IBoardGameFilterService.cs" />
+    <Compile Include="IService\IBoardGameNoteService.cs" />
     <Compile Include="IService\IBoardGameSortService.cs" />
     <Compile Include="IService\IBoardGamesService.cs" />
     <Compile Include="IService\IBoardGameStatesService.cs" />
@@ -56,11 +57,13 @@
     <Compile Include="IService\IRegisterService.cs" />
     <Compile Include="IService\IReservationService.cs" />
     <Compile Include="IService\IService.cs" />
+    <Compile Include="IService\IUserService.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\FilterOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BoardGameCategoryService.cs" />
     <Compile Include="Service\BoardGameFilterService.cs" />
+    <Compile Include="Service\BoardGameNoteService.cs" />
     <Compile Include="Service\BoardGamePublishersService.cs" />
     <Compile Include="Service\BoardGameSortService.cs" />
     <Compile Include="Service\BoardGamesService.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\RegisterService.cs" />
     <Compile Include="Service\ReservationService.cs" />
+    <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoardGamesRentalApplication.DAL\BoardGamesRentalApplication.DAL.csproj">

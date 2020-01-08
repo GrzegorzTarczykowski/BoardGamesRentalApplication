@@ -10,5 +10,6 @@ namespace BoardGamesRentalApplication.Models
     {
         public IEnumerable<BoardGame> RecommendedBoardGames { get; set; }
         public IList<Filter> FilterParameters { get; set; }
+        public IEnumerable<BoardGameNote> FristThreeBoardGameNote { get; set; }
     }
 }
