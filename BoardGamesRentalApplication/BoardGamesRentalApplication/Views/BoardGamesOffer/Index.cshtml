@@ -14,7 +14,7 @@
                     @using (Html.BeginForm())
                     {
                         @Html.EditorFor(x => x.FilterParameters, new { htmlAttributes = new { @class = "category" } })
-                        <input type="submit" value="Szukaj" class="btn "/>
+                        <input type="submit" value="Szukaj" class="btn " />
                     }
                 </div>
             </section>
@@ -31,22 +31,22 @@
                     }
                 </div>
                 @*<div class="row">
-                    <div class="col-12 pagination">
-                        <!-- <nav aria-label="Page navigation"> -->
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                        <!-- </nav> -->
-                    </div>
-                </div>*@
+                        <div class="col-12 pagination">
+                            <!-- <nav aria-label="Page navigation"> -->
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                            <!-- </nav> -->
+                        </div>
+                    </div>*@
                 <div class="row">
 
                     @foreach (var item in Model.BoardGames)
@@ -88,7 +88,7 @@
 
                 </div>
                 <div class="row">
-                    
+
                     @Html.PagedListPager(Model.BoardGames, page => Url.Action("Index",
                 new { page }),
                 new PagedListRenderOptions
@@ -102,26 +102,41 @@
                     LinkToNextPageFormat = "Next"
                 })
                 </div>
-                
+
                 @*<div class="row">
-            <div class="col-12 pagination">
-                <!-- <nav aria-label="Page navigation"> -->
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-                <!-- </nav> -->
-            </div>
-        </div>*@
+                        <div class="col-12 pagination">
+                            <!-- <nav aria-label="Page navigation"> -->
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                            <!-- </nav> -->
+                        </div>
+                    </div>*@
             </section>
         </div>
     </div>
+    <footer>
+        <div class="row">
+            <div class="col-4">
+                <a href="#">Strona Główna</a>
+                <a href="#">O nas</a>
+                <a href="#">Nasze gry</a>
+            </div>
+            <div class="col-4">
+                Copyright 2019. All rights reserved.
+            </div>
+            <div class="col-4 logo">
+                <img src="~/images/logo.png" />
+            </div>
+        </div>
+    </footer>
 </section>
     

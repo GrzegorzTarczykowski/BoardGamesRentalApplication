@@ -486,6 +486,16 @@ footer {
     margin-bottom: 0px;
 }
 
+.alert-success {
+    padding: 0px 0px;
+    font-size: 90%;
+    color: #0f836a;
+    font-weight: bold;
+    margin-bottom: 0px;
+    background-color: unset;
+    border-color: unset;
+}
+
 .alert-input {
     border: solid 2px #e62222;
 }

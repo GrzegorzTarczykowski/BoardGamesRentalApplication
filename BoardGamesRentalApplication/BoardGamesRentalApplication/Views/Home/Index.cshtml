@@ -55,7 +55,7 @@
             @using (Html.BeginForm("Index", "BoardGamesOffer", FormMethod.Post))
             {
                 @Html.EditorFor(x => x.FilterParameters)
-                <input class="btn" type="submit" value="Szukaj"/>
+                <input class="btn" type="submit" value="Szukaj" />
             }
         </div>
     </section>
@@ -110,33 +110,17 @@
             <h2>Opinie klientów</h2>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-4">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique pretium vulputate.
-                    Phasellus ut sollicitudin odio, vel malesuada justo. Quisque maximus tellus feugiat erat
-                    hendrerit,
-                    eleifend eleifend leo tempor.
-                    <cite><img src="~/images/person.jpg" alt="">Johny</cite>
-                </blockquote>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique pretium vulputate.
-                    Phasellus ut sollicitudin odio, vel malesuada justo. Quisque maximus tellus feugiat erat
-                    hendrerit,
-                    eleifend eleifend leo tempor.
-                    <cite><img src="~/images/person.jpg" alt="">Johny</cite>
-                </blockquote>
-            </div>
-            <div class="col-12 col-sm-12 col-md-4">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique pretium vulputate.
-                    Phasellus ut sollicitudin odio, vel malesuada justo. Quisque maximus tellus feugiat erat
-                    hendrerit,
-                    eleifend eleifend leo tempor.
-                    <cite><img src="~/images/person.jpg" alt="">Johny</cite>
-                </blockquote>
-            </div>
+            @{
+                foreach (var item in Model.FristThreeBoardGameNote.Where((item, index) => index < 3 || index > 0))
+                {
+                    <div class="col-12 col-sm-12 col-md-4">
+                        <blockquote>
+                            @Html.DisplayFor(modelItem => item.Content)
+                            <cite><img src="~/images/person.jpg" alt="">@Html.DisplayFor(modelItem => item.Author)</cite>
+                        </blockquote>
+                    </div>
+                }
+            }
         </div>
     </section>
     <footer>
