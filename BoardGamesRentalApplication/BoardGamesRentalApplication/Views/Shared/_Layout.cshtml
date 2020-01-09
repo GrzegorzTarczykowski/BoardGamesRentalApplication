@@ -63,6 +63,11 @@
                         {
                             @Html.ActionLink("Panel Pracownika", "Index", "AdminPanel", null, new { @class = "nav-link" })
                         }
+                        else if (sessionUserType != null && (UserType)sessionUserType == UserType.Regular)
+                        {
+                            int userId = (int)Session["UserId"];
+                            @Html.ActionLink("Profil", "Details", "User", new { id = userId }, new { @class = "nav-link" })
+                        }
                     </li>
                     }
                 </ul>
