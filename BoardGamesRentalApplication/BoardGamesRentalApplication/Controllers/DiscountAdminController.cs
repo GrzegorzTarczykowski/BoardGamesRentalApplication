@@ -61,8 +61,8 @@ namespace BoardGamesRentalApplication.Controllers
         {
             return userTypeService.Authorize(() =>
             {
-                var model = discountCodeRepository.FindBy(dc => dc.DiscountCodeStatusId == id, nameof(BoardGame)).Single();
-                ViewBag.DiscountCodeStatues = new SelectList(ViewBag.DiscountCodeStatuses, "Value", "Text", model.DiscountCodeStatusId);
+                var model = discountCodeRepository.FindBy(dc => dc.DiscountCodeId == id, nameof(BoardGame), nameof(DiscountCodeStatus)).Single();
+                ViewBag.DiscountCodeStatuses = new SelectList(ViewBag.DiscountCodeStatuses, "Value", "Text", model.DiscountCodeStatus.DiscountCodeStatusId);
                 return View(model);
             }, UserType.Administrator, UserType.Employee);
         }
@@ -74,7 +74,7 @@ namespace BoardGamesRentalApplication.Controllers
             return userTypeService.Authorize(() =>
             {
                 var edited = discountCodeRepository.FindById(id);
-                edited.DiscountCodeStatusId = int.Parse(collection.GetValue(nameof(DiscountCode.DiscountCodeStatus)).AttemptedValue);
+                edited.DiscountCodeStatusId = int.Parse(collection.GetValue(nameof(DiscountCode.DiscountCodeStatusId)).AttemptedValue);
                 discountCodeRepository.Edit(edited);
                 discountCodeRepository.SaveChanges();
                 return RedirectToAction(nameof(Index));
