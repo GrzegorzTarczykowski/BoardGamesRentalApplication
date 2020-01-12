@@ -5,40 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiscountCodeStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BoardGame.Name)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiscountCodeStatus.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BoardGame.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountCodeId })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="container">
+    <section class="admin">
+        <div class="row">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <div class="row">
+            @Html.ActionLink("Dodaj nowy kod rabatowy", "Create", new { area = "" }, new { @class = "btn btn-full" })
+        </div>
+        <table class="table table-hover table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th style="min-width: 200px;">
+                    @Html.DisplayNameFor(model => model.DiscountCodeStatus)
+                </th>
+                <th style="min-width: 200px;">
+                    @Html.DisplayNameFor(model => model.BoardGame.Name)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiscountCodeStatus.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BoardGame.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.DiscountCodeId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </section>
+</div>

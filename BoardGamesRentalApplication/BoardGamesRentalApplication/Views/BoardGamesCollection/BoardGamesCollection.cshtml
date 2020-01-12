@@ -45,7 +45,7 @@
                 <th>
                     Kategoria
                 </th>
-                <th></th>
+                <th style="min-width: 80px;"></th>
             </tr>
 
             @{
@@ -82,8 +82,8 @@
                             @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameId }) |
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameId })
                         </td>
                     </tr>
                 }

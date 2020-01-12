@@ -166,6 +166,7 @@ input {
 }
 
     input[type=text],
+    input[type=number],
     input[type=email],
     input[type=password] {
         border: solid 2px #16a085;
@@ -178,6 +179,8 @@ input {
         /*margin-top: 10px;*/
         /*margin-bottom: 10px;*/
     }
+
+        
 
 .btn {
     display: inline-block;
@@ -222,6 +225,9 @@ td,
 table {
     width: 100%;
 }
+    .table-dark td, .table-dark th{
+        vertical-align:middle;
+    }
 
     .recommended tr:nth-child(2n) {
         background-color: #333333;
@@ -613,3 +619,53 @@ p.create-account {
 .register .btn {
     /* width: 100%; */
 }
+
+/* ACCOUNT section */
+.account p.user-data {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.signature {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: rgba(22, 160, 133, 1);
+    font-style: italic;
+}
+
+
+/* ACCOUNT-EDIT section */
+
+.img-bg-register {
+    text-align: center;
+    /* padding-right: 100px; */
+}
+
+.account-edit form {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    transform: translate(-50px, 0);
+}
+
+
+
+    .account-edit form input {
+        margin-top: 10px;
+        /* width: 60%; */
+    }
+
+    .account-edit form label {
+        /* width: 40%; */
+        width: 100px;
+        padding-right: 5px;
+    }
+
+    .account-edit form .form-input {
+        text-align: right;
+        display: inline-block;
+    }
