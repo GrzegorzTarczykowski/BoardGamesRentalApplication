@@ -1,4 +1,7 @@
-﻿@model IEnumerable<BoardGamesRentalApplication.DAL.Models.Reservation>
+﻿@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model IPagedList<BoardGamesRentalApplication.DAL.Models.Reservation>
 
 @{
     ViewBag.Title = "Zarządzanie rezerwacjami";
@@ -65,3 +68,20 @@
     </section>
 </div>
 
+</table>
+
+<div class="row">
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page }),
+new PagedListRenderOptions
+{
+    LiElementClasses = new string[] { "page-item" },
+    UlElementClasses = new string[] { "pagination justify-content-end" },
+    ContainerDivClasses = new[] { "pagination" },
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    LinkToPreviousPageFormat = "Previous",
+    LinkToNextPageFormat = "Next"
+})
+</div>
