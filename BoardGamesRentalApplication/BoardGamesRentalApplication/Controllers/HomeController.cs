@@ -9,11 +9,13 @@ namespace BoardGamesRentalApplication.Controllers
     {
         private readonly IBoardGamesService boardGamesService;
         private readonly IBoardGameFilterService boardGameFilterService;
+        private readonly IBoardGameNoteService boardGameNoteService;
 
-        public HomeController(IBoardGamesService boardGamesService, IBoardGameFilterService boardGameFilterService)
+        public HomeController(IBoardGamesService boardGamesService, IBoardGameFilterService boardGameFilterService, IBoardGameNoteService boardGameNoteService)
         {
             this.boardGamesService = boardGamesService;
             this.boardGameFilterService = boardGameFilterService;
+            this.boardGameNoteService = boardGameNoteService;
         }
 
         public ActionResult Index(HomePageData homePageData)
@@ -39,6 +41,16 @@ namespace BoardGamesRentalApplication.Controllers
                                                     Quantity = bg.Quantity,
                                                     RentalCostPerDay = bg.RentalCostPerDay
                                                 });
+
+            homePageData.FristThreeBoardGameNote = boardGameNoteService.GetFristThreeBoardGameNote()
+                                                                       .Select(bgn => new BoardGameNote()
+                                                                       {
+                                                                           BoardGameId = bgn.BoardGameId,
+                                                                           Author = bgn.Author,
+                                                                           BoardGameNoteId = bgn.BoardGameNoteId,
+                                                                           Content = bgn.Content
+                                                                       });
+
             return View(homePageData);
         }
 

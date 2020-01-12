@@ -28,7 +28,7 @@ namespace BoardGamesRentalApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User()
+                DAL.Models.User user = new DAL.Models.User()
                 {
                     Username = registerUser.Username,
                     FirstName = registerUser.FirstName,

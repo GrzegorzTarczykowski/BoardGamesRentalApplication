@@ -12,7 +12,7 @@
         {
             @Html.AntiForgeryToken()
             <div class="photo_cover">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "alert" })
                 <section class="login_register">
                     <div class="row">
                         <div class="col-6 panel-left">
@@ -22,18 +22,18 @@
                             <form action="Login" method="post">
                                 @if (TempData["SuccessRegisterNewUserMessage"] != null)
                                 {
-                                    <div class="alert">@TempData["SuccessRegisterNewUserMessage"]</div>
+                                    <div class="alert-success">@TempData["SuccessRegisterNewUserMessage"]</div>
                                 }
                                 @Html.LabelFor(model => model.Username)
                                 @Html.EditorFor(model => model.Username)
-                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                                <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "alert" })
+                                <div class="alert">
                                     @Html.Label("", Convert.ToString((string)ViewBag.UserDoesntExistMessage))
                                 </div>
                                 @Html.LabelFor(model => model.Password)
                                 @Html.EditorFor(model => model.Password)
-                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "alert" })
+                                <div class="alert">
                                     @Html.Label("", Convert.ToString((string)ViewBag.IncorrectPasswordMessage))
                                 </div>
                                 <input type="submit" value="Zaloguj" class="btn btn-full">
@@ -67,7 +67,7 @@
                 Copyright 2019. All rights reserved.
             </div>
             <div class="col-4 logo">
-                LOGO
+                <img src="~/images/logo.png" />
             </div>
         </div>
     </footer>

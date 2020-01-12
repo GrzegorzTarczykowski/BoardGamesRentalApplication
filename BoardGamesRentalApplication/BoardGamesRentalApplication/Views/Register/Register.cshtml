@@ -2,125 +2,92 @@
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/_LayoutPageLogin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!--
-<div class="links">
-    <ul class="links-unordered-list">
-        <li class="">
-            <a href="/Home/Index" class="">Strona główna</a>
-        </li>
-        <li class="">
-            <a href="/Home/About" class="">Informacje</a>
-        </li>
-        <li class="">
-            <a href="/Home/Contact" class="">Kontakt</a>
-        </li>
-        <li class="">
-            <a href="/Login/Login" class="">Logowanie</a>
-        </li>
-    </ul>
-</div>
--->
-<h1>
-    Zarejestruj się
-</h1>
 
 <div class="container">
-    <div id="clouds">
-        <div class="cloud x1"></div>
-        <!-- Time for multiple clouds to dance around -->
-        <div class="cloud x2"></div>
-        <div class="cloud x3"></div>
-        <div class="cloud x4"></div>
-        <div class="cloud x5"></div>
+    <div class="img-bg img-bg-register">
+        <div class="photo_cover">
+            <section class="register">                
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h2>Mam konto</h2>
+                                    <p class="create-account">
+                                        Posiadasz już konto?
+                                        <br />Kliknij "Zaloguj", aby przejść do formularza
+                                        logowania. <br>
+                                        <button class="btn btn-full" onclick="location.href='/Login/Login';return false;">Zaloguj</button>
+                                    </p>
+                                </div>
+                                <div class="col-8">
+                                    <h2>Nie mam konta</h2>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "alert" })
+                                        <form action="Register" method="post">
+                                            @Html.LabelFor(model => model.Username)
+                                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "alert-input" } })
+                                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "alert" })
+                                            <div class="alert">
+                                                @Html.Label("", Convert.ToString((string)ViewBag.DuplicateUsernameMessage))
+                                            </div>
+
+                                            @Html.LabelFor(model => model.FirstName)
+                                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "alert-input" } })
+                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "alert" })
+
+                                            @Html.LabelFor(model => model.LastName)
+                                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "alert-input" } })
+                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "alert" })
+
+                                            @Html.LabelFor(model => model.Email)
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "alert-input" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "alert" })
+                                            <div class="alert">
+                                                @Html.Label("", Convert.ToString((string)ViewBag.DuplicateEmailMessage))
+                                            </div>
+
+                                            @Html.LabelFor(model => model.Password)
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "alert-input" } })
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "alert" })
+                                            <div class="alert">
+                                                @Html.Label("", Convert.ToString((string)ViewBag.Message))
+                                            </div>
+
+                                            @Html.LabelFor(model => model.ConfirmPassword)
+                                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "alert-input" } })
+                                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "alert" })
+                                            <div class="alert">
+                                                @Html.Label("", Convert.ToString((string)ViewBag.Message))
+                                            </div>
+                                            <input type="submit" value="Zarejestruj" class="btn btn-full">
+                                        </form>
+                                    }
+                                </div>                               
+                            </div>                            
+                        </div>
+                    </div>                
+            </section>
+        </div>
     </div>
-    <div class="sub-main-w3">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <form action="Register" method="post">
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                            <div class="text-danger">
-                                @Html.Label("", Convert.ToString((string)ViewBag.DuplicateUsernameMessage))
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            <div class="text-danger">
-                                @Html.Label("", Convert.ToString((string)ViewBag.DuplicateEmailMessage))
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                            <div class="text-danger">
-                                @Html.Label("", Convert.ToString((string)ViewBag.Message))
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Utwórz" />
-                        </div>
-                    </div>
-
-                </form>
+    <footer>
+        <div class="row">
+            <div class="col-4">
+                <a href="#">Strona Główna</a>
+                <a href="#">O nas</a>
+                <a href="#">Nasze gry</a>
             </div>
-        }
-    </div>
+            <div class="col-4">
+                Copyright 2019. All rights reserved.
+            </div>
+            <div class="col-4 logo">
+                <img src="~/images/logo.png" />
+            </div>
+        </div>
+    </footer>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

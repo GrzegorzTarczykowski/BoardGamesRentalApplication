@@ -1,5 +1,6 @@
 body {
     color: #5a5a5a;
+    background-color: #eee;
 }
 
 .row {
@@ -19,6 +20,7 @@ body {
 
         .bar .login a {
             color: #5a5a5a;
+            font-weight: 800;
         }
 
 /* nav */
@@ -29,9 +31,12 @@ body {
 }
 
 .navbar-brand {
-    font-weight: 800px;
-    text-transform: uppercase;
-    font-size: 2em;
+    background: url("../images/logo.png") no-repeat;
+    object-fit: contain;
+    display: block;
+    width: 250px;
+    height: 90px;
+    text-indent: -9999px; /* hides the link text */
 }
 
 .nav-item {
@@ -45,7 +50,7 @@ body {
 .navbar-light .navbar-nav .nav-link:visited {
     color: #16a085;
     font-size: 1.3em;
-    border-bottom: 2px solid white;
+    /*border-bottom: 2px solid white;*/
 }
 
 
@@ -84,8 +89,10 @@ section {
 
 h2 {
     margin-top: 20px;
-    margin-left: 50px;
+    /*margin-left: 50px;*/
     margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
 }
 
     h2::after {
@@ -168,15 +175,15 @@ input {
         float: none;
         width: 15vw;
         height: 5vh;
-        margin-top: 0px;
-        margin-bottom: 10px;
+        /*margin-top: 10px;*/
+        /*margin-bottom: 10px;*/
     }
 
 .btn {
     display: inline-block;
-    font-weight: 400;
+    font-weight: 700;
     width: 15vw;
-    color: #212529;
+    color: #13816b;
     text-align: center;
     margin-top: 10px;
     margin-left: auto;
@@ -460,20 +467,37 @@ footer {
     width: 50%;
 }
 
-.login_register label {
+.login_register label,
+.register label {
     padding-right: 10px;
     color: #fff;
 }
 
-.login_register h2 {
+.login_register h2,
+.register h2 {
     color: #ffffff;
 }
 
 .alert {
-    padding: 0px 5px;
+    padding: 0px 0px;
+    font-size: 90%;
+    color: #e62222;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.alert-success {
+    padding: 0px 0px;
     font-size: 90%;
     color: #0f836a;
     font-weight: bold;
+    margin-bottom: 0px;
+    background-color: unset;
+    border-color: unset;
+}
+
+.alert-input {
+    border: solid 2px #e62222;
 }
 
 .panel-left {
@@ -560,4 +584,32 @@ p.create-account {
 
 .inaccessible {
     color: #e00808;
+}
+
+/* REGISTER */
+.img-bg-register {
+    text-align: center;
+    /* padding-right: 100px; */
+}
+
+.register form {
+    display: inline-block;
+    text-align: right;
+    width: 80%;
+}
+
+    .register form input {
+        /*margin-top: 10px;*/
+        width: 55%;
+        margin-right:10px;
+    }
+
+    .register form label {
+        width: 40%;
+        padding-right: 10px;
+        color: #fff;
+    }
+
+.register .btn {
+    /* width: 100%; */
 }
