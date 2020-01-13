@@ -669,3 +669,7 @@ p.create-account {
         text-align: right;
         display: inline-block;
     }
+
+.carousel-item {
+    max-height: 350px;
+}
