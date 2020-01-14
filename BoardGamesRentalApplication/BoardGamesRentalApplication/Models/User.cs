@@ -13,6 +13,8 @@ namespace BoardGamesRentalApplication.Models
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Display(Name = "Adres e-mail")]
+        public string Email { get; set; }
         [Display(Name = "Nr telefonu")]
         public string PhoneNumber { get; set; }
         [Display(Name = "Ulica")]

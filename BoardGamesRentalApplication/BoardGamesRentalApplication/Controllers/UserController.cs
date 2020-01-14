@@ -32,6 +32,7 @@ namespace BoardGamesRentalApplication.Controllers
                 UserId = userToUpdate.UserId,
                 FirstName = userToUpdate.FirstName,
                 LastName = userToUpdate.LastName,
+                Email = userToUpdate.Email,
                 PhoneNumber = userToUpdate.PhoneNumber,
                 Street = userToUpdate.Street,
                 HouseNumber = userToUpdate.HouseNumber,
