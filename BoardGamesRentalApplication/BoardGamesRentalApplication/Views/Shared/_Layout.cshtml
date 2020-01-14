@@ -9,18 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     @Styles.Render("~/styles/style.css")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
 
 </head>
 <body>
     <div class="container-fluid bar">
         <div class="container">
             <div class="row">
-                <div class="col-6">111-111-111</div>
+                <div class="col-6">boardgamesworld@board.com</div>
                 @{
                     if (string.IsNullOrEmpty(Session["Username"] as string))
                     {
@@ -28,7 +31,7 @@
                     }
                     else
                     {
-                        <div class="col-6 login">@Session["Username"] (@Html.ActionLink("Wyloguj", "Logout",  "Login"))</div>
+                        <div class="col-6 login">@Session["Username"] (@Html.ActionLink("Wyloguj", "Logout", "Login"))</div>
                     }
                 }
             </div>
@@ -48,28 +51,28 @@
                         <a class="nav-link" href="/Home/Index">Strona Główna <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">O nas</a>
+                        <a class="nav-link" href="/Home/About">O nas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/BoardGamesOffer/Index">Nasze Gry</a>
                     </li>
                     @{
                         var sessionUserType = Session["UserType"];
-                    <li class="nav-item">
-                        @if (sessionUserType != null && (UserType)sessionUserType == UserType.Administrator)
-                        {
-                            @Html.ActionLink("Panel Admina", "Index", "AdminPanel", null, new { @class = "nav-link" })
-                        }
-                        else if (sessionUserType != null && (UserType)sessionUserType == UserType.Employee)
-                        {
-                            @Html.ActionLink("Panel Pracownika", "Index", "AdminPanel", null, new { @class = "nav-link" })
-                        }
-                        else if (sessionUserType != null && (UserType)sessionUserType == UserType.Regular)
-                        {
-                            int userId = (int)Session["UserId"];
-                            @Html.ActionLink("Profil", "Details", "User", new { id = userId }, new { @class = "nav-link" })
-                        }
-                    </li>
+                        <li class="nav-item">
+                            @if (sessionUserType != null && (UserType)sessionUserType == UserType.Administrator)
+                            {
+                                @Html.ActionLink("Panel Admina", "Index", "AdminPanel", null, new { @class = "nav-link" })
+                            }
+                            else if (sessionUserType != null && (UserType)sessionUserType == UserType.Employee)
+                            {
+                                @Html.ActionLink("Panel Pracownika", "Index", "AdminPanel", null, new { @class = "nav-link" })
+                            }
+                            else if (sessionUserType != null && (UserType)sessionUserType == UserType.Regular)
+                            {
+                                int userId = (int)Session["UserId"];
+                                @Html.ActionLink("Profil", "Details", "User", new { id = userId }, new { @class = "nav-link" })
+                            }
+                        </li>
                     }
                 </ul>
             </div>
@@ -78,14 +81,16 @@
 
 
     @RenderBody()
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
 
 
     @Scripts.Render("~/bundles/jquery")

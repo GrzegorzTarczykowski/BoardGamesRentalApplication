@@ -15,23 +15,23 @@
         </div>
         <table class="table table-hover table-dark">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RentalStartDate)
+                <th style="min-width: 250px;">
+                    Data rozpoczęcia
+                </th>
+                <th style="min-width: 250px;">
+                    Data zakończenia
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.RentalEndDate)
+                    Wypożyczona ilość
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Count)
+                    Użytkownik
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.User.Username)
+                    Nazwa gry
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.BoardGame.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReservationStatus.Name)
+                    Status rezerwacji
                 </th>
                 <th></th>
             </tr>
@@ -58,7 +58,7 @@
                         @Html.DisplayFor(modelItem => item.ReservationStatus.Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ReservationId })
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.ReservationId })
                     </td>
                 </tr>
             }
@@ -68,7 +68,6 @@
     </section>
 </div>
 
-</table>
 
 <div class="row">
 
