@@ -22,12 +22,13 @@ namespace BoardGamesRentalApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count, string discountCode, string rentalCostPerDay)
+        public ActionResult Index(DateTime rentalStartDate, DateTime rentalEndDate, int boardGameId, string boardGameName, int count, string discountCode, string rentalCostPerDay, string imagePath)
         {
             decimal totalCost = reservationService.CaculateTotalCostByBoardGameDiscountCode(discountCode, boardGameId, rentalStartDate, rentalEndDate, decimal.Parse(rentalCostPerDay));
 
             Session["TotalCost"] = totalCost; //brzydka lata
 
+            ViewBag.ImagePath = imagePath;
             Models.Reservation reservation = new Models.Reservation
             {
                 RentalStartDate = rentalStartDate,
@@ -36,7 +37,8 @@ namespace BoardGamesRentalApplication.Controllers
                 Count = count,
                 TotalCost = totalCost,
                 BoardGameName = boardGameName,
-                BoardGameIsAvailable = boardGamesService.IsAvailable(boardGameId)
+                BoardGameIsAvailable = boardGamesService.IsAvailable(boardGameId),
+                ImagePath = imagePath
             };
             return View(reservation);
         }
@@ -60,7 +62,9 @@ namespace BoardGamesRentalApplication.Controllers
                 switch (reservationService.AddReservation(reservation))
                 {
                     case ReservationServiceResponse.SuccessReservation:
+                        //string imagePath = model.ImagePath;
                         ModelState.Clear();
+                        //ViewBag.ImagePath = imagePath;
                         TempData["SuccessReservation"] = $"Z powodzeniem dokonano rezerwacji: {model.BoardGameName}.";
                         return RedirectToAction("Login", "Login");
                     case ReservationServiceResponse.NotEnoughBoardGame:

@@ -50,7 +50,9 @@ namespace BoardGamesRentalApplication.Controllers
                 MinimumAge = bg.MinimumAge,
                 BoardGameStateName = bg.BoardGameState.Name,
                 BoardGamePublisherName = bg.BoardGamePublisher.Name,
-                BoardGameCategoryName = bg.BoardGameCategory.Name
+                BoardGameCategoryName = bg.BoardGameCategory.Name,
+                ImagePath = bg.ImagePath,
+                DetailsImagePath = bg.DetailsImagePath
             }).ToPagedList(page ?? 1, 5)), UserType.Administrator, UserType.Employee);
         }
 
@@ -82,7 +84,9 @@ namespace BoardGamesRentalApplication.Controllers
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher").AttemptedValue),
                     BoardGameStateId = int.Parse(collection.GetValue("BoardGameState").AttemptedValue),
-                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue)
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory").AttemptedValue),
+                    ImagePath = collection["ImagePath"],
+                    DetailsImagePath = collection["DetailsImagePath"]
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator, UserType.Employee);
@@ -117,7 +121,9 @@ namespace BoardGamesRentalApplication.Controllers
                     MaxPlayerCount = int.Parse(collection["MaxPlayerCount"]),
                     BoardGamePublisherId = int.Parse(collection.GetValue("BoardGamePublisher.Name").AttemptedValue),
                     BoardGameStateId = int.Parse(collection.GetValue("BoardGameState.Name").AttemptedValue),
-                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory.Name").AttemptedValue)
+                    BoardGameCategoryId = int.Parse(collection.GetValue("BoardGameCategory.Name").AttemptedValue),
+                    ImagePath = collection["ImagePath"],
+                    DetailsImagePath = collection["DetailsImagePath"]
                 });
                 return RedirectToAction(nameof(BoardGamesCollection));
             }, UserType.Administrator, UserType.Employee);

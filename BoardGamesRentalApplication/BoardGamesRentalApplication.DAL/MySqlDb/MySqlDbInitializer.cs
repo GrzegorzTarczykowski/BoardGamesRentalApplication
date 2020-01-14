@@ -81,7 +81,9 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                                                     , BoardGameStateId = 2
                                                     , BoardGameState = defaultBoardGameStates[1]
                                                     , BoardGameCategoryId = 1
-                                                    , BoardGameCategory = defaultBoardGameCategories[0]});
+                                                    , BoardGameCategory = defaultBoardGameCategories[0]
+                                                    , ImagePath = "/images/games/warcaby.png"
+                                                    , DetailsImagePath = "/images/games/warcaby.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Rattus: Szczuro³ap"
                                                     , Description = @"Gra dziêki której nauka staje siê zabaw¹!
@@ -102,7 +104,9 @@ w polskim alfabecie.
                                                     , BoardGameStateId = 1
                                                     , BoardGameState = defaultBoardGameStates[0]
                                                     , BoardGameCategoryId = 2
-                                                    , BoardGameCategory = defaultBoardGameCategories[1] });
+                                                    , BoardGameCategory = defaultBoardGameCategories[1]
+                                                    , ImagePath = "/images/games/rattus.png"
+                                                    , DetailsImagePath = "/images/games/rattus.png" });
 
             defaultBoardGames.Add(new BoardGame() { Name = "Gemino"
                                                     , Description = "Gemino to bardzo przyjemna gra logiczna dla ca³ej rodziny. Proste zasady (podobne do kó³ko i krzy¿yk) umo¿liwiaj¹ ciekaw¹, wci¹gaj¹c¹ rozgrywkê. Dziêki temu, do gry chêtnie zasi¹d¹ zarówno rodzice, dzieci, jak i dziadkowie. Aby wygraæ, trzeba planowaæ swoje ruchy, blokowaæ i przechytrzyæ przeciwników na dwóch planszach jednoczeœnie!"
@@ -118,7 +122,9 @@ w polskim alfabecie.
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 3
-                                                    , BoardGameCategory = defaultBoardGameCategories[2] });
+                                                    , BoardGameCategory = defaultBoardGameCategories[2]
+                                                    , ImagePath = "/images/games/gemino.png"
+                                                    , DetailsImagePath = "/images/games/gemino.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Wyspa Skye"
                                                     , Description = "Miêkki piasek na pla¿ach, ³agodne wzgórza i potê¿ne ³añcuchy górskie. Tak, ten wspania³y krajobraz mo¿e oczarowaæ ka¿dego. Niech ten sielankowy obraz jednak ciê nie zmyli. Setki lat temu by³ to teren, na którym a¿ piêæ klanów walczy³o o dominacjê. Ka¿dy z nich zawziêcie walczy³ o przejêcie ka¿dego, nawet najmniejszego skrawka ziemi, jednoczeœnie próbuj¹c sprzedaæ tereny o ma³ej u¿ytecznoœci."
@@ -134,7 +140,9 @@ w polskim alfabecie.
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 4
-                                                    , BoardGameCategory = defaultBoardGameCategories[3] });
+                                                    , BoardGameCategory = defaultBoardGameCategories[3]
+                                                    , ImagePath = "/images/games/wyspaskye.png"
+                                                    , DetailsImagePath = "/images/games/wyspaskye.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Res Arcana (edycja polska)"
                                                     , Description = @"W wysokiej wie¿y s³ynny alchemik przygotowuje magiczne eliksiry, zlewaj¹c ze sob¹ wielobarwne ciecze nie z tego œwiata, które przechowuje w ozdobnych flakonach. W œwiêtym gaju druid uciera w skupieniu zio³a potrzebne do pradawnego rytua³u, a skryty w ciemnoœciach katakumb nekromanta przywo³uje koœcianego smoka... Witamy w œwiecie Res Arcana! To tutaj ¿ycie, œmieræ, wigor, spokój i z³oto stanowi¹ esencje niezbêdne tym wszystkim, którzy paraj¹ siê sztuk¹ magii. "
@@ -150,7 +158,9 @@ w polskim alfabecie.
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 5
-                                                    , BoardGameCategory = defaultBoardGameCategories[4] });
+                                                    , BoardGameCategory = defaultBoardGameCategories[4]
+                                                    , ImagePath = "/images/games/resarcana.png"
+                                                    , DetailsImagePath = "/images/games/resarcana.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Wszystko albo nic"
                                                     , Description = "Wszystko albo nic to gra kooperacyjna, czyli oparta na wspó³pracy. Macie wspólny cel, odniesiecie wiêc wspólne zwyciêstwo albo... wspólnie przegracie. Podczas gry bêdziecie wyk³adaæ na stó³ karty akcji o odpowiednich wartoœciach i kolorach. Celem ich wyk³adania jest spe³nienie warunków, opisanych na kartach zadañ. Wygracie, jeœli uda siê Wam wykonaæ wszystkie zadania! Zadania wydaj¹ siê proste, ale wcale nie bêdzie ³atwo je wykonaæ.Podczas gry obowi¹zuje zakaz komunikowania siê ze sob¹ na temat kolorów i wartoœci posiadanych przez Was kart, co znacznie utrudni wykonanie zadañ oraz dostarczy wielkich emocji!"
@@ -166,7 +176,9 @@ w polskim alfabecie.
                                                     , BoardGameStateId = 3
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 6
-                                                    , BoardGameCategory = defaultBoardGameCategories[5] });
+                                                    , BoardGameCategory = defaultBoardGameCategories[5]
+                                                    , ImagePath = "/images/games/wszystkoalbonic.png"
+                                                    , DetailsImagePath = "/images/games/wszystkoalbonic.png"});
 
             context.BoardGames.AddRange(defaultBoardGames);
 

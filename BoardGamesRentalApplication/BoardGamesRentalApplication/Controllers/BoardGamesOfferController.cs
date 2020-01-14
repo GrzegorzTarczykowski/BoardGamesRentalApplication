@@ -55,7 +55,9 @@ namespace BoardGamesRentalApplication.Controllers
                                                                               BoardGameStateName = bg.BoardGameState.Name,
                                                                               BoardGamePublisherName = bg.BoardGamePublisher.Name,
                                                                               Quantity = bg.Quantity,
-                                                                              RentalCostPerDay = bg.RentalCostPerDay
+                                                                              RentalCostPerDay = bg.RentalCostPerDay,
+                                                                              ImagePath = bg.ImagePath,
+                                                                              DetailsImagePath = bg.DetailsImagePath
                                                                           })
                                                                           .ToPagedList(page ?? 1, 3);
             return View(boardGamesCollectionPageData);

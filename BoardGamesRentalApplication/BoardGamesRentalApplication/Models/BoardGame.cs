@@ -9,6 +9,12 @@ namespace BoardGamesRentalApplication.Models
         [Display(Name = "Gra planszowa")]
         public string Name { get; set; }
 
+        [Display(Name = "Zdjęcie")]
+        public string ImagePath { get; set; }
+
+        [Display(Name = "Zdjęcie")]
+        public string DetailsImagePath { get; set; }
+
         [Display(Name = "Opis gry")]
         public string Description { get; set; }
 

@@ -29,6 +29,20 @@
                                     </div>
                                     <div>
                                         <div class="form-input">
+                                            @Html.LabelFor(model => model.ImagePath, "Zdjęcie")
+                                            @Html.EditorFor(model => model.ImagePath)
+                                            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.DetailsImagePath, "Zdjęcie (Szczegóły)")
+                                            @Html.EditorFor(model => model.DetailsImagePath)
+                                            @Html.ValidationMessageFor(model => model.DetailsImagePath, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
                                             @Html.LabelFor(model => model.Description, "Opis gry", htmlAttributes: new { @style = "vertical-align:top;" })
                                             @Html.TextAreaFor(model => model.Description, new { rows = 3 })
                                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "alert" })
