@@ -8,14 +8,14 @@
     <section class="game-attributes">
         <div class="row">
             <div class="col-6">
-                <img src="~/images/board1.jpg" alt="">
+                <img src="~/images/games/gemino-details.png" alt="">
             </div>
             <div class="col-6">
                 <h3>@Html.DisplayFor(model => model.Name)</h3>
                 <table>
                     <tr>
-                        <td>Kategoria</td>
-                        <td>logiczne</td>
+                        <td>Ilość</td>
+                        <td>@Html.DisplayFor(model => model.Quantity)</td>
                     </tr>
                     <tr>
                         <td>Zawartość</td>
@@ -54,33 +54,40 @@
                         <td>@Html.DisplayFor(model => model.RentalCostPerDay) zł</td>
                     </tr>
                 </table>
+                @{
+                    if (string.IsNullOrEmpty(Session["Username"] as string))
+                    {
 
-                <form action="Rental" method="get">
-                    <div class="row rental">
-                        <div class="col-6"><label for="rentalStartDate">Wypożyczenie od dnia</label></div>
-                        <div class="col-6">
-                            <input type="datetime" name="rentalStartDate" class="datepicker"
-                                   placeholder="mm/dd/rrrr" required>
-                        </div>
-                        <div class="col-6"><label for="rentalEndDate">Wypożyczenie do dnia</label></div>
-                        <div class="col-6">
-                            <input type="datetime" name="rentalEndDate" class="datepicker"
-                                   placeholder="mm/dd/rrrr" required>
-                        </div>
-                        <div class="col-6"><label for="count">Ilość</label></div>
-                        <div class="col-6">
-                            <input type="number" name="count" placeholder="podaj ilość" required min="1" max="10">
-                        </div>
-                        <div class="col-6"><label for="discountCode">Kod rabatowy</label></div>
-                        <div class="col-6">
-                            <input type="text" name="discountCode">
-                        </div>
-                        <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
-                        <input type="hidden" id="boardGameName" name="boardGameName" value="@Model.Name" />
-                        <input type="hidden" id="rentalCostPerDay" name="rentalCostPerDay" value="@Model.RentalCostPerDay.ToString()" />
-                        <input type="submit" value="Wypożycz" class="btn">
-                    </div>
-                </form>
+                    }
+                    else {
+                        <form action="Rental" method="get">
+                            <div class="row rental">
+                                <div class="col-6"><label for="rentalStartDate">Wypożyczenie od dnia</label></div>
+                                <div class="col-6">
+                                    <input type="datetime" name="rentalStartDate" class="datepicker"
+                                           placeholder="mm/dd/rrrr" required>
+                                </div>
+                                <div class="col-6"><label for="rentalEndDate">Wypożyczenie do dnia</label></div>
+                                <div class="col-6">
+                                    <input type="datetime" name="rentalEndDate" class="datepicker"
+                                           placeholder="mm/dd/rrrr" required>
+                                </div>
+                                <div class="col-6"><label for="count">Ilość</label></div>
+                                <div class="col-6">
+                                    <input type="number" name="count" placeholder="podaj ilość" required min="1" max="10">
+                                </div>
+                                <div class="col-6"><label for="discountCode">Kod rabatowy</label></div>
+                                <div class="col-6">
+                                    <input type="text" name="discountCode">
+                                </div>
+                                <input type="hidden" id="boardGameId" name="boardGameId" value="@Model.BoardGameId" />
+                                <input type="hidden" id="boardGameName" name="boardGameName" value="@Model.Name" />
+                                <input type="hidden" id="rentalCostPerDay" name="rentalCostPerDay" value="@Model.RentalCostPerDay.ToString()" />
+                                <input type="submit" value="Wypożycz" class="btn">
+                            </div>
+                        </form>
+                    }
+                }
 
             </div>
         </div>
@@ -107,15 +114,14 @@
                 Copyright 2019. All rights reserved.
             </div>
             <div class="col-4 logo">
-                LOGO
+                <img src="~/images/logo.png" />
             </div>
         </div>
     </footer>
 </div>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-</script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-    $(".datepicker").datepicker();
+    $(".datepicker").datepicker({ minDate: 0});
 </script>

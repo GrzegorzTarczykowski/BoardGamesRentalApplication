@@ -45,12 +45,12 @@
                 <th>
                     Kategoria
                 </th>
-                <th></th>
+                <th style="min-width: 80px;"></th>
             </tr>
 
             @{
                 IEllipsisService ellipsisService = new EllipsisService();
-                int maxChars = 20;
+                int maxChars = 30;
                 foreach (var item in Model)
                 {
                     <tr>
@@ -61,7 +61,7 @@
                             @ellipsisService.EllipsisOf(item.Description, maxChars)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Content)
+                            @ellipsisService.EllipsisOf(item.Content, maxChars)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.MinPlayerCount)
@@ -82,8 +82,8 @@
                             @Html.DisplayFor(modelItem => item.BoardGameCategoryName)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.BoardGameId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.BoardGameId })
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.BoardGameId }) |
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.BoardGameId })
                         </td>
                     </tr>
                 }

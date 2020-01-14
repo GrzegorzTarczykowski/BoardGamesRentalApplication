@@ -1,59 +1,86 @@
-﻿@model IEnumerable<BoardGamesRentalApplication.DAL.Models.Reservation>
+﻿@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model IPagedList<BoardGamesRentalApplication.DAL.Models.Reservation>
 
 @{
     ViewBag.Title = "Zarządzanie rezerwacjami";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="container">
+    <section class="admin">
+        <div class="row">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <table class="table table-hover table-dark">
+            <tr>
+                <th style="min-width: 250px;">
+                    Data rozpoczęcia
+                </th>
+                <th style="min-width: 250px;">
+                    Data zakończenia
+                </th>
+                <th>
+                    Wypożyczona ilość
+                </th>
+                <th>
+                    Użytkownik
+                </th>
+                <th>
+                    Nazwa gry
+                </th>
+                <th>
+                    Status rezerwacji
+                </th>
+                <th></th>
+            </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RentalStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RentalEndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BoardGame.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReservationStatus.Name)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RentalStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RentalEndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BoardGame.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReservationStatus.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.ReservationId })
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BoardGame.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReservationStatus.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReservationId })
-        </td>
-    </tr>
-}
+        </table>
 
-</table>
+    </section>
+</div>
+
+
+<div class="row">
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page }),
+new PagedListRenderOptions
+{
+    LiElementClasses = new string[] { "page-item" },
+    UlElementClasses = new string[] { "pagination justify-content-end" },
+    ContainerDivClasses = new[] { "pagination" },
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    LinkToPreviousPageFormat = "Previous",
+    LinkToNextPageFormat = "Next"
+})
+</div>

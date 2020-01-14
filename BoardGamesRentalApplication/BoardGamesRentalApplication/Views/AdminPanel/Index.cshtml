@@ -2,7 +2,7 @@
 @{
     if (Session["UserType"].Equals(UserType.Administrator))
     {
-        ViewBag.Title = "Panel Admina";
+        ViewBag.Title = "Panel Administracyjny";
     }
     else
     {
@@ -11,18 +11,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-    <h2>@ViewBag.Title</h2>
-    <p>
-
-        @Html.ActionLink("Zarządzanie grami", "BoardGamesCollection", "BoardGamesCollection", new { area = "" }, new { @class = "btn" })
-        <br />
-        @Html.ActionLink("Zarządzanie kategoriami", "Index", "Category", new { area = "" }, new { @class = "btn" })
-        <br />
-        @Html.ActionLink("Zarządzanie wydawcami", "Index", "BoardGamePublisher", new { area = "" }, new { @class = "btn" })
-        <br />
-        @Html.ActionLink("Zarządzanie rezerwacjami", "Index", "RentalAdmin", new { area = "" }, new { @class = "btn" })
-        <br />
-        @Html.ActionLink("Zarządzanie kodami rabatowymi", "Index", "DiscountAdmin", new { area = "" }, new { @class = "btn" })
-    </p>
-
+    <section class="admin-edit">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <h2>@ViewBag.Title</h2>
+                </div>
+                <div class="col justify-context-center">
+                    <div class="card text-center bg-light" style="width:100%;">
+                        <div class="card-body">
+                            <div>
+                                @Html.ActionLink("Zarządzanie grami", "BoardGamesCollection", "BoardGamesCollection", new { area = "" }, new { @class = "btn" })
+                            </div>
+                            <div>
+                                @Html.ActionLink("Zarządzanie kategoriami", "Index", "Category", new { area = "" }, new { @class = "btn" })
+                            </div>
+                            <div>
+                                @Html.ActionLink("Zarządzanie wydawcami", "Index", "BoardGamePublisher", new { area = "" }, new { @class = "btn" })
+                            </div>
+                            <div>
+                                @Html.ActionLink("Zarządzanie rezerwacjami", "Index", "RentalAdmin", new { area = "" }, new { @class = "btn" })
+                            </div>
+                            <div>
+                                @Html.ActionLink("Zarządzanie kodami rabatowymi", "Index", "DiscountAdmin", new { area = "" }, new { @class = "btn" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
