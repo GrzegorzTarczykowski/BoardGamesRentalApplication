@@ -28,6 +28,7 @@ namespace BoardGamesRentalApplication.Controllers
                                                             , nameof(BoardGamePublisher)
                                                             , nameof(BoardGameState))
                                                             .FirstOrDefault();
+            TempData["ImagePath"] = boardGame.ImagePath;
             return View(new Models.BoardGame
             {
                 BoardGameId = boardGame.BoardGameId,
@@ -43,7 +44,9 @@ namespace BoardGamesRentalApplication.Controllers
                 BoardGameStateName = boardGame.BoardGameState.Name,
                 Image = boardGame.Image,
                 Quantity = boardGame.Quantity,
-                RentalCostPerDay = boardGame.RentalCostPerDay
+                RentalCostPerDay = boardGame.RentalCostPerDay,
+                ImagePath = boardGame.ImagePath,
+                DetailsImagePath = boardGame.DetailsImagePath
             });
         }
 

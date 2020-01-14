@@ -17,5 +17,6 @@ namespace BoardGamesRentalApplication.Models
         public string BoardGameName { get; set; }
         public int ReservationStatusId { get; set; }
         public bool BoardGameIsAvailable { get; set; }
+        public string ImagePath { get; set; }
     }
 }

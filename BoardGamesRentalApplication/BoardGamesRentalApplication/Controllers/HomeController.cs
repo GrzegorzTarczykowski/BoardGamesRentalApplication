@@ -39,7 +39,9 @@ namespace BoardGamesRentalApplication.Controllers
                                                     Content = bg.Content,
                                                     Description = bg.Description,
                                                     Quantity = bg.Quantity,
-                                                    RentalCostPerDay = bg.RentalCostPerDay
+                                                    RentalCostPerDay = bg.RentalCostPerDay,
+                                                    ImagePath = bg.ImagePath,
+                                                    DetailsImagePath = bg.DetailsImagePath
                                                 });
 
             homePageData.FristThreeBoardGameNote = boardGameNoteService.GetFristThreeBoardGameNote()
