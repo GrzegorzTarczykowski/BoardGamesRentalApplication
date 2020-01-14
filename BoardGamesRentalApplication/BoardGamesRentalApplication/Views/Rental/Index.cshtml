@@ -23,11 +23,11 @@
                         <div class="card-body text-secondary">
                             <h5 class="card-title">Adres dostawy</h5>
                             <p class="card-text">
-                                Jan Kowalski<br />
-                                ul.Piękna 23/33 <br />
-                                00-000 Warszawa<br />
-                                tel. 123 456 789<br />
-                                sampleemail@mail.pl<br />
+                                @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)<br />
+                                ul.@Html.DisplayFor(model => model.User.Street) @Html.DisplayFor(model => model.User.HouseNumber)/@Html.DisplayFor(model => model.User.ApartmentNumber) <br />
+                                @Html.DisplayFor(model => model.User.PostalCode) @Html.DisplayFor(model => model.User.City)<br />
+                                tel. @Html.DisplayFor(model => model.User.PhoneNumber)<br />
+                                @Html.DisplayFor(model => model.User.Email)<br />
                             </p>
                         </div>
                     </div>

@@ -13,6 +13,7 @@ namespace BoardGamesRentalApplication.Models
         public int Count { get; set; }
         public decimal TotalCost { get; set; }
         public int UserId { get; set; }
+        public User User { get; set; }
         public int BoardGameId { get; set; }
         public string BoardGameName { get; set; }
         public int ReservationStatusId { get; set; }

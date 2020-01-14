@@ -14,11 +14,13 @@ namespace BoardGamesRentalApplication.Controllers
     {
         private readonly IReservationService reservationService;
         private readonly IBoardGamesService boardGamesService;
+        private readonly IUserService userService;
 
-        public RentalController(IReservationService reservationService, IBoardGamesService boardGamesService)
+        public RentalController(IReservationService reservationService, IBoardGamesService boardGamesService, IUserService userService)
         {
             this.reservationService = reservationService;
             this.boardGamesService = boardGamesService;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -28,6 +30,21 @@ namespace BoardGamesRentalApplication.Controllers
 
             Session["TotalCost"] = totalCost; //brzydka lata
 
+            DAL.Models.User userFromSession = userService.GetById((int)Session["UserId"]);
+            Models.User user = new Models.User
+            {
+                UserId = userFromSession.UserId,
+                FirstName = userFromSession.FirstName,
+                LastName = userFromSession.LastName,
+                Email = userFromSession.Email,
+                PhoneNumber = userFromSession.PhoneNumber,
+                Street = userFromSession.Street,
+                HouseNumber = userFromSession.HouseNumber,
+                ApartmentNumber = userFromSession.ApartmentNumber,
+                PostalCode = userFromSession.PostalCode,
+                City = userFromSession.City
+            };
+
             ViewBag.ImagePath = imagePath;
             Models.Reservation reservation = new Models.Reservation
             {
@@ -35,6 +52,7 @@ namespace BoardGamesRentalApplication.Controllers
                 RentalEndDate = rentalEndDate,
                 BoardGameId = boardGameId,
                 Count = count,
+                User = user,
                 TotalCost = totalCost,
                 BoardGameName = boardGameName,
                 BoardGameIsAvailable = boardGamesService.IsAvailable(boardGameId),
