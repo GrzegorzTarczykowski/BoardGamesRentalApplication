@@ -20,6 +20,8 @@ namespace BoardGamesRentalApplication.DAL.Models
         public decimal RentalCostPerDay { get; set; }
         [Display(Name = "Ilość")]
         public int Quantity { get; set; }
+        public string ImagePath { get; set; }
+        public string DetailsImagePath { get; set; }
 
         public int BoardGameCategoryId { get; set; }
         public BoardGameCategory BoardGameCategory { get; set; }
