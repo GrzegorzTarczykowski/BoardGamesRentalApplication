@@ -1,76 +1,111 @@
 ﻿@model BoardGamesRentalApplication.DAL.Models.Reservation
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edytuj rezerwację";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="container">
+    <section class="admin-edit">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Reservation</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ReservationId)
+        <div class="row">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RentalStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.RentalStartDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RentalStartDate, "", new { @class = "text-danger" })
+            <div class="col">
+                <div class="row">
+                    <h2>@ViewBag.Title</h2>
+                    <div class="card text-center bg-light" style="width: 100%;">
+                        <div class="card-body">
+                            <div class="form">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "alert" })
+                                    @Html.HiddenFor(model => model.ReservationId)
+
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.RentalStartDate)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.RentalStartDate)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.RentalStartDate, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.RentalEndDate)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.RentalEndDate)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.RentalEndDate, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.Count)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.Count)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.Count, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.User.Username)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.User.Username)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.BoardGame.Name)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.BoardGame.Name)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.BoardGame.Name, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.ReservationStatus.Name)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DropDownListFor(model => model.ReservationStatusId, ViewBag.ReservationStatus as SelectList)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.ReservationStatusId, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Zatwierdź" class="btn btn-full" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                @Html.ActionLink("Powrót", "Index", new { }, new { @class = "btn btn-full", @type = "submit", @style = "float:right;width:200px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RentalEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.RentalEndDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RentalEndDate, "", new { @class = "text-danger" })
-            </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Count, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.Count, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.User.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.User.Username, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BoardGame.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.BoardGame.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGame.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReservationStatus.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ReservationStatusId, ViewBag.ReservationStatus as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReservationStatusId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Wróć", "Index")
+    </section>
 </div>

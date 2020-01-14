@@ -5,120 +5,125 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="container">
+    <section class="admin-edit">
 
-    <div class="form-horizontal">
-        <h4>BoardGame</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, "Nazwa gry", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        <div class="row">
+
+            <div class="col">
+                <div class="row">
+                    <h2>@ViewBag.Title</h2>
+                    <div class="card text-center bg-light" style="width: 100%;">
+                        <div class="card-body">
+                            <div class="form">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "alert" })
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.Name, "Nazwa gry")
+                                            @Html.EditorFor(model => model.Name)
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.ImagePath, "Zdjęcie")
+                                            @Html.EditorFor(model => model.ImagePath)
+                                            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.DetailsImagePath, "Zdjęcie (Szczegóły)")
+                                            @Html.EditorFor(model => model.DetailsImagePath)
+                                            @Html.ValidationMessageFor(model => model.DetailsImagePath, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.Description, "Opis gry", htmlAttributes: new { @style = "vertical-align:top;" })
+                                            @Html.TextAreaFor(model => model.Description, new { rows = 3 })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.Content, "Zawartość gry", htmlAttributes: new { @style = "vertical-align:top;" })
+                                            @Html.TextAreaFor(model => model.Content, new { rows = 3 })
+                                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.MinPlayerCount, "Minimum graczy")
+                                            @Html.EditorFor(model => model.MinPlayerCount)
+                                            @Html.ValidationMessageFor(model => model.MinPlayerCount, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.MaxPlayerCount, "Maksimum graczy")
+                                            @Html.EditorFor(model => model.MaxPlayerCount)
+                                            @Html.ValidationMessageFor(model => model.MaxPlayerCount, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.GameTimeInMinutes, "Czas gry (w minutach)")
+                                            @Html.EditorFor(model => model.GameTimeInMinutes)
+                                            @Html.ValidationMessageFor(model => model.GameTimeInMinutes, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.MinimumAge, "Minimalny wiek gracza")
+                                            @Html.EditorFor(model => model.MinimumAge)
+                                            @Html.ValidationMessageFor(model => model.MinimumAge, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.BoardGamePublisher, "Wydawca gry")
+                                            @Html.DropDownListFor(model => model.BoardGamePublisher, ViewBag.BoardGamePublisher as SelectList)
+                                            @Html.ValidationMessageFor(model => model.BoardGamePublisher, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.BoardGameState, "Stan gry")
+                                            @Html.DropDownListFor(model => model.BoardGameState, ViewBag.BoardGameState as SelectList)
+                                            @Html.ValidationMessageFor(model => model.BoardGameState, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            @Html.LabelFor(model => model.BoardGameCategory, "Kategoria")
+                                            @Html.DropDownListFor(model => model.BoardGameCategory, ViewBag.BoardGameCategory as SelectList)
+                                            @Html.ValidationMessageFor(model => model.BoardGameCategory, "", new { @class = "alert" })
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Zatwierdź" class="btn btn-full" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                @Html.ActionLink("Powrót", "BoardGamesCollection", new { }, new { @class = "btn btn-full", @type = "submit", @style = "float:right;width:200px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImagePath, "Zdjęcie", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
-            </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DetailsImagePath, "Zdjęcie (Szczegóły)", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DetailsImagePath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DetailsImagePath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, "Opis gry", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Content, "Zawartość gry", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MinPlayerCount, "Minimum graczy", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MinPlayerCount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MinPlayerCount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaxPlayerCount, "Maksimum graczy", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaxPlayerCount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaxPlayerCount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GameTimeInMinutes, "Czas gry (w minutach)", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GameTimeInMinutes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GameTimeInMinutes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MinimumAge, "Minimalny wiek gracza", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MinimumAge, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MinimumAge, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BoardGamePublisher, "Wydawca gry", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BoardGamePublisher, ViewBag.Publishers as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGamePublisher, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BoardGameState, "Stan gry", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BoardGameState, ViewBag.States as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGameState, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BoardGameCategory, "Kategoria", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BoardGameCategory, ViewBag.Categories as SelectList, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BoardGameCategory, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "BoardGamesCollection")
+    </section>
 </div>

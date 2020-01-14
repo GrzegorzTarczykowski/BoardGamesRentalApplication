@@ -1,105 +1,161 @@
 ﻿@model BoardGamesRentalApplication.DAL.Models.BoardGame
 
 @{
-    ViewBag.Title = "Usuń";
+    ViewBag.Title = "Usuń grę";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <section class="admin-edit">
 
-<h2>Usuń</h2>
+        <div class="row">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Gra planszowa</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <div class="col">
+                <div class="row">
+                    <h2>@ViewBag.Title</h2>
+                    <div class="card text-center bg-light" style="width: 100%;">
+                        <div class="card-body">
+                            <div class="form">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.Name)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.Description)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.Description)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.Content)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.Content)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.MinPlayerCount)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.MinPlayerCount)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.MaxPlayerCount)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.MaxPlayerCount)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.GameTimeInMinutes)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.GameTimeInMinutes)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.MinimumAge)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.MinimumAge)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.BoardGameCategory.Name)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.BoardGameCategory.Name)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.BoardGamePublisher.Name)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.BoardGamePublisher.Name)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-input">
+                                            <label class="label-delete">
+                                                @Html.DisplayNameFor(model => model.BoardGameState.Name)
+                                            </label>
+                                            <label class="label-delete-desc">
+                                                @Html.DisplayFor(model => model.BoardGameState.Name)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Usuń" class="btn btn-full" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                @Html.ActionLink("Powrót", "BoardGamesCollection", new { }, new { @class = "btn btn-full", @type = "submit", @style = "float:right;width:200px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MinPlayerCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinPlayerCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MaxPlayerCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MaxPlayerCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GameTimeInMinutes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GameTimeInMinutes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MinimumAge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinimumAge)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BoardGameCategory.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BoardGameCategory.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BoardGamePublisher.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BoardGamePublisher.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BoardGameState.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BoardGameState.Name)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn" /> |
-            @Html.ActionLink("Wróć do listy", "BoardGamesCollection")
         </div>
-    }
+    </section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -358,16 +358,20 @@ footer {
 
 .products_list img {
     float: left;
-    margin-right: 40px;
+    margin-right: 10px;
     vertical-align: middle;
-    max-width: 100%;
-    max-height: 250px;
+    max-width: 130px;
+    max-height: 140px;
 }
 
+    .products_list table {
+        width: unset!important;
+    }
 
-.products_list .product {
-    padding: 20px;
-}
+
+    .products_list .product {
+        padding: 20px;
+    }
 
 /* .products_list h3 {
     text-shadow: 2px 2px 2px #13816b
@@ -695,4 +699,14 @@ select.edit-select {
 
 .carousel-item {
     max-height: 350px;
+}
+.label-delete {
+    font-size: larger;
+    font-weight: 600;
+    width: unset!important;
+    text-align: center!important;
+}
+.label-delete-desc {
+    width: unset !important;
+    text-align: center !important;
 }

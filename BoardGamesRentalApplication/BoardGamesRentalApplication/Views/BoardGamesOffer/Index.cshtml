@@ -1,5 +1,6 @@
 ﻿@model BoardGamesRentalApplication.Models.BoardGamesCollectionPageData
 @using PagedList.Mvc;
+@using System;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
@@ -35,40 +36,39 @@
 
                     @foreach (var item in Model.BoardGames)
                     {
-                        <div class="col-12 product">
+                    <div class="col-12 product">
+                        <img src="@item.ImagePath" alt="">
+                        <table>
+                            <tr>
+                                <td colspan="3">
+                                    <h3>
+                                        <a href="BoardGame/Details">
+                                            @Html.ActionLink(item.Name, "Details", "BoardGameDetailsOffer", new { boardGameId = item.BoardGameId }, null)
+                                        </a>
+                                    </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class='category_list'>Opis: </span>@Html.DisplayFor(modelItem => item.Description).ToString().Substring(0, 45)...</td>
+                                <td><span class='category_list'>Minimalna ilość graczy: </span>@Html.DisplayFor(modelItem => item.MinPlayerCount)</td>
+                                <td><span class='category_list'>Maksymalna ilość graczy: </span>@Html.DisplayFor(modelItem => item.MaxPlayerCount)</td>
+                                <td><span class='category_list'>Czas rozgrywki: </span>@Html.DisplayFor(modelItem => item.GameTimeInMinutes)</td>
+                                <td><span class='category_list'>Ilość: </span>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                            </tr>
+                            <tr>
+                                <td><span class='category_list'>Zawartość: </span>@Html.DisplayFor(modelItem => item.Content)</td>
+                                <td><span class='category_list'>Wiek: </span>@Html.DisplayFor(modelItem => item.MinimumAge)</td>
+                                <td><span class='category_list'>Wydawca: </span>@Html.DisplayFor(modelItem => item.BoardGamePublisherName)</td>
+                                <td><span class='category_list'>Stan: </span>@Html.DisplayFor(modelItem => item.BoardGameStateName)</td>
+                                <td><span class='category_list'>Kategoria: </span>@Html.DisplayFor(modelItem => item.BoardGameCategoryName)</td>
+                            </tr>
+                        </table>
 
-                            <img src="@item.ImagePath" alt="">
-                            <table>
-                                <tr>
-                                    <td colspan="3">
-                                        <h3>
-                                            <a href="BoardGame/Details">
-                                                @Html.ActionLink(item.Name, "Details", "BoardGameDetailsOffer", new { boardGameId = item.BoardGameId }, null)
-                                            </a>
-                                        </h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class='category_list'>Opis: </span>@Html.DisplayFor(modelItem => item.Description)</td>
-                                    <td><span class='category_list'>Minimalna ilość graczy: </span>@Html.DisplayFor(modelItem => item.MinPlayerCount)</td>
-                                    <td><span class='category_list'>Maksymalna ilość graczy: </span>@Html.DisplayFor(modelItem => item.MaxPlayerCount)</td>
-                                    <td><span class='category_list'>Czas rozgrywki: </span>@Html.DisplayFor(modelItem => item.GameTimeInMinutes)</td>
-                                    <td><span class='category_list'>Ilość: </span>@Html.DisplayFor(modelItem => item.Quantity)</td>
-                                </tr>
-                                <tr>
-                                    <td><span class='category_list'>Zawartość: </span>@Html.DisplayFor(modelItem => item.Content)</td>
-                                    <td><span class='category_list'>Wiek: </span>@Html.DisplayFor(modelItem => item.MinimumAge)</td>
-                                    <td><span class='category_list'>Wydawca: </span>@Html.DisplayFor(modelItem => item.BoardGamePublisherName)</td>
-                                    <td><span class='category_list'>Stan: </span>@Html.DisplayFor(modelItem => item.BoardGameStateName)</td>
-                                    <td><span class='category_list'>Kategoria: </span>@Html.DisplayFor(modelItem => item.BoardGameCategoryName)</td>
-                                </tr>
-                            </table>
-
-                            <div class="price_box">
-                                <span class="price_title">Cena wypozyczenia: </span><span class="price">@Html.DisplayFor(modelItem => item.RentalCostPerDay)</span>
-                                <span class="day">/dzien</span>
-                            </div>
+                        <div class="price_box">
+                            <span class="price_title">Cena wypozyczenia: </span><span class="price">@Html.DisplayFor(modelItem => item.RentalCostPerDay)</span>
+                            <span class="day">/dzien</span>
                         </div>
+                    </div>
                     }
 
                 </div>

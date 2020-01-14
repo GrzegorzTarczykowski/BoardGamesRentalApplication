@@ -82,7 +82,7 @@ namespace BoardGamesRentalApplication.DAL.MySqlDb
                                                     , BoardGameState = defaultBoardGameStates[1]
                                                     , BoardGameCategoryId = 1
                                                     , BoardGameCategory = defaultBoardGameCategories[0]
-                                                    , ImagePath = "/images/games/warcaby.png"
+                                                    , ImagePath = "/images/games/warcaby-list.png"
                                                     , DetailsImagePath = "/images/games/warcaby.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Rattus: Szczuro³ap"
@@ -105,7 +105,7 @@ w polskim alfabecie.
                                                     , BoardGameState = defaultBoardGameStates[0]
                                                     , BoardGameCategoryId = 2
                                                     , BoardGameCategory = defaultBoardGameCategories[1]
-                                                    , ImagePath = "/images/games/rattus.png"
+                                                    , ImagePath = "/images/games/rattus-list.png"
                                                     , DetailsImagePath = "/images/games/rattus.png" });
 
             defaultBoardGames.Add(new BoardGame() { Name = "Gemino"
@@ -123,7 +123,7 @@ w polskim alfabecie.
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 3
                                                     , BoardGameCategory = defaultBoardGameCategories[2]
-                                                    , ImagePath = "/images/games/gemino.png"
+                                                    , ImagePath = "/images/games/gemino-list.png"
                                                     , DetailsImagePath = "/images/games/gemino.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Wyspa Skye"
@@ -141,7 +141,7 @@ w polskim alfabecie.
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 4
                                                     , BoardGameCategory = defaultBoardGameCategories[3]
-                                                    , ImagePath = "/images/games/wyspaskye.png"
+                                                    , ImagePath = "/images/games/wyspaskye-list.png"
                                                     , DetailsImagePath = "/images/games/wyspaskye.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Res Arcana (edycja polska)"
@@ -159,7 +159,7 @@ w polskim alfabecie.
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 5
                                                     , BoardGameCategory = defaultBoardGameCategories[4]
-                                                    , ImagePath = "/images/games/resarcana.png"
+                                                    , ImagePath = "/images/games/resarcana-list.png"
                                                     , DetailsImagePath = "/images/games/resarcana.png"});
 
             defaultBoardGames.Add(new BoardGame() { Name = "Wszystko albo nic"
@@ -177,8 +177,26 @@ w polskim alfabecie.
                                                     , BoardGameState = defaultBoardGameStates[2]
                                                     , BoardGameCategoryId = 6
                                                     , BoardGameCategory = defaultBoardGameCategories[5]
-                                                    , ImagePath = "/images/games/wszystkoalbonic.png"
+                                                    , ImagePath = "/images/games/wszystkoalbonic-list.png"
                                                     , DetailsImagePath = "/images/games/wszystkoalbonic.png"});
+
+            defaultBoardGames.Add(new BoardGame() { Name = "Chiñczyk"
+                                                    , Description = "Jest to popularna gra planszowa, przeznaczona dla dwóch, trzech lub czterech osób. To doskona³a gra towarzyska, idealna na niedzielne popo³udnia czy deszczowe dni. Uwielbiaj¹ j¹ zarówno dzieci jak i doroœli. Polega na tym, aby jak najszybciej przejœæ czterema pionkami przez wszystkie pola rozmieszczone dooko³a planszy. Ma byæ to przebycie drogi z pozycji pocz¹tkowej (tzw. „baza”) do pozycji koñcowej (tzw. „domek”) - szybciej ni¿ pozostali gracze. Ten zawodnik, który jako pierwszy umieœci swoje pionki w „domku”, ten wygrywa."
+                                                    , Content = "plansza, 16 pionków (po 4 pionki w kolorze: ¿ó³tym, zielonym, niebieskim, czerwonym), kostka do gry"
+                                                    , MinimumAge = 3
+                                                    , GameTimeInMinutes = 30
+                                                    , MinPlayerCount = 2
+                                                    , MaxPlayerCount = 6
+                                                    , RentalCostPerDay = 1.50M
+                                                    , Quantity = 5
+                                                    , BoardGamePublisherId = 2
+                                                    , BoardGamePublisher = defaultBoardGamePublishers[1]
+                                                    , BoardGameStateId = 1
+                                                    , BoardGameState = defaultBoardGameStates[0]
+                                                    , BoardGameCategoryId = 3
+                                                    , BoardGameCategory = defaultBoardGameCategories[2]
+                                                    , ImagePath = "/images/games/chinczyk.png"
+                                                    , DetailsImagePath = "/images/games/chinczyk.png"});
 
             context.BoardGames.AddRange(defaultBoardGames);
 
